@@ -1,6 +1,6 @@
 #Trabajo práctico integrador
 ### Desarrollar un juego por turnos similar a la batalla naval usando Sinatra.
-```
+
 Al crear una partida, cada jugador deberá definir las posiciones de sus barcos en un tablero. Luego cada jugador podrá enviar un ataque intentando acertar a la posición de un barco enemigo para hundirlo.
 
 El servidor deberá controlar los turnos para evitar que un jugador dado envíe un ataque si no es su turno
@@ -16,10 +16,10 @@ La cantidad de barcos de cada usuario dependerá del tamaño del tablero:
 - 5 * 5 -> 7
 - 10 * 10 -> 15
 - 15 * 15 -> 20
-```
+
 
 ###Acciones relacionadas con **jugadores**
-```
+
 ####Crear un jugador
 Petición
 **POST /players HTTP/1.1**
@@ -37,9 +37,9 @@ Petición
 
 Respuesta
 *Status: 200 Ok*
-```
+
 ###Acciones relacionadas con **partidas**
-```
+
 ####Crear una partida
 Petición
 ** POST /players//games HTTP/1.1 **
@@ -85,26 +85,26 @@ Respuesta
 Si no es el turno de este jugador porque el rival aún no hizo su jugada: 
 *Status: 403 Forbidden*
 *Body:* un mensaje de error descriptivo con el formato que está al final del documento.
-```
+
 ###Errores
-```
+
 En caso que el servidor deba retornar un código de error HTTP, también deberá mostrar el error en la vista HTML del juego.
 
 En los casos de error que no estén especificados en este documento usar el status HTTP que sea más apropiado.
-```
+
 
 ###Control de acceso
-```
+
 Los usuarios deben loguearse con contraseña.
 Un usuario dado no debe poder ver ni usar el tablero de otro usuario.
-```
+
 
 ###Pautas
-```
+
 El trabajo debe estar implementado con Sinatra, con vistas HTML y debe ser jugable.
 El trabajo debe tener tests con una cobertura similar a la pedida en los parcialitos.
 Los tests deben dar ok.
 En los PUT y POST debería pasar la información necesaria para cada acción en el body de la petición.
-```
+
 
 
