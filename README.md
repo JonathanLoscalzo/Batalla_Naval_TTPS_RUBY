@@ -1,102 +1,120 @@
-# Sinatra App Template
+#Trabajo práctico integrador
+### Desarrollar un juego por turnos similar a la batalla naval usando Sinatra.
+```
+Al crear una partida, cada jugador deberá definir las posiciones de sus barcos en un tablero. Luego cada jugador podrá enviar un ataque intentando acertar a la posición de un barco enemigo para hundirlo.
 
-This is a [Sinatra](https://github.com/sinatra/sinatra) application template.
+El servidor deberá controlar los turnos para evitar que un jugador dado envíe un ataque si no es su turno
 
-## Definición del template
+El jugador que crea la partida deberá indicar cual es su rival y el tamaño del tablero a usar: 
+* 5x5
+* 10x10
+* 15x15.
 
-#### /app.rb
+> Nota: Para simplificar la implementación todos los barcos ocuparán una sola celda.
 
-Punto de entrada de la aplicación. En este archivo se define la aplicación Sinatra que es ejecutada por Rack.
-Aquí se configura el entorno y se requiren todos los archivos y gemas necesarias para que la aplicación funcione.
-Se realizan ademas tareas de inicialización como por ejemplo establecer la conexión con la base de datos.
+La cantidad de barcos de cada usuario dependerá del tamaño del tablero: 
+* 5 * 5 -> 7
+* 10 * 10 -> 15
+* 15 * 15 -> 20
+```
 
-#### /config
+###Acciones relacionadas con jugadores
+```
+* ####Crear un jugador
+Petición
 
-contiene archivos de configuración generales para la aplicación (por ejemplo, configuración de las conexiones a las bases de datos)
+** POST /players HTTP/1.1 **
 
-#### /models
+Respuesta
 
-Contiene la definición de las clases que forman el modelo de la aplicación. Todas los archivos .rb en este directorio (y sub-directorios) son requeridos en por app.rb (ver línea XXXX), de manera que toda clase que se encuentre definida en esta carpeta, puede ser utilizada en la applicación.
+* Status: 201 Created * 
+En caso de error retornar un body que indique el error y el status: 
+* Si el usuario ya existe: 409 Conflict 
+* Si el nombre de usuario no es válido: 400 Bad request
 
-#### /views
+* ####Listar jugadores
+Petición
 
-contiene las vistas, tanto layout como partials, de la aplicación. Se recomienda usar subdirectorios para crear subagrupaciones de vistas relacionadas bajo algún criterio (por ejemplo: todas las vistas del ABM de usuarios van en /views/users)
+** GET /players HTTP/1.1 **
 
+Respuesta
 
-#### /tasks
+Status: 200 Ok
+```
+###Acciones relacionadas con partidas
+```
+* ####Crear una partida
+Petición
 
-Si son necesarias crear tareas Rake, estas deben ir en este directorio. Todos los archivos .rb en este directorio (y sub-directorios) son cargados en por Rakefile (ver línea 4)
+** POST /players//games HTTP/1.1 **
 
-#### /public
+Respuesta
 
-Los archivos en directorio y sub-directorios son servidos como archivos estáticos por sinatra. Aquí deberán ubicarse los assets (imágenes, hojas de estilo, javascripts). De esta manera un request GET a /css/styles.css, no pasará por el ruteo de Sinatra si existe el archivo en /public/css/styles.css
+Status: 201 Created
+En caso de error retornar un body que indique el error y el status: 
+* Si hay algún error de codificación: 400 Bad request
 
-### ORM
+* ####Ver una partida
+Petición
 
-El template tiene configurado como ORM [ActiveRecord](https://github.com/rails/rails/tree/master/activerecord) (usando sqlite3)
-Tanto en la [Documentación oficial de Rails](http://api.rubyonrails.org/) como las [guías de rails](http://guides.rubyonrails.org/index.html) hay información detallada sobre su funcionamiento.
+** GET /players/<id>/games/<id game> **
 
-### Rake
+Respuesta
 
-Se proveen tareas para correr los tests (ver sección [Tests]) y para manejar la integración con el ORM (crear, borrar y modificar (mediante migraciones) las bases de datos).
-La gema [sinatra-activerecord](https://github.com/janko-m/sinatra-activerecord) provee varias tareas Rake
-para manejar la creación y modificación de la base de datos.
-`Lea el readme para saber qué tareas provee y cómo utilizarlas.`
+La misma que POST /players/<id>/games pero con status 200
 
-Para ver un listado de las tareas Rake disponibles puede ejecutar:
+* ####Listar partidas
+Petición
 
-```bash
-$ bundle exec rake -T
+** GET /players/<id>/games **
+
+Respuesta
+
+Status: 200 Ok
+
+* ####Establecer la posición inicial de los barcos
+Petición
+
+** PUT /players/<id>/games/<id game> **
+
+Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
+
+Respuesta
+
+Status: 200 Ok Body: mismo que GET /players/<id>/games/<id game>
+
+* ####Hacer una jugada
+Petición
+
+** POST /players/<id>/games/<id game>/move **
+
+Respuesta
+
+Status: 201 Created
+Body: mismo que GET /players/<id>/games/<id game>
+Si no es el turno de este jugador porque el rival aún no hizo su jugada: 
+* Status: 403 Forbidden 
+* Body: un mensaje de error descriptivo con el formato que está al final del documento.
+```
+###Errores
+```
+En caso que el servidor deba retornar un código de error HTTP, también deberá mostrar el error en la vista HTML del juego.
+
+En los casos de error que no estén especificados en este documento usar el status HTTP que sea más apropiado.
+```
+
+###Control de acceso
+```
+Los usuarios deben loguearse con contraseña.
+Un usuario dado no debe poder ver ni usar el tablero de otro usuario.
+```
+
+###Pautas
+```
+El trabajo debe estar implementado con Sinatra, con vistas HTML y debe ser jugable.
+El trabajo debe tener tests con una cobertura similar a la pedida en los parcialitos.
+Los tests deben dar ok.
+En los PUT y POST debería pasar la información necesaria para cada acción en el body de la petición.
 ```
 
 
-## Utilización
-
-### Setup
-
-Clonar el repositorio:
-
-```bash
-$ git clone git@github.com/TTPS-ruby/sinatra_app_template.git
-```
-
-Borrar el origin seteado por git al clonar
-
-```bash
-$ git remote rm origin
-```
-
-Instalar todas las gemas especificadas en el Gemfile:
-
-```bash
-$ bundle install
-```
-
-### Tests
-
-Para correr los tests se entrega una tarea rake que corre todos los tests bajo /test. Esta está configurada como la tarea por defecto por lo tanto sólo es necesario ejecutar:
-
-```bash
-$ bundle exec rake
-```
-
-Si se requiere ejecutar un archivo de test particular puede directamente ejecutar:
-
-```bash
-$ bundle exec ruby test/<archivo>
-```
-
-Para ejecutar los tests dentro de un archivo cuyo nombre coincida con una expresión regular
-
-```bash
-$ bundle exec ruby test/<archivo>.rb -n /<expresión-regular>/
-```
-
-
-### Ejecutar la aplicación
-
-Para ejecutar la aplicación se utiliza el comando `rackup`
-
-```bash
-$ bundle exec rackup
-```
