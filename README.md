@@ -42,7 +42,7 @@ Respuesta
 
 ####Crear una partida
 Petición
-** POST /players//games HTTP/1.1 **
+**POST /players/games HTTP/1.1**
 
 Respuesta
 *Status: 201 Created*
@@ -52,35 +52,35 @@ En caso de error retornar un body que indique el error y el status:
 
 ####Ver una partida
 Petición
-**GET /players/<id>/games/<id game>**
+**GET /players/*id*/games/*id_game***
 
 Respuesta
-La misma que POST /players/<id>/games pero con status 200
+La misma que POST /players/*id*/games pero con status 200
 
 ####Listar partidas
 Petición
-**GET /players/<id>/games**
+**GET /players/*id*/games**
 
 Respuesta
 *Status: 200 Ok*
 
 ####Establecer la posición inicial de los barcos
 Petición
-**PUT /players/<id>/games/<id game>**
+**PUT /players/*id*/games/*id_game***
 
 Nota: Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
 
 Respuesta
 *Status: 200 Ok*
-*Body:* mismo que GET /players/<id>/games/<id game>
+*Body:* mismo que GET /players/*id*/games/*id_game*
 
 ####Hacer una jugada
 Petición
-**POST /players/<id>/games/<id game>/move**
+**POST /players/*id*/games/*id_game*/move**
 
 Respuesta
 *Status: 201 Created*
-*Body:* mismo que GET /players/<id>/games/<id game>
+*Body:* mismo que GET /players/*id*/games/*id_game*
 
 Si no es el turno de este jugador porque el rival aún no hizo su jugada: 
 *Status: 403 Forbidden*
