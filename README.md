@@ -31,12 +31,19 @@ En caso de error retornar un body que indique el error y el status:
 - Si el usuario ya existe: 409 Conflict 
 - Si el nombre de usuario no es válido: 400 Bad request
 
+La pantalla de inicio de sesión tiene 2 botones, uno para registro y otro para iniciar sesión.
+Según cual se presione, es la acción a tomar. 
+Crear un usuario involucra que el *username* no está repetido. 
+
 ####Listar jugadores
 Petición
 **GET /players HTTP/1.1**
 
 Respuesta
 *Status: 200 Ok*
+Listar Jugadores se utiliza para listar los jugadores con los que se puede iniciar una partida. 
+Para poder iniciar una partida, no tienen que existir partidas previas sin terminar.
+Quizás se puede devolver un Json (y no un HTML).
 
 ###Acciones relacionadas con **partidas**
 
@@ -50,12 +57,19 @@ Respuesta
 En caso de error retornar un body que indique el error y el status: 
 - Si hay algún error de codificación: 400 Bad request
 
+Para crear la partida, tiene que existir un id de usuario opositor. 
+Quizás se pueda iniciar la partida luego de que el otro acepta.
+(faltaria una opcion de listar partidas sin iniciar)
+
 ####Ver una partida
 Petición
-**GET /players/*id*/games/*id_game***
+**GET /players/*id*/games/id_game**
 
 Respuesta
 La misma que POST /players/*id*/games pero con status 200
+
+Puede devolver los datos de la partida en json. 
+Solo se pueden ver partidas en juego.
 
 ####Listar partidas
 Petición
@@ -64,11 +78,13 @@ Petición
 Respuesta
 *Status: 200 Ok*
 
+Partidas sin comenzar, comenzadas y terminadas ( máquina de estados ? )
+
 ####Establecer la posición inicial de los barcos
 Petición
 **PUT /players/*id*/games/*id_game***
 
-Nota: Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
+> Nota: Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
 
 Respuesta
 *Status: 200 Ok*
@@ -88,7 +104,7 @@ Si no es el turno de este jugador porque el rival aún no hizo su jugada:
 
 ###Errores
 
-En caso que el servidor deba retornar un código de error HTTP, también deberá mostrar el error en la vista HTML del juego.
+En caso que el servidor deba retornar un código de error HTTP, también deberá mostrar el error en la vista HTML del juego. ( el numero de error? o un error "visual")
 
 En los casos de error que no estén especificados en este documento usar el status HTTP que sea más apropiado.
 
@@ -97,7 +113,6 @@ En los casos de error que no estén especificados en este documento usar el stat
 
 Los usuarios deben loguearse con contraseña.
 Un usuario dado no debe poder ver ni usar el tablero de otro usuario.
-
 
 ###Pautas
 

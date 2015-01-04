@@ -29,10 +29,12 @@ class Application < Sinatra::Base
 	end
 
 	post '/players' do
+	#Crear un Jugador. De datos entran username y password.
 		p params.to_s
 	end
 
 	get '/players' do
+	# Listar jugadores (con los que se puede jugar) 
 
 	end
 
