@@ -1,6 +1,5 @@
 require 'bundler/setup'
 require 'rake/testtask'
-
 require "sinatra/activerecord/rake"
 require "./app"
 

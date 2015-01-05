@@ -6,6 +6,7 @@
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script src="/js/jquery.validate.min.js"></script>
   <script src="/js/messages_es_AR.min.js"></script>
+  <script src="/js/knockout-3.2.0.js"></script>
   </head>
   <head>
 <title>Batalla Naval</title>
@@ -48,54 +49,20 @@
 
   <!-- Listado usuarios sidebar -->
   <div id='content' class='row-fluid' style="margin-top:5%">
+
     <div class='col-md-2 sidebar'>
       <h3>Listado de Usuarios</h3>
-      <ul class="nav nav-tabs nav-stacked">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  Usuario#1 
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                Datos Usuario
-              </div>
-            </div>
+      <div class="accordion" id="accordion2" data-bind="foreach: UsersArray">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"  data-bind="text: name, attr: { href: '#' + id}"></a>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Usuario #2
-                </a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-              <div class="panel-body">
-                Datos Usuarios
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-              <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Usuario #3
-                </a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-              <div class="panel-body">
-                Datos Usuarios
-              </div>
-            </div>
+          <div class="accordion-body collapse" data-bind="attr: { id: id }">
+            datos de usuario: <span data-bind="text: id"></span>
+            <a data-bind="attr: {href: '/players/'+id+'/game'}"> <button class="btn btn-info">  Iniciar partida </button> </a>
           </div>
         </div>
-      </ul>
+      </div>
     </div>
     <!-- Listado usuarios sidebar Fin -->
 
@@ -118,20 +85,16 @@
           <tbody>
             <tr>
                 <td>Donna R. Folse</td>
-                <td><span class="label label-success">Active</span>
+                <td><span class="label label-success">Jugando</span>
                 </td>                                       
             </tr>
             <tr>
                 <td>Emily F. Burns</td>
-                <td><span class="label label-danger">Banned</span></td>              
-            </tr>
-            <tr>
-                <td>Andrew A. Stout</td>
-                <td><span class="label">Inactive</span></td>                                        
+                <td><span class="label label-danger">Cancelado</span></td>              
             </tr>
             <tr>
                 <td>Mary M. Bryan</td>
-                <td><span class="label label-warning">Pending</span></td>                 
+                <td><span class="label label-warning">Pendiente</span></td>                 
             </tr>
             <tr>
                 <td>Mary A. Lewis</td>
@@ -143,5 +106,16 @@
     <!-- Sidebar Partidas Fin -->
 
   </div>
+<script type="text/javascript">
+  
+  var ViewModel = function(){
+    this.UsersArray = ko.observableArray([
+      { name: "Bungle", id: "1111" },
+      { name: "George", id: "2222" },
+      { name: "Zippy", id: "3333" }
+    ]);
+  };
+  ko.applyBindings(new ViewModel());
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@ require 'bundler'
 ENV['RACK_ENV'] ||= 'development'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
-Dir['./models/**/*.rb'].each {|f| require f }
+Dir['./models/**/*.rb'].each {|f| require f } # => requiero todos los archivos en models/*.rb
 
 enable :sessions
 
@@ -39,7 +39,6 @@ class Application < Sinatra::Base
 
 	get '/players' do
 	# Listar jugadores (con los que se puede jugar) 
-
 	end
 
 	post '/players/games' do
