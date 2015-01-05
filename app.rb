@@ -10,14 +10,11 @@ enable :sessions
 class Application < Sinatra::Base
 	register Sinatra::ActiveRecordExtension
 
-	configure :production, :development do
-		enable :logging
-	end
-
 	configure :development do
 		enable :show_exceptions
 		use BetterErrors::Middleware
  		BetterErrors.application_root = __dir__
+ 		enable :logging
 	end
 
 	set :database, YAML.load_file('config/database.yml')[ENV['RACK_ENV']]
@@ -29,16 +26,38 @@ class Application < Sinatra::Base
 	end
 
 	post '/login' do
-		p params.to_s
+		username = params['username']
+		password = params['password']
+		user = User.where(username:username.to_s, password:password.to_s).first
+		if user
+			p user.username, user.password
+		else
+			p 'no hay nadie'
+		end
 	end
 
 	post '/players' do
-	#Crear un Jugador. De datos entran username y password.
-		p params.to_s
+	#Crear un Jugador. datos entrada username y password.
+		username = params['username']
+		password = params['password']
+		user = User.where(username: username)
+		if user.empty?
+			user = User.create do | u |
+				u.username = username
+				u.password = password
+			end
+		else
+			status 409
+			session[:mensaje]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
+		end
+		erb 'login/login'.to_sym
 	end
 
 	get '/players' do
-	# Listar jugadores (con los que se puede jugar) 
+	# Listar jugadores (con los que se puede jugar iniciar partida)
+		players = User.all;
+		content_type :json
+		players.to_json
 	end
 
 	post '/players/games' do
