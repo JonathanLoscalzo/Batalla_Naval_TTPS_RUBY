@@ -4,7 +4,7 @@ ENV['RACK_ENV'] ||= 'development'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
 Dir['./models/**/*.rb'].each {|f| require f } # => requiero todos los archivos en models/*.rb
-
+# Dir['./controllers/**/*.rb'].each {|f| require f } 
 enable :sessions
 
 class Application < Sinatra::Base

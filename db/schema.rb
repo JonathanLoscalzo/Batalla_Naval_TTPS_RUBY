@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105203337) do
+ActiveRecord::Schema.define(version: 20150108185932) do
+
+  create_table "boards", force: :cascade do |t|
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "boards", ["game_id"], name: "index_boards_on_game_id"
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "last_user_move"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.integer  "board_id"
+    t.boolean  "sunken",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ships", ["board_id"], name: "index_ships_on_board_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",   limit: 20, null: false

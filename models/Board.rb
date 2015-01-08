@@ -1,5 +1,6 @@
 class Board < ActiveRecord::Base
-
+	belongs_to :game
+	has_many :ships 
 end
 
 class SmallBoard < Board
