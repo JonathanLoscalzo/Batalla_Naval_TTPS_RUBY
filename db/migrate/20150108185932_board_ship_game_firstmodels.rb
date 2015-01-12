@@ -12,7 +12,7 @@ class BoardShipGameFirstmodels < ActiveRecord::Migration
   	end 
 
   	create_table :games do |t|
-  		t.integer :last_user_move
+  		t.integer :last_user_move # => Deberia ser un usuario. Y poder comparar si es el ultimo
   		t.timestamps null: true
   	end
 
