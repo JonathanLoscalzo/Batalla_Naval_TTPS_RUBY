@@ -1,9 +1,15 @@
 require 'test_helper'
 
 class RootTest < AppTest
-  def test_get_root
-    get '/hello'
-    assert_equal 200, last_response.status
-    assert_equal 'Hello from sinatra!', last_response.body
-  end
+ 	describe 'test login' do
+
+	  	it 'test get login' do
+		    
+	  	end
+
+	  	it 'test post login' do
+
+	  	end
+
+	end
 end
