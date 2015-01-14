@@ -1,4 +1,4 @@
-<% if !session[:user] %>
+<% unless authorized? %>
 <div class="row" style="padding-top: 5%">
     <form id="form-login" class="form-horizontal col-md-8 col-md-offset-2" action="/login" method="post" style="background-color:pink; padding:3%">
       <div class="form-group">

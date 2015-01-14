@@ -7,14 +7,19 @@ module Sinatra
 	      	end
 
 	      	def authorize!
-	      		#se usa cuando no tiene permiso. En un before
-	        	redirect '/login' unless authorized?
+	      		#se usa cuando no tiene permiso.
+	        	unless authorized?
+	        		session[:message] = { :value => "No tiene permiso para estar aquí.", :type => "danger" }
+	        		status 304
+	        		redirect '/login'
+	        	end
 	      	end
 
 	      	def logout!
 	        	session[:authorized] = false
 	        	session[:user_id] = nil
 				session[:username] = nil
+	        	session[:message] = { :value => "Adiós!", :type => "success" }
 	      	end
 
 	      	def login(username:, password:)
@@ -23,8 +28,11 @@ module Sinatra
 					session[:user_id] = user.id
 					session[:username] = user.username
 					session[:authorized] = true
+					response.status = 200
 				else
-					p 'no hay nadie'
+					session[:authorized] = false
+					session[:message] = { :value => "El Usuario "+ username +" No existe.", :type => "danger" }
+					response.status = 409 # => no tengo idea que va acà.
 				end
 			end
 
@@ -41,16 +49,10 @@ module Sinatra
 		def self.registered(app)
 	      	app.helpers SessionHelper::Helpers
 
-	      	app.configure do
-	      		app.enable :session
-	      	end
-
 			app.set(:auth) do
 				#se agrega a los metodos que quiero que sea necesario autenticarse
 				condition do 
-					unless authorized?
-						authorize!
-					end
+					authorize!
 				end
 			end
 	    end

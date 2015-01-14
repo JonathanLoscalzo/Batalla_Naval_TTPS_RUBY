@@ -4,17 +4,17 @@ ENV['RACK_ENV'] ||= 'development'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
 Dir['./models/**/*.rb'].each {|f| require f } # => requiero todos los archivos en models/*.rb
-# Dir['./controllers/**/*.rb'].each {|f| require f } 
+#Dir['./controllers/**/*.rb'].each {|f| require f } 
 Dir['./helpers/**/*.rb'].each {|f| require f }
 
 class Application < Sinatra::Base
 	#__________________extensiones__________________
 	register Sinatra::ActiveRecordExtension
-	register Sinatra::SessionHelper # => con helpers no funciona.
-
+	register Sinatra::SessionHelper
 	#__________________configuraciones__________________
 	configure do
-		enable :sessions
+		use Rack::Session::Pool # => por algun motivo, con enable :session no funcionaba.
+		set :session_secret, 'super secret'
 	end
 
 	configure :development do
@@ -30,18 +30,17 @@ class Application < Sinatra::Base
 
 	#__________________Comportamiento__________________
 	get '/login' do
-		erb 'login/login'.to_sym
+		erb 'login/login'.to_sym 
+	end
+
+	get '/logout' do
+		logout!
+		redirect '/login'
 	end
 
 	post '/login' do
-		username = params['username']
-		password = params['password']
-		user = User.where(username:username.to_s, password:password.to_s).first
-		if user
-			p user.username, user.password
-		else
-			p 'no hay nadie'
-		end
+		login username:params['username'], password:params['password']
+		erb 'login/login'.to_sym
 	end
 
 	post '/players' do
@@ -54,6 +53,7 @@ class Application < Sinatra::Base
 				u.username = username
 				u.password = password
 			end
+			session[:mensaje]= { :value => "Creado Correctamente", :type => "success" }
 		else
 			status 409
 			session[:mensaje]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
@@ -63,7 +63,7 @@ class Application < Sinatra::Base
 
 	get '/players', :auth => nil do
 	# Listar jugadores (con los que se puede jugar iniciar partida)
-		players = User.all;
+		players = User.all.select(:id,:username)
 		content_type :json
 		players.to_json
 	end
@@ -91,5 +91,4 @@ class Application < Sinatra::Base
 #   not_found do	
 #		erb :'page_404', :layout => false
 #	end
-
 end
