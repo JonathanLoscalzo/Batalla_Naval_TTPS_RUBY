@@ -1,4 +1,5 @@
 require 'test_helper'
+# => https://github.com/brandonweiss/rack-minitest
 
 class RootTest < AppTest
  	describe 'test login' do

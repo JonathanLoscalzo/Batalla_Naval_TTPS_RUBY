@@ -5,22 +5,30 @@ Bundler.require :default, ENV['RACK_ENV'].to_sym
 
 Dir['./models/**/*.rb'].each {|f| require f } # => requiero todos los archivos en models/*.rb
 # Dir['./controllers/**/*.rb'].each {|f| require f } 
-enable :sessions
+Dir['./helpers/**/*.rb'].each {|f| require f }
 
 class Application < Sinatra::Base
+	#__________________extensiones__________________
 	register Sinatra::ActiveRecordExtension
+	register Sinatra::SessionHelper # => con helpers no funciona.
+
+	#__________________configuraciones__________________
+	configure do
+		enable :sessions
+	end
 
 	configure :development do
 		enable :show_exceptions
 		use BetterErrors::Middleware
  		BetterErrors.application_root = __dir__
- 		enable :logging
+ 		#enable :logging
 	end
 
 	set :database, YAML.load_file('config/database.yml')[ENV['RACK_ENV']]
 
 	set :method_override, true
 
+	#__________________Comportamiento__________________
 	get '/login' do
 		erb 'login/login'.to_sym
 	end
@@ -53,7 +61,7 @@ class Application < Sinatra::Base
 		erb 'login/login'.to_sym
 	end
 
-	get '/players' do
+	get '/players', :auth => nil do
 	# Listar jugadores (con los que se puede jugar iniciar partida)
 		players = User.all;
 		content_type :json
