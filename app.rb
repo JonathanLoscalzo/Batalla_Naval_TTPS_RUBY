@@ -68,6 +68,11 @@ class Application < Sinatra::Base
 		players.to_json
 	end
 
+	get '/game/', :auth => nil do
+		#devuelve todos los juegos (los datos necesarios para la tabla)
+		#content-type : json
+	end
+	
 	post '/game/:id_user', :auth => nil do |id_user|
 		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
 		# 
