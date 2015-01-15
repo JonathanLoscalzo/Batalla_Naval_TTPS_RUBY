@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113221824) do
+ActiveRecord::Schema.define(version: 20150115223054) do
 
   create_table "boards", force: :cascade do |t|
     t.integer  "game_id"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20150113221824) do
     t.boolean  "sunken",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "x"
+    t.integer  "y"
   end
 
   add_index "ships", ["board_id"], name: "index_ships_on_board_id"
@@ -65,5 +67,15 @@ ActiveRecord::Schema.define(version: 20150113221824) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "waters", force: :cascade do |t|
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "board_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "waters", ["board_id"], name: "index_waters_on_board_id"
 
 end

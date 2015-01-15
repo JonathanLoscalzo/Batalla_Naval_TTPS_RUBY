@@ -5,4 +5,5 @@ class Board < ActiveRecord::Base
 	belongs_to :game #, :foreign_key => "" Tengo que ponerla?
 	has_many :ships 
 	belongs_to :breed
+	#has_many :waters
 end

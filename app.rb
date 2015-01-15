@@ -53,10 +53,10 @@ class Application < Sinatra::Base
 				u.username = username
 				u.password = password
 			end
-			session[:mensaje]= { :value => "Creado Correctamente", :type => "success" }
+			session[:message]= { :value => "Creado Correctamente", :type => "success" }
 		else
 			status 409
-			session[:mensaje]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
+			session[:message]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
 		end
 		erb 'login/login'.to_sym
 	end
@@ -71,8 +71,11 @@ class Application < Sinatra::Base
 	get '/game/', :auth => nil do
 		#devuelve todos los juegos (los datos necesarios para la tabla)
 		#content-type : json
+		games = Game.all
+		content_type :json
+		players.to_json
 	end
-	
+
 	post '/game/:id_user', :auth => nil do |id_user|
 		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
 		# 
