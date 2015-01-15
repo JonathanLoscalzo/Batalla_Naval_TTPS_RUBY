@@ -3,10 +3,12 @@
   <head>
   <script type="text/javascript" src="/js/jquery-2.1.3.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.css">
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-  <script src="/js/jquery.validate.min.js"></script>
-  <script src="/js/messages_es_AR.min.js"></script>
-  <script src="/js/knockout-3.2.0.js"></script>
+  <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="/js/messages_es_AR.min.js"></script>
+  <script type="text/javascript" src="/js/knockout-3.2.0.js"></script>
+  <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
   </head>
   <head>
 
@@ -86,7 +88,7 @@
     <div class='col-md-3 sidebar'>
     <% if authorized? %>
       <h3>Partidas</h3>
-        <table class="table table-striped table-condensed">
+        <table class="table table-striped table-condensed" id="table-games">
           <thead>
             <tr>
                 <th>Username</th>
@@ -120,6 +122,13 @@
   </div>
 <% if authorized? %>
 <script type="text/javascript" src="/js/viewmodels/layout-Viewmodels.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#table-games").DataTable({
+      "dom": '<"top"f>rt<"bottom"p><"clear">'
+    });
+  });
+</script>
 <% end %>
 </body>
 </html>

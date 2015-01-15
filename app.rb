@@ -68,24 +68,38 @@ class Application < Sinatra::Base
 		players.to_json
 	end
 
-	post '/players/games' do
-
+	post '/game/:id_user', :auth => nil do |id_user|
+		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
+		# 
 	end
 
-	get '/players/:id/games/:id_game' do |id, idgame|
-
+	put '/game/:id_game', :auth => nil do |id_game|
+		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
+		# la partida tiene que ser propia
 	end
 
-	put '/players/:id/games/:id_game' do |id, idgame|
-
+	put '/game/:id_game/move', :auth => nil do |id_game|
+		# se recibe posiciones x,y. 
+		# solo puede mover si es su turno y si el juego està en iniciado
 	end
 
-	post '/players/:id/games/:id_game/move' do |id, idgame|
-
+	delete '/game/:id_game', :auth => nil do |id_game|
+		# Termina la partida. Gana automaticamente el otro
+		# Todos los barcos propios mueren ? 
+		# 
 	end
 
-	get '/players/:id/games' do |id|
-
+	get '/game/:id_game', :auth => nil do |id_game|
+		#-> si es propia
+		#	-> estado iniciado : tablero para completar y enviar (cambia el tablero)
+		#	-> jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y
+		# 		posibilidad de elegir donde disparar.
+		#	-> cancelada o terminada : se puede ver ambos tableros y quien gano.
+		#-> si no es propia (ambas opciones son iguales)
+		#	-> se ven ambos tableros. 
+		#	-> si està terminada dice quien ganò, sino solo se muestran las jugadas.
+		# SUPONGO debe ser el mismo template...
+		# para el tablero, usar un template: de knockout
 	end
 
 #   not_found do	
