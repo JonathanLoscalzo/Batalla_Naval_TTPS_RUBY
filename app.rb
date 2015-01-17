@@ -103,7 +103,7 @@ class Application < Sinatra::Base
 		#  
 	end
 
-	get '/games/:id_game', :auth => nil do |id_game|
+	get '/games/:id_game' do |id_game|
 		#-> si es propia
 		#	-> estado iniciado : tablero para completar y enviar (cambia el tablero)
 		#	-> jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y
@@ -114,6 +114,8 @@ class Application < Sinatra::Base
 		#	-> si està terminada dice quien ganò, sino solo se muestran las jugadas.
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
+		@game = Game.find(id_game)
+		@game		
 	end
 
 #   not_found do	

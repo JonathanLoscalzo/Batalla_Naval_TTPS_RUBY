@@ -1,8 +1,8 @@
 class Game < ActiveRecord::Base
 	belongs_to :user1, :class_name => "User", :foreign_key => 'user1_id_id' # => el que inicia el juego
 	belongs_to :user2, :class_name => "User", :foreign_key => 'user2_id_id'
-	has_one :board1, :class_name => "Board", :foreign_key => 'board1_id' # => correspondiente según usuarios.
-	has_one :board2, :class_name => "Board", :foreign_key => 'board2_id'
+	belongs_to :board1, :class_name => "Board", :foreign_key => 'board1_id_id' # => correspondiente según usuarios.
+	belongs_to :board2, :class_name => "Board", :foreign_key => 'board2_id_id'
 	belongs_to :user_turn, :class_name => "User", :foreign_key => "last_user_move_id_id"
 
 	# => habrìa que ver si se puede asignar "usuario => tablero. ver relacion con :through

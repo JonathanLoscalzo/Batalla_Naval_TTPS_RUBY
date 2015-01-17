@@ -11,17 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115223054) do
+ActiveRecord::Schema.define(version: 20150117185802) do
 
   create_table "boards", force: :cascade do |t|
-    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "breed_id_id"
   end
 
   add_index "boards", ["breed_id_id"], name: "index_boards_on_breed_id_id"
-  add_index "boards", ["game_id"], name: "index_boards_on_game_id"
 
   create_table "breeds", force: :cascade do |t|
     t.integer  "size"
@@ -37,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150115223054) do
     t.integer  "user1_id_id"
     t.integer  "user2_id_id"
     t.integer  "last_user_move_id_id"
+    t.integer  "board1_id_id"
+    t.integer  "board2_id_id"
   end
 
   add_index "games", ["last_user_move_id_id"], name: "index_games_on_last_user_move_id_id"
