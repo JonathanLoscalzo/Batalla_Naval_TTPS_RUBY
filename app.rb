@@ -65,39 +65,45 @@ class Application < Sinatra::Base
 	# Listar jugadores (con los que se puede jugar iniciar partida)
 		players = User.all.select(:id,:username)
 		content_type :json
-		players.to_json
+		players.to_json # => only: [:id, :username]
 	end
 
-	get '/game/', :auth => nil do
+	get '/games' do
 		#devuelve todos los juegos (los datos necesarios para la tabla)
 		#content-type : json
 		games = Game.all
 		content_type :json
-		players.to_json
+		games.to_a.map do |e| 
+			e.as_json include: [
+				{ user1: { only: [:id, :username]} }, 
+				{ user2: { only: [:id, :username]} }, 
+				{ status: { only: :description }}],
+				only: [:id,:user1,:user2,:status]
+		end.to_json
 	end
 
-	post '/game/:id_user', :auth => nil do |id_user|
+	post '/games/:id_user', :auth => nil do |id_user|
 		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
 		# 
 	end
 
-	put '/game/:id_game', :auth => nil do |id_game|
+	put '/games/:id_game', :auth => nil do |id_game|
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
 	end
 
-	put '/game/:id_game/move', :auth => nil do |id_game|
+	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
 		# solo puede mover si es su turno y si el juego està en iniciado
 	end
 
-	delete '/game/:id_game', :auth => nil do |id_game|
+	delete '/games/:id_game', :auth => nil do |id_game|
 		# Termina la partida. Gana automaticamente el otro
 		# Todos los barcos propios mueren ? 
-		# 
+		#  
 	end
 
-	get '/game/:id_game', :auth => nil do |id_game|
+	get '/games/:id_game', :auth => nil do |id_game|
 		#-> si es propia
 		#	-> estado iniciado : tablero para completar y enviar (cambia el tablero)
 		#	-> jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y
