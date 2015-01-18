@@ -63,7 +63,7 @@
           </div>
           <div class="accordion-body collapse" data-bind="attr: { id: id }">
             datos de usuario: <span data-bind="text: id"></span>
-            <a data-bind="attr: {href: '/players/'+ id +'/game'}"> <button class="btn btn-info"> Iniciar partida </button> </a>
+            <a data-bind="attr: {href: '/games/'+ id}"> <button class="btn btn-info"> Iniciar partida </button> </a>
           </div>
         </div>
       </div>
@@ -129,11 +129,11 @@
   </div>
   <% if authorized? %>
 <script>
-  $(document).ready(function(){
+  /*$(document).ready(function(){
     $("#table-games").DataTable({
       "dom": '<"top"f>rt<"bottom"p><"clear">'
     });
-  });
+  });*/
 </script>
 <script type="text/javascript" src="/js/viewmodels/layout-Viewmodels.js"></script>
 <% end %>

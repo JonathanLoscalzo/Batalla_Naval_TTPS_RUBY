@@ -1,4 +1,7 @@
   $(document).ready(function(){
+    $("#table-games").DataTable({
+      "dom": '<"top"f>rt<"bottom"p><"clear">'
+    });
     var PlayersViewModel = function(data){
       this.id = data.id;
       this.username = data.username;
@@ -10,16 +13,21 @@
       this.username2 = data.user2.username;
       this.status = data.status.description
     };
+    
+    var SizesViewModel = function(data){
+      this.sizeText = data.size;
+    };
 
     var ViewModel = function(){
       var self = this; 
       self.UsersArray = ko.observableArray([]);
-      self.games = ko.observableArray([]);
       $.getJSON("/players", function(data){
         var mappedPlayers = $.map(data, function(item){ return new PlayersViewModel(item)});
-        self.UsersArray= mappedPlayers;
+        self.UsersArray(mappedPlayers);
       });
 
+      
+      self.games = ko.observableArray([]);
       $.getJSON("/games", function(data){
         var mappedGames = $.map(data, function(item){ return new GameViewModel(item)});
         self.games = mappedGames;
@@ -42,6 +50,13 @@
         });
 
       });
+
+      self.Sizes = ko.observableArray([]);
+      $.getJSON("/sizes", function(data){
+        var mappedSizes = $.map(data, function(item){ return new SizesViewModel(item)});
+        self.Sizes(mappedSizes);
+      });
+      self.selectedSize = ko.observable();
     };
 
     var elem = new ViewModel();

@@ -43,6 +43,13 @@ class Application < Sinatra::Base
 		erb 'login/login'.to_sym
 	end
 
+	get '/sizes', :auth => nil do
+	# Listar jugadores (con los que se puede jugar iniciar partida)
+		sizes = Breed.all
+		content_type :json
+		sizes.to_json
+	end
+
 	post '/players' do
 	#Crear un Jugador. datos entrada username y password.
 		username = params['username']
@@ -63,7 +70,8 @@ class Application < Sinatra::Base
 
 	get '/players', :auth => nil do
 	# Listar jugadores (con los que se puede jugar iniciar partida)
-		players = User.all.select(:id,:username)
+		user_id = session[:user_id]
+		players = User.where(["id <> :id", { id: user_id }]).select(:id,:username)
 		content_type :json
 		players.to_json # => only: [:id, :username]
 	end
@@ -82,9 +90,9 @@ class Application < Sinatra::Base
 		end.to_json
 	end
 
-	post '/games/:id_user', :auth => nil do |id_user|
+	get '/games/:id_user', :auth => nil do |id_user|
 		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
-		# 
+		erb 'game/create'.to_sym
 	end
 
 	put '/games/:id_game', :auth => nil do |id_game|
