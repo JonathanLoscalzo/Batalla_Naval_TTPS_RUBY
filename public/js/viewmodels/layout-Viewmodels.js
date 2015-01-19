@@ -13,6 +13,7 @@
     
     var SizesViewModel = function(data){
       this.sizeText = data.size;
+      this.countShips = data.count_ships;
     };
 
     var SizeModel = function(){
@@ -22,14 +23,13 @@
         var mappedSizes = $.map(data, function(item){ return new SizesViewModel(item)});
         self.Sizes(mappedSizes);
       });
-      self.selectedSize = ko.observable();
+      self.selectedSize = ko.observableArray([]);
     };
 
     var GameModel = function(){
       var self = this;
       self.games = ko.observableArray([]);
       $.getJSON("/games", function(data){
-
         var mappedGames = $.map(data, function(item){ return new GameViewModel(item)});
         self.games = mappedGames;
         $.map(self.games, function(n){
@@ -47,10 +47,6 @@
             }
           }, n); 
         });
-        $("#table-games").DataTable({
-          "dom": '<"top"f>rt<"bottom"p><"clear">'
-        }); 
-
       });
     };
 
@@ -63,18 +59,19 @@
       });
     }
 
-
     var gamesModel = new GameModel();
     var usersModel = new UsersModel();
     var sizeModel = new SizeModel();
     var ViewModel = {};
     ViewModel.gamesModel = gamesModel;
     ViewModel.usersModel = usersModel;
-    ViewModel.sizeModel = sizeModel
-    
+    ViewModel.sizeModel = sizeModel;
     /*
       Para agregar atributos al AllModels 
       AllModels.attr = value; => supongo.
     */
     ko.applyBindings(ViewModel);
+    $("#table-games").DataTable({
+      "dom": '<"top"f>rt<"bottom"p><"clear">'
+    });
   });
