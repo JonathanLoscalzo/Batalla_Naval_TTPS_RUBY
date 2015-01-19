@@ -76,5 +76,5 @@
       Para agregar atributos al AllModels 
       AllModels.attr = value; => supongo.
     */
-    ko.applyBindings(AllModels);
+    ko.applyBindings(ViewModel);
   });
