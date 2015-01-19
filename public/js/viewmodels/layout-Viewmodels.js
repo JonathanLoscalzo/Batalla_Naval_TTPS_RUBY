@@ -67,11 +67,10 @@
     var gamesModel = new GameModel();
     var usersModel = new UsersModel();
     var sizeModel = new SizeModel();
-    var AllModels = {
-      gamesModel : gamesModel,
-      usersModel : usersModel,
-      sizeModel : sizeModel
-    }
+    var ViewModel = {};
+    ViewModel.gamesModel = gamesModel;
+    ViewModel.usersModel = usersModel;
+    ViewModel.sizeModel = sizeModel
     
     /*
       Para agregar atributos al AllModels 
