@@ -3,7 +3,7 @@
     <form id="form-create-game" class="form-horizontal col-md-8 col-md-offset-2" action="/game/create" method="post" style="background-color:pink; padding:3%">
       <div class="form-group">
         <label for="size" class="col-sm-2 control-label">Table size</label>
-        <div class="col-sm-10">
+        <div class="col-sm-10" data-bind ="with: sizeModel">
                 <p>
                 <select data-bind="options: Sizes,
                        optionsText: 'sizeText',
