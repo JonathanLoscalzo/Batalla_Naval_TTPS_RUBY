@@ -11,6 +11,7 @@ class Application < Sinatra::Base
 	#__________________extensiones__________________
 	register Sinatra::ActiveRecordExtension
 	register Sinatra::SessionHelper
+	register Sinatra::UrlHelper
 	#__________________configuraciones__________________
 	configure do
 		use Rack::Session::Pool # => por algun motivo, con enable :session no funcionaba.
@@ -90,9 +91,18 @@ class Application < Sinatra::Base
 		end.to_json
 	end
 
-	get '/games/:id_user', :auth => nil do |id_user|
+	get '/games/create/:id_user', :auth => nil do |id_user|
 		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
 		erb 'game/create'.to_sym
+	end
+
+	post '/game/create' do
+	#Crear un Jugador. datos entrada username y password.
+		user_id = params['user_id']
+		size = params['select_size']
+		game = Game.create(user1:User.find(user_id) , user2:User.find(session[:user_id]))
+		game.save
+		redirect '/games/' + game.id.to_s
 	end
 
 	put '/games/:id_game', :auth => nil do |id_game|
