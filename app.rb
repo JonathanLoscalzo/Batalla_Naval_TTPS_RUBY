@@ -12,6 +12,7 @@ class Application < Sinatra::Base
 	register Sinatra::ActiveRecordExtension
 	register Sinatra::SessionHelper
 	register Sinatra::UrlHelper
+	register Sinatra::BoardHelper
 	#__________________configuraciones__________________
 	configure do
 		use Rack::Session::Pool # => por algun motivo, con enable :session no funcionaba.
@@ -100,7 +101,8 @@ class Application < Sinatra::Base
 	#Crear un Jugador. datos entrada username y password.
 		user_id = params['user_id']
 		size = params['select_size']
-		game = Game.create(user1:User.find(user_id) , user2:User.find(session[:user_id]))
+		board = Board.create(breed:Breed.find(1))
+		game = Game.create(user1:User.find(user_id) , user2:User.find(session[:user_id]), board1:board)
 		game.save
 		redirect '/games/' + game.id.to_s
 	end
@@ -134,6 +136,7 @@ class Application < Sinatra::Base
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
 		@game		
+		erb 'game/play'.to_sym
 	end
 
 #   not_found do	
