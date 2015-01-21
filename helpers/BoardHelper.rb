@@ -6,7 +6,7 @@ module Sinatra
 				block = ->(y,x,elem) do
 					"class=\""+elem.tag_class+"\"" unless elem.nil?
 				end
-				tag_board(block, board)
+				tag_board(board){block}
 			end
 
 			def show_only_hits(board)
@@ -19,7 +19,7 @@ module Sinatra
 						end
 					end
 				end
-				tag_board(block, board)
+				tag_board(board){block}
 			end
 
 			private
@@ -31,7 +31,7 @@ module Sinatra
 				mat
 			end
 
-			def fill_mat(&board, mat)
+			def fill_mat(mat, &board)
 				#llena matriz con ships o waters
 				size = board.breed.size
 				(1..size).each do |row|
@@ -43,7 +43,7 @@ module Sinatra
 				end
 			end
 
-			def tag_board(&block, board)
+			def tag_board(board, &block)
 				#block deberia ser un lambda
 				size = board.breed.size
 				mat = create_mat(size) # => devuelve una matriz 1 por lugar que representa x,y.
