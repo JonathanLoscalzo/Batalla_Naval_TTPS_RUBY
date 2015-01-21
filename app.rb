@@ -98,7 +98,7 @@ class Application < Sinatra::Base
 	end
 
 	post '/game/create' do
-	#Crear un Jugador. datos entrada username y password.
+	#Crear una partida entre usuario de la sesion y jugador enviado.
 		user_id = params['user_id']
 		size = params['select_size']
 		board = Board.create(breed:Breed.find(1))
@@ -135,7 +135,6 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
-		@game		
 		erb 'game/play'.to_sym
 	end
 
