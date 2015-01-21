@@ -110,6 +110,23 @@ class Application < Sinatra::Base
 	put '/games/:id_game', :auth => nil do |id_game|
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
+		game = Game.find(id_game)
+
+		if game.user_in_game(actual_user_id)
+			if game.status.id == 1
+				# => si el usuario està en el juego, y el juego està iniciado
+
+			else
+				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
+				status 409 # => que mensaje devolver?
+				session[:message] = { :value => "No se puede reenviar el tablero mientras se está jugando", :type => "danger" }
+			end
+		else
+			status 409 # => que mensaje devolver?
+			session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+		end
+
+
 	end
 
 	put '/games/:id_game/move', :auth => nil do |id_game|

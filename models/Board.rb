@@ -16,4 +16,8 @@ class Board < ActiveRecord::Base
 	def at_position(row, column)
 		has_position?(row,column)
 	end
+
+	def all_ships_sunken?
+		self.ships.detect(false) {|s| !s.sunken }
+	end
 end
