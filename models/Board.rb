@@ -6,4 +6,14 @@ class Board < ActiveRecord::Base
 	has_many :ships 
 	belongs_to :breed
 	has_many :waters
+
+	def has_position?(row, column)
+		array = self.waters
+		array << self.ships
+		array.detect { |i| i.x == column && i.y == row }
+	end
+
+	def at_position(row, column)
+		has_position?(row,column)
+	end
 end

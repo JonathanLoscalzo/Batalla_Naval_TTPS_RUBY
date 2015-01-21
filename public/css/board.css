@@ -1,8 +1,8 @@
-#battleship {
+.battleship {
     font-family: Arial, sans-serif;
 }
 
-#board {
+.board {
     margin-top: 25px;
 }
 td {
