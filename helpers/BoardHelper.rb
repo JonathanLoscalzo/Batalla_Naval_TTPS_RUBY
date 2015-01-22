@@ -53,7 +53,10 @@ module Sinatra
 				(1..size).each.with_index do |row, y|
 					str << '<tr>'
 					(1..size).each.with_index do |column, x| 
-						str << '<td '
+						str << "<td id='cell"
+						str << x.to_s
+						str << y.to_s
+						str << "'"
 						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
 						str <<'></td>'
 					end
@@ -62,6 +65,18 @@ module Sinatra
 				str << '</table>'
 				str
 			end
+
+			def tag_ships(board)
+				size = board.breed.size
+				str = ""
+				(1..size).each.with_index do |column, x| 
+					str << "<img src=\"/images/ship.png\""
+					str << "id=\""+x.to_s+"\" class=\"ship\""
+					str << "/>"
+				end
+				str
+			end
+
 		end
 		#end Helpers
 		#App

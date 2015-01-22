@@ -2,6 +2,29 @@
 <div class="row" style="padding-top: 5%">
 <%= (show_all_board @game.board1).to_s %>
 </div>
+<%= (tag_ships @game.board1).to_s %>
+<script>
+$(document).ready(function(){
+  var ships = new Array();
+// Dar a las imágenes la capacidad de mover las imágenes
+  $(".ship").draggable({
+    revert: "invalid"
+  });
+  $(".board td").droppable({
+  tolerance: "fit",
+  drop: function(event, ui) {
+     if(ind = ships[ui.draggable.attr("id")]){
+      $("table.board #"+ind).removeClass("has-ship");
+      $("table.board #"+ind).droppable('enable');
+     }
 
+     $(this).addClass('has-ship');
+     ships[ui.draggable.attr("id")] = $(this).attr("id");
+     $(this).droppable('disable');
+
+  }
+ });
+});
+</script>
 <% end %>
 

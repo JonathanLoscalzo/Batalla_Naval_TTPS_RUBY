@@ -3,18 +3,31 @@
 }
 
 .board {
+
     margin-top: 25px;
+    width: 350px;
+    height: 350px;
 }
-td {
-    width: 32px;
-    height: 32px;
+.board tr{
+}
+.board td:hover{
+    opacity: 0.8;
+}
+.board td.water{
+    background:#2BADD3;
+}
+.board td.sunken{
+    background:#99304C;
+}
+.board td{
+    background:#0E7BB3;
     font-size: 11px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid white;
     color: #888;
 }
 .ship {
-    background-color: #CCC;
+   width: 40px;
 }
 .miss {
     background-color: #6CF;
