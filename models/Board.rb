@@ -6,6 +6,7 @@ class Board < ActiveRecord::Base
 	has_many :ships 
 	belongs_to :breed
 	has_many :waters
+	belongs_to :user
 
 	def has_position?(row, column)
 		array = self.waters
@@ -20,4 +21,5 @@ class Board < ActiveRecord::Base
 	def all_ships_sunken?
 		self.ships.detect(false) {|s| !s.sunken }
 	end
+
 end

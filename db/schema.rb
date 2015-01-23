@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121194630) do
+ActiveRecord::Schema.define(version: 20150123213415) do
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "breed_id"
+    t.integer  "user_id"
   end
 
   add_index "boards", ["breed_id"], name: "index_boards_on_breed_id"
@@ -32,8 +33,6 @@ ActiveRecord::Schema.define(version: 20150121194630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status_id",            default: 1
-    t.integer  "user1_id_id"
-    t.integer  "user2_id_id"
     t.integer  "last_user_move_id_id"
     t.integer  "board1_id_id"
     t.integer  "board2_id_id"
@@ -41,8 +40,6 @@ ActiveRecord::Schema.define(version: 20150121194630) do
 
   add_index "games", ["last_user_move_id_id"], name: "index_games_on_last_user_move_id_id"
   add_index "games", ["status_id"], name: "index_games_on_status_id"
-  add_index "games", ["user1_id_id"], name: "index_games_on_user1_id_id"
-  add_index "games", ["user2_id_id"], name: "index_games_on_user2_id_id"
 
   create_table "ships", force: :cascade do |t|
     t.integer  "board_id"

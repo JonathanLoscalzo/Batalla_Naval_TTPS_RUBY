@@ -6,9 +6,8 @@ class EstadosJuego < ActiveRecord::Migration
   	end
 
   	Status.create(id:1, description: "Iniciado.")
-  	Status.create(id:2, description: "Esperando tableros.")
-  	Status.create(id:3, description: "Jugando.")
-  	Status.create(id:4, description: "Terminado.")
+  	Status.create(id:2, description: "Jugando.")
+  	Status.create(id:3, description: "Terminado.")
 
   	add_belongs_to :games, :status, index: true, default:1 # => agrega status_id en game. Real? nose
   	add_belongs_to :games, :user1_id, index:true

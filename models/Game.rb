@@ -1,6 +1,4 @@
 class Game < ActiveRecord::Base
-	belongs_to :user1, :class_name => "User", :foreign_key => 'user1_id_id' # => el que inicia el juego
-	belongs_to :user2, :class_name => "User", :foreign_key => 'user2_id_id'
 	belongs_to :board1, :class_name => "Board", :foreign_key => 'board1_id_id' # => correspondiente según usuarios.
 	belongs_to :board2, :class_name => "Board", :foreign_key => 'board2_id_id'
 	belongs_to :user_turn, :class_name => "User", :foreign_key => "last_user_move_id_id"
@@ -10,11 +8,11 @@ class Game < ActiveRecord::Base
 	belongs_to :status
 
 	def after_create 
-		self.user_turn = self.user1 # => el primero en empezar es el user1. Tengo que ponerle ID?
+		self.user_turn = self.board1.user # => el primero en empezar es el user1. Tengo que ponerle ID? falta save?
 	end
 
 	def user_in_game?(id_user)
-		(self.user2_id_id == id_user || self.user1_id_id == id_user)
+		(self.board2.user.id == id_user || self.board1.user.id == id_user)
 	end
 
 

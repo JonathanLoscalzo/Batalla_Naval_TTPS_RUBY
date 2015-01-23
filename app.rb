@@ -135,8 +135,20 @@ class Application < Sinatra::Base
 
 		column = params["x"]
 		row = params["y"]
+		# => primero valido que sea su juego y su turno
+		game = Game.find(id_game)
 
-		
+		if game.user_in_game? actual_user_id
+			if game.user_turn.id == actual_user_id
+				
+			else
+				status 409 # => que mensaje devolver?
+				session[:message] = { :value => "No es tu turno!", :type => "danger" }
+			end
+		else
+			status 409 # => que mensaje devolver?
+			session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+		end
 
 
 	end
