@@ -43,10 +43,10 @@ class Game < ActiveRecord::Base
 		# => este metodo se deberia llamar a "finish?"
 		if self.finish?
 			if self.board1.all_ships_sunken?
-				self.board1
+				self.board1.user
 			else
 				if self.board2_all_ships_shunken?
-					self.board2
+					self.board2.user
 				end
 			end
 		end

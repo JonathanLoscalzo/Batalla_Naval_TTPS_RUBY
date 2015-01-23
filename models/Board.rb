@@ -22,4 +22,8 @@ class Board < ActiveRecord::Base
 		self.ships.detect(false) {|s| !s.sunken }
 	end
 
+	def is_user? (user_id)
+		self.user.id == user_id
+	end
+
 end
