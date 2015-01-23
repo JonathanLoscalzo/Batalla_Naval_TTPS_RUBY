@@ -132,7 +132,13 @@ class Application < Sinatra::Base
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
 		# solo puede mover si es su turno y si el juego està en iniciado
+
+		column = params["x"]
+		row = params["y"]
+
 		
+
+
 	end
 
 	delete '/games/:id_game', :auth => nil do |id_game|
