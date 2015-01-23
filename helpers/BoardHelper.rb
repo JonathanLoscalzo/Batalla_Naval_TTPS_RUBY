@@ -53,8 +53,9 @@ module Sinatra
 				(1..size).each.with_index do |row, y|
 					str << '<tr>'
 					(1..size).each.with_index do |column, x| 
-						str << "<td id='cell"
+						str << "<td id='"
 						str << x.to_s
+						str << "-"
 						str << y.to_s
 						str << "'"
 						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
@@ -71,8 +72,19 @@ module Sinatra
 				str = ""
 				(1..size).each.with_index do |column, x| 
 					str << "<img src=\"/images/ship.png\""
-					str << "id=\""+x.to_s+"\" class=\"ship\""
+					str << "id=\"ship-"+x.to_s+"\" class=\"ship\""
 					str << "/>"
+				end
+				str
+			end
+
+			def input_ships(board)
+				size = board.breed.size
+				str = ""
+				(1..size).each.with_index do |column, x| 
+					str << "<input class='position-ship' id='position-ship-"
+					str <<  x.to_s
+					str << "' type='hidden' name='ships-position[]' value=''>"
 				end
 				str
 			end

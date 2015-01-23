@@ -3,6 +3,10 @@
 <%= (show_all_board @game.board1).to_s %>
 </div>
 <%= (tag_ships @game.board1).to_s %>
+<form id="form-initialize-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/game/create/ships" method="post">
+   <%= (input_ships @game.board1).to_s %>
+   <button id="bSubmit" type="button" class="btn btn-primary">Start</button>  
+</form>
 <script>
 $(document).ready(function(){
   var ships = new Array();
@@ -13,17 +17,25 @@ $(document).ready(function(){
   $(".board td").droppable({
   tolerance: "fit",
   drop: function(event, ui) {
-     if(ind = ships[ui.draggable.attr("id")]){
+     if(ind = ships[ui.draggable.attr("id")]){ //si el barco que voy a apoyar aca ya estaba antes en algun lado entonces ese lugar anterior lo libero
       $("table.board #"+ind).removeClass("has-ship");
       $("table.board #"+ind).droppable('enable');
      }
 
-     $(this).addClass('has-ship');
-     ships[ui.draggable.attr("id")] = $(this).attr("id");
-     $(this).droppable('disable');
-
+     $(this).addClass('has-ship'); //a la celda le agrego la clase has ship 
+     ships[ui.draggable.attr("id")] = $(this).attr("id"); //actualizo el array de ships con la posicion correspondiente
+     $("form input#positon-ship-"+ui.draggable.attr("id")).val($(this).attr("id")); 
+     $(this).droppable('disable'); //deshabilito la celda
   }
  });
+ $('#bSubmit').click(function(){
+    validateForm();   
+ }); 
+ function validateForm(){
+    if(ships.length == $("form input.position-ship").length){
+      $('#form-initialize-ships').submit();
+    }
+ }
 });
 </script>
 <% end %>
