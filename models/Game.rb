@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
 
 	def ready_for_play?
 		# => si los dos tableros fueron asignados.
-		!(self.board1.nil? || self.board2.nil?)
+		(self.board1.setted || self.board2.setted)
 	end
 
 	def play
