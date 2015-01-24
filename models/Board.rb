@@ -18,9 +18,9 @@ class Board < ActiveRecord::Base
 	end
 
 	def has_position?(row, column)
-		array = self.waters.to_a
-		array + self.ships.to_a
-		array.detect { |i| i.x == row && i.y == column }
+		array = self.ships.to_a
+		array + self.waters.to_a
+		array.detect(nil) { |i| i.x == column && i.y == row }
 	end
 
 	def at_position(row, column)
@@ -33,6 +33,15 @@ class Board < ActiveRecord::Base
 
 	def is_user? (user_id)
 		self.user.id == user_id
+	end
+
+	def receive_shot(column, row)
+		# => es tarea del tablero, modificar sus elementos, y no del juego. 
+		elem =  self.at_position(row, column)
+		if elem.nil?
+			elem = Water.create(x:column, y:row, board_id:self.id)
+		end
+		elem.receive_shot
 	end
 
 end

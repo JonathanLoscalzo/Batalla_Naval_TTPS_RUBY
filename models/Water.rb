@@ -6,4 +6,8 @@ class Water < ActiveRecord::Base
 	def tag_class
 		"miss"
 	end
+
+	def receive_shot
+		return {:value => 'AGUA!!!!', :type => "success"}
+	end
 end

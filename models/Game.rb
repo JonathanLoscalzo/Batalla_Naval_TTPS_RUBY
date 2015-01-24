@@ -26,13 +26,17 @@ class Game < ActiveRecord::Base
 	end
 
 	def get_board_opponent_user(user_id)
+		self.get_board_from_other_user(user_id)
+	end
+
+	def get_board_from_other_user(user_id)
 		if(user_id == self.board1.user.id)
 			return self.board2
+		else
+			if(user_id == self.board2.user.id)
+				return self.board1
+			end
 		end
-		if(user_id == self.board2.user.id)
-			return self.board1
-		end
-		return false
 	end
 
 	def ready_for_play?
@@ -42,7 +46,10 @@ class Game < ActiveRecord::Base
 
 	def play
 		# para que empiecen a jugar. Coloco en el estado 2
-		self.status_id = 2
+		if self.ready_for_play?
+			self.status_id = 2
+			self.save
+		end
 	end
 
 	def finish? 
@@ -52,6 +59,7 @@ class Game < ActiveRecord::Base
 		if self.ready_for_play? 
 			if (self.board1.all_ships_sunken? || self.board2.all_ships_sunken?)
 				self.status_id = 3 # => deberia guardar quien gano?
+				self.save
 				return true
 			end
 		end
@@ -69,5 +77,18 @@ class Game < ActiveRecord::Base
 				end
 			end
 		end
+	end
+
+	def change_last_user(next_user_id)
+		# => este metodo habrìa que cambiarlo para que solo elija al otro usuario.
+		self.last_user_move_id_id = next_user_id
+		self.save
+	end
+
+	def shot_to(column:, row:, user_id:)
+		board = get_board_from_other_user(user_id) # => esto si saco el sessionHelper no anda...
+		message = board.receive_shot(column, row) # => es tarea del tablero modificar sus celdas.
+		self.change_last_user board.user.id
+		message 
 	end
 end

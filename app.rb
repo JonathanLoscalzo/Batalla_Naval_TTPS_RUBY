@@ -78,9 +78,11 @@ class Application < Sinatra::Base
 		players.to_json # => only: [:id, :username]
 	end
 
-	get '/games' do
+	get '/games', :auth => nil do
 		#devuelve todos los juegos (los datos necesarios para la tabla)
 		#content-type : json
+		# => cambiar la forma de devolver los datos. Ahora board tiene usuarios
+=begin
 		games = Game.all
 		content_type :json
 		games.to_a.map do |e| 
@@ -90,6 +92,7 @@ class Application < Sinatra::Base
 				{ status: { only: :description }}],
 				only: [:id,:user1,:user2,:status]
 		end.to_json
+=end
 	end
 
 	get '/games/create/:id_user', :auth => nil do |id_user|
@@ -140,23 +143,27 @@ class Application < Sinatra::Base
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
-		# solo puede mover si es su turno y si el juego està en iniciado
+		# solo puede mover si es su turno y si el juego està en iniciado FALTA ESTO!
 
-		column = params["x"]
-		row = params["y"]
+		column = params["column"].to_i
+		row = params["row"].to_i
 		# => primero valido que sea su juego y su turno
 		game = Game.find(id_game)
-
 		if game.user_in_game? actual_user_id
 			if game.user_turn.id == actual_user_id
-				
+				# => si es el turno del usuario. Hace el disparo. 
+				session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
+				game.finish?
+				redirect '/pulir' # => este sabe si se termino el juego o no.
 			else
 				status 409 # => que mensaje devolver?
 				session[:message] = { :value => "No es tu turno!", :type => "danger" }
+				redirect '/games/'+ id_game.to_s
 			end
 		else
 			status 409 # => que mensaje devolver?
 			session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+			redirect '/login'
 		end
 
 
@@ -185,6 +192,10 @@ class Application < Sinatra::Base
 			else
 				erb 'game/play'.to_sym
 		end
+	end
+
+	get '/pulir' do
+		erb '/game/prueba_put'.to_sym
 	end
 
 #   not_found do	

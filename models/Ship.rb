@@ -11,4 +11,13 @@ class Ship < ActiveRecord::Base
 			"ship"
 		end
 	end
+
+	def receive_shot
+		# => recibe un disparo. Si ya recibiò un disparo pierde el turno!
+		unless self.sunken
+			self.sunken = true
+			self.save
+			return {:value => 'Le dio a un barco!!!!', :type => "success"}
+		end
+	end
 end
