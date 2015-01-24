@@ -101,21 +101,29 @@ class Application < Sinatra::Base
 	#Crear una partida entre usuario de la sesion y jugador enviado.
 		user_id = params['user_id']
 		size = params['select_size']
-		board = Board.create(breed:Breed.find(1))
-		game = Game.create(user1:User.find(user_id) , user2:User.find(session[:user_id]), board1:board)
+		board1 = Board.create(breed:Breed.find(1), user:User.find(user_id))
+		board2 = Board.create(breed:Breed.find(1), user:User.find(session[:user_id]))
+		game = Game.create(board1:board1, board2: board2)
 		game.save
 		redirect '/games/' + game.id.to_s
 	end
 
-	put '/games/:id_game', :auth => nil do |id_game|
+	post '/games/:id_game', :auth => nil do |id_game|
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
 		game = Game.find(id_game)
 
-		if game.user_in_game(actual_user_id)
+		if game.user_in_game?(actual_user_id)
 			if game.status.id == 1
 				# => si el usuario està en el juego, y el juego està iniciado
-
+				board = game.get_board_from_user(actual_user_id)
+				size = board.breed.size
+				(1..size).each.with_index do |column, x|
+					pos = params['ships-position'][x].split("-")
+					board.ships << Ship.create(x:pos[0],y:pos[1]) 
+				end
+				game.status.id = 2
+				game.save
 			else
 				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
 				status 409 # => que mensaje devolver?

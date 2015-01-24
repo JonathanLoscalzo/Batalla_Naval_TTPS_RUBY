@@ -3,13 +3,14 @@
 <%= (show_all_board @game.board1).to_s %>
 </div>
 <%= (tag_ships @game.board1).to_s %>
-<form id="form-initialize-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/game/create/ships" method="post">
+<form id="form-initialize-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
    <%= (input_ships @game.board1).to_s %>
    <button id="bSubmit" type="button" class="btn btn-primary">Start</button>  
 </form>
 <script>
 $(document).ready(function(){
   var ships = new Array();
+  var countShips = 0;
 // Dar a las imágenes la capacidad de mover las imágenes
   $(".ship").draggable({
     revert: "invalid"
@@ -24,19 +25,20 @@ $(document).ready(function(){
 
      $(this).addClass('has-ship'); //a la celda le agrego la clase has ship 
      ships[ui.draggable.attr("id")] = $(this).attr("id"); //actualizo el array de ships con la posicion correspondiente
-     $("form input#positon-ship-"+ui.draggable.attr("id")).val($(this).attr("id")); 
+     console.log(ui.draggable.attr("id"));
+     $("form input#position-"+ui.draggable.attr("id")).val($(this).attr("id")); 
      $(this).droppable('disable'); //deshabilito la celda
+     countShips++;
   }
  });
  $('#bSubmit').click(function(){
     validateForm();   
  }); 
  function validateForm(){
-    if(ships.length == $("form input.position-ship").length){
+    if(countShips == $("form input.position-ship").length){
       $('#form-initialize-ships').submit();
     }
  }
 });
 </script>
 <% end %>
-

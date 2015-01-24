@@ -15,6 +15,15 @@ class Game < ActiveRecord::Base
 		(self.board2.user.id == id_user || self.board1.user.id == id_user)
 	end
 
+	def get_board_from_user(user_id)
+		if(user_id == self.board1.user.id)
+			return self.board1
+		end
+		if(user_id == self.board2.user.id)
+			return self.board2
+		end
+		return false
+	end
 
 	def ready_for_play?
 		# => si los dos tableros fueron asignados.
@@ -52,4 +61,3 @@ class Game < ActiveRecord::Base
 		end
 	end
 end
-
