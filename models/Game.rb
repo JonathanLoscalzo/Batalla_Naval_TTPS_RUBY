@@ -25,6 +25,16 @@ class Game < ActiveRecord::Base
 		return false
 	end
 
+	def get_board_opponent_user(user_id)
+		if(user_id == self.board1.user.id)
+			return self.board2
+		end
+		if(user_id == self.board2.user.id)
+			return self.board1
+		end
+		return false
+	end
+
 	def ready_for_play?
 		# => si los dos tableros fueron asignados.
 		(self.board1.setted || self.board2.setted)
