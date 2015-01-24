@@ -12,24 +12,19 @@ class Board < ActiveRecord::Base
 		self.ships << ship
 	end
 
+
+	def ship_position?(row, column)
+		self.ships.to_a.detect { |i| i.x == row && i.y == column }
+	end
+
 	def has_position?(row, column)
 		array = self.waters.to_a
 		array + self.ships.to_a
-		array.detect { |i| i.x == column && i.y == row }
+		array.detect { |i| i.x == row && i.y == column }
 	end
 
 	def at_position(row, column)
 		has_position?(row,column)
-	end
-
-	def get_ship_position(number)
-		puts self.ships.to_a.inspect
-		ships = self.ships.to_a
-		if ships[number].nil?
-			return false
-		else
-			return ships[number].x.to_s + "-" + ships[number].y.to_s
-		end
 	end
 
 	def all_ships_sunken?

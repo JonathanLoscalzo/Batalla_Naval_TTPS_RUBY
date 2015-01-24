@@ -10,6 +10,8 @@ module Sinatra
 				tag_board(board, &block)
 			end
 
+
+
 			def show_only_hits(board)
 				block = ->(y,x,elem) do
 					if elem.kind_of? Ship && elem.sunken
@@ -59,6 +61,9 @@ module Sinatra
 						str << "-"
 						str << y.to_s
 						str << "'"
+						if board.ship_position?(x,y)
+							str << "class='show-ship'"
+						end
 						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
 						str <<'></td>'
 					end
@@ -70,15 +75,12 @@ module Sinatra
 
 			def tag_ships(game)
 				board = game.get_board_from_user(actual_user_id)
-				size = board.breed.size
+				count_ships = board.breed.count_ships
 				str = ""
-				(1..size).each.with_index do |column, x| 
+				(1..count_ships).each.with_index do |column, x| 
 					str << "<img src=\"/images/ship.png\""
 					str << "id=\"ship-"+x.to_s+"\""
 					str << " class=\"ship\""
-					if board.get_ship_position(x)
-						str << " ship-position=\""+board.get_ship_position(x).to_s+"\""
-					end
 					str << "/>"
 				end
 				str
@@ -86,9 +88,9 @@ module Sinatra
 
 			def input_ships(game)
 				board = game.get_board_from_user(actual_user_id)
-				size = board.breed.size
+				count_ships = board.breed.count_ships
 				str = ""
-				(1..size).each.with_index do |column, x| 
+				(1..count_ships).each.with_index do |column, x| 
 					str << "<input class='position-ship' id='position-ship-"
 					str <<  x.to_s
 					str << "' type='hidden' name='ships-position[]' value=''>"
