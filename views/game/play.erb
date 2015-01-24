@@ -1,8 +1,8 @@
 <% if authorized? %>
-<div class="row" style="padding-top: 5%">
+<div class="row initialize" style="padding-top: 5%">
 <%= (show_all_board @game).to_s %>
 </div>
-<%= (tag_ships @game).to_s %>
+<div class="ships-container"><%= (tag_ships @game).to_s %></div>
 <form id="form-initialize-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
    <%= (input_ships @game).to_s %>
    <button id="bSubmit" type="button" class="btn btn-primary">Start</button>  
@@ -13,6 +13,7 @@ $(document).ready(function(){
   var countShips = 0;
 // Dar a las imágenes la capacidad de mover las imágenes
   $(".ship").draggable({
+    cursor: "crosshair",
     revert: "invalid"
   });
   $(".board td").droppable({

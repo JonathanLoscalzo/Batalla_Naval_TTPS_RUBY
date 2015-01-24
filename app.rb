@@ -104,8 +104,9 @@ class Application < Sinatra::Base
 	#Crear una partida entre usuario de la sesion y jugador enviado.
 		user_id = params['user_id']
 		size = params['select_size']
-		board1 = Board.create(breed:Breed.find(1), user:User.find(user_id))
-		board2 = Board.create(breed:Breed.find(1), user:User.find(session[:user_id]))
+		breed = Breed.where(size:size).first
+		board1 = Board.create(breed:breed, user:User.find(user_id))
+		board2 = Board.create(breed:breed, user:User.find(session[:user_id]))
 		game = Game.create(board1:board1, board2: board2)
 		game.save
 		redirect '/games/' + game.id.to_s
@@ -120,13 +121,12 @@ class Application < Sinatra::Base
 			if game.status.id == 1
 				# => si el usuario està en el juego, y el juego està iniciado
 				board = game.get_board_from_user(actual_user_id)
-				size = board.breed.size
-				(1..size).each.with_index do |column, x|
+				count_ships = board.breed.count_ships
+				(1..count_ships).each.with_index do |column, x|
 					pos = params['ships-position'][x].split("-")
 					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
 				end
 				game.play
-				game.save
 				redirect '/games/' + game.id.to_s
 			else
 				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
@@ -187,6 +187,8 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
+		puts @game.status.id
+		puts "----------------------------------------------------------ssadsd"
 		if(@game.status.id == 2)
 				erb 'game/playing'.to_sym
 			else

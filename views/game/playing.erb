@@ -5,18 +5,25 @@
 <div class="col-xs-6" style="padding-top: 5%">
 <%= (show_opponent_board @game).to_s %>
 </div>
-<form id="form-play-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
-   <input type="hidden" id="play" name="play" value="">
-   <button id="bSubmit" type="button" class="btn btn-primary">Send playing</button>  
+<form id="form-play-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>/move" method="post">
+  <input type="hidden" name="_method" value="put"/>
+  <input type="hidden" id="row" name="row" value="">
+  <input type="hidden" id="column" name="column" value="">
+  <button id="bSubmit" type="button" class="btn btn-primary">Send</button>  
 </form>
 <script>
 $(document).ready(function(){
   var selected = $(document);
-  $("#opponent-board td").on("click",function(){
+  $("#opponent-board td").click(function(){
     selected.removeClass("selected");
     selected = $(this);
     $(this).addClass("selected");
-    $("form#form-play-ships input#play").val($(this).attr("id"));
+    pos = $(this).attr("id").split("-");
+    $("form#form-play-ships input#row").val(pos[0]);
+    $("form#form-play-ships input#column").val(pos[1]);
+  });
+  $("#bSubmit").click(function(){
+    $("form#form-play-ships").submit();
   });
 });
 </script>

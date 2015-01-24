@@ -46,10 +46,8 @@ class Game < ActiveRecord::Base
 
 	def play
 		# para que empiecen a jugar. Coloco en el estado 2
-		if self.ready_for_play?
-			self.status_id = 2
-			self.save
-		end
+		self.status = Status.find(2)
+		self.save
 	end
 
 	def finish? 

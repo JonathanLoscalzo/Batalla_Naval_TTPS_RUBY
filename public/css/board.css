@@ -3,10 +3,13 @@
 }
 
 .board {
-
     margin-top: 25px;
     width: 350px;
     height: 350px;
+}
+.initialize .board {
+width: 650px;
+height: 650px;
 }
 .board tr{
 }
@@ -21,7 +24,7 @@
 }
 .board td.selected{
 background: url("../images/bom.png") #0E7BB3 no-repeat 50%;
-background-size: 86%;
+background-size: 60%;
 }
 .board td.show-ship{
 background: url("../images/ship.png") #0E7BB3 no-repeat 50%;
@@ -35,7 +38,10 @@ background-size: 50%;
     color: #888;
 }
 .ship {
-   width: 40px;
+   width: 30px;
+}
+.ships-container{
+
 }
 .miss {
     background-color: #6CF;
