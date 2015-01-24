@@ -13,8 +13,8 @@ class Board < ActiveRecord::Base
 	end
 
 	def has_position?(row, column)
-		array = self.waters
-		array << self.ships
+		array = self.waters.to_a
+		array + self.ships.to_a
 		array.detect { |i| i.x == column && i.y == row }
 	end
 
@@ -28,7 +28,7 @@ class Board < ActiveRecord::Base
 		if ships[number].nil?
 			return false
 		else
-			return ships[number].x + "-" + ships[number].y
+			return ships[number].x.to_s + "-" + ships[number].y.to_s
 		end
 	end
 
