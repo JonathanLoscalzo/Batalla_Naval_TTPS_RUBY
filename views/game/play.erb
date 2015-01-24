@@ -1,10 +1,10 @@
 <% if authorized? %>
 <div class="row" style="padding-top: 5%">
-<%= (show_all_board @game.board1).to_s %>
+<%= (show_all_board @game).to_s %>
 </div>
-<%= (tag_ships @game.board1).to_s %>
+<%= (tag_ships @game).to_s %>
 <form id="form-initialize-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
-   <%= (input_ships @game.board1).to_s %>
+   <%= (input_ships @game).to_s %>
    <button id="bSubmit" type="button" class="btn btn-primary">Start</button>  
 </form>
 <script>

@@ -120,10 +120,11 @@ class Application < Sinatra::Base
 				size = board.breed.size
 				(1..size).each.with_index do |column, x|
 					pos = params['ships-position'][x].split("-")
-					board.ships << Ship.create(x:pos[0],y:pos[1]) 
+					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
 				end
-				game.status.id = 2
+				game.play
 				game.save
+				redirect '/games/' + game.id.to_s
 			else
 				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
 				status 409 # => que mensaje devolver?
@@ -179,7 +180,11 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
-		erb 'game/play'.to_sym
+		if(@game.status.id == 2)
+				erb 'game/playing'.to_sym
+			else
+				erb 'game/play'.to_sym
+		end
 	end
 
 #   not_found do	

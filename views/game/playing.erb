@@ -1,0 +1,15 @@
+<% if authorized? %>
+<div class="row" style="padding-top: 5%">
+<%= (show_all_board @game).to_s %>
+</div>
+<%= (tag_ships @game).to_s %>
+<form id="form-play-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
+   <%= (input_ships @game).to_s %>
+   <button id="bSubmit" type="button" class="btn btn-primary">Send playing</button>  
+</form>
+<script>
+$(document).ready(function(){
+
+});
+</script>
+<% end %>

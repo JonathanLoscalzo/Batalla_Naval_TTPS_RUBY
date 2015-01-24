@@ -8,6 +8,10 @@ class Board < ActiveRecord::Base
 	has_many :waters
 	belongs_to :user
 
+	def add_ship(ship)
+		self.ships << ship
+	end
+
 	def has_position?(row, column)
 		array = self.waters
 		array << self.ships
@@ -16,6 +20,16 @@ class Board < ActiveRecord::Base
 
 	def at_position(row, column)
 		has_position?(row,column)
+	end
+
+	def get_ship_position(number)
+		puts self.ships.to_a.inspect
+		ships = self.ships.to_a
+		if ships[number].nil?
+			return false
+		else
+			return ships[number].x + "-" + ships[number].y
+		end
 	end
 
 	def all_ships_sunken?

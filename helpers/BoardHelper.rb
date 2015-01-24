@@ -2,10 +2,11 @@ module Sinatra
 	module BoardHelper
 		#Helpers
 		module Helpers
-			def show_all_board(board)
+			def show_all_board(game)
 				block = ->(y,x,elem) do
 					"class=\""+elem.tag_class+"\"" unless elem.nil?
 				end
+				board = game.get_board_from_user(actual_user_id)
 				tag_board(board, &block)
 			end
 
@@ -67,18 +68,24 @@ module Sinatra
 				str
 			end
 
-			def tag_ships(board)
+			def tag_ships(game)
+				board = game.get_board_from_user(actual_user_id)
 				size = board.breed.size
 				str = ""
 				(1..size).each.with_index do |column, x| 
 					str << "<img src=\"/images/ship.png\""
-					str << "id=\"ship-"+x.to_s+"\" class=\"ship\""
+					str << "id=\"ship-"+x.to_s+"\""
+					str << " class=\"ship\""
+					if board.get_ship_position(x)
+						str << " ship-position=\""+board.get_ship_position(x).to_s+"\""
+					end
 					str << "/>"
 				end
 				str
 			end
 
-			def input_ships(board)
+			def input_ships(game)
+				board = game.get_board_from_user(actual_user_id)
 				size = board.breed.size
 				str = ""
 				(1..size).each.with_index do |column, x| 
