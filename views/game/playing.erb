@@ -6,12 +6,18 @@
 <%= (show_opponent_board @game).to_s %>
 </div>
 <form id="form-play-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>" method="post">
-   <%= (input_ships @game).to_s %>
+   <input type="hidden" id="play" name="play" value="">
    <button id="bSubmit" type="button" class="btn btn-primary">Send playing</button>  
 </form>
 <script>
 $(document).ready(function(){
-
+  var selected = $(document);
+  $("#opponent-board td").on("click",function(){
+    selected.removeClass("selected");
+    selected = $(this);
+    $(this).addClass("selected");
+    $("form#form-play-ships input#play").val($(this).attr("id"));
+  });
 });
 </script>
 <% end %>

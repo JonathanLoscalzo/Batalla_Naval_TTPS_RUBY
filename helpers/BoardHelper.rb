@@ -58,7 +58,7 @@ module Sinatra
 				mat = create_mat(size) # => devuelve una matriz 1 por lugar que representa x,y.
 				fill_mat(mat, board) # => con la anterior funcion consigo un mapa "matriz" de barcos
 				mat2 = mat.map.with_index { |row, y| row.map.with_index { |column, x| block.call y, x, column }}
-				str = "<table class=\"board\">"
+				str = "<table class=\"board\" id=\"opponent-board\" >"
 				(1..size).each.with_index do |row, y|
 					str << '<tr>'
 					(1..size).each.with_index do |column, x| 

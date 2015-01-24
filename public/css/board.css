@@ -19,6 +19,10 @@
 .board td.sunken{
     background:#99304C;
 }
+.board td.selected{
+background: url("../images/bom.png") #0E7BB3 no-repeat 50%;
+background-size: 86%;
+}
 .board td.show-ship{
 background: url("../images/ship.png") #0E7BB3 no-repeat 50%;
 background-size: 50%;
