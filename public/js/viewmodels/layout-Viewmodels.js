@@ -6,8 +6,8 @@
 
     var GameViewModel = function(data){
       this.id = data.id;
-      this.username1 = data.user1.username;
-      this.username2 = data.user2.username;
+      this.username1 = data.board1.username;
+      this.username2 = data.board2.username;
       this.status = data.status.description
     };
     
@@ -66,6 +66,9 @@
     ViewModel.gamesModel = gamesModel;
     ViewModel.usersModel = usersModel;
     ViewModel.sizeModel = sizeModel;
+    ViewModel.RedirectToGame = function(id_game){
+      window.location = window.location.origin + '/games/' + id_game;
+    };
     /*
       Para agregar atributos al AllModels 
       AllModels.attr = value; => supongo.
