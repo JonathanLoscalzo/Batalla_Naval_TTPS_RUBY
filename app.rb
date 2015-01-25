@@ -125,7 +125,7 @@ class Application < Sinatra::Base
 					pos = params['ships-position'][x].split("-")
 					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
 				end
-				game.play
+				board.ready_for_play
 				redirect '/games/' + game.id.to_s
 			else
 				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
@@ -184,10 +184,16 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
-		if(@game.status.id == 2)
+		if(@game.status.id == 1)
+			if(@game.ready_for_play?)
 				erb 'game/playing'.to_sym
 			else
-				erb 'game/play'.to_sym
+				if(@game.ready_for_play(actual_user_id))
+					erb 'game/playing'.to_sym
+				else
+					erb 'game/play'.to_sym
+				end
+			end
 		end
 	end
 
