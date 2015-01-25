@@ -2,12 +2,13 @@ class Game < ActiveRecord::Base
 	belongs_to :board1, :class_name => "Board", :foreign_key => 'board1_id_id' # => correspondiente según usuarios.
 	belongs_to :board2, :class_name => "Board", :foreign_key => 'board2_id_id'
 	belongs_to :user_turn, :class_name => "User", :foreign_key => "last_user_move_id_id"
+	before_create :set_user_turn
 
 	# => habrìa que ver si se puede asignar "usuario => tablero. ver relacion con :through
 
 	belongs_to :status
 
-	def after_create 
+	def set_user_turn
 		self.last_user_move_id_id = self.board1.user.id # => el primero en empezar es el user1. Tengo que ponerle ID? falta save?
 	end
 
