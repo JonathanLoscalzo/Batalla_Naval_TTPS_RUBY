@@ -10,7 +10,7 @@ class Ship < ActiveRecord::Base
 		else
 			"ship"
 		end
-	end
+	end	
 
 	def receive_shot
 		# => recibe un disparo. Si ya recibiò un disparo pierde el turno!

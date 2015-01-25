@@ -142,10 +142,8 @@ class Application < Sinatra::Base
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
-		# solo puede mover si es su turno y si el juego està en iniciado FALTA ESTO!
-
-		column = params["column"].to_i
-		row = params["row"].to_i
+		row = params["column"].to_i 
+		column = params["row"].to_i 
 		# => primero valido que sea su juego y su turno
 		game = Game.find(id_game)
 		if game.user_in_game? actual_user_id
@@ -174,7 +172,7 @@ class Application < Sinatra::Base
 		#  
 	end
 
-	get '/games/:id_game' do |id_game|
+	get '/games/:id_game', :auth => nil do |id_game|
 		#-> si es propia
 		#	-> estado iniciado : tablero para completar y enviar (cambia el tablero)
 		#	-> jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y
@@ -186,17 +184,11 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
-		puts @game.status.id
-		puts "----------------------------------------------------------ssadsd"
 		if(@game.status.id == 2)
 				erb 'game/playing'.to_sym
 			else
 				erb 'game/play'.to_sym
 		end
-	end
-
-	get '/pulir' do
-		erb '/game/prueba_put'.to_sym
 	end
 
 #   not_found do	
