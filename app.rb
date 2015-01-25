@@ -116,7 +116,6 @@ class Application < Sinatra::Base
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
 		game = Game.find(id_game)
-
 		if game.user_in_game?(actual_user_id)
 			if game.status.id == 1
 				# => si el usuario està en el juego, y el juego està iniciado

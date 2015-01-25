@@ -89,4 +89,8 @@ class Game < ActiveRecord::Base
 		self.change_last_user board.user.id
 		message 
 	end
+
+	def game_between_user1_user2(user1_id, user2_id)
+	
+	end
 end
