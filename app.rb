@@ -153,7 +153,7 @@ class Application < Sinatra::Base
 				# => si es el turno del usuario. Hace el disparo. 
 				session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
 				game.finish?
-				redirect '/pulir' # => este sabe si se termino el juego o no.
+				redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.
 			else
 				status 409 # => que mensaje devolver?
 				session[:message] = { :value => "No es tu turno!", :type => "danger" }
