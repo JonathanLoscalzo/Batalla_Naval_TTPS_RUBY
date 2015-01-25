@@ -87,8 +87,8 @@ class Application < Sinatra::Base
 		content_type :json
 		games.to_a.map do |e| 
 			e.as_json include: [
-				{ user1: { only: [:id, :username]} }, 
-				{ user2: { only: [:id, :username]} }, 
+				{ board1: { only: [:id, :username]} }, 
+				{ board1: { only: [:id, :username]} }, 
 				{ status: { only: :description }}],
 				only: [:id,:user1,:user2,:status]
 		end.to_json

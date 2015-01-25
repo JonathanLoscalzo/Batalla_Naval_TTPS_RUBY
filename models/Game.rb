@@ -8,7 +8,7 @@ class Game < ActiveRecord::Base
 	belongs_to :status
 
 	def after_create 
-		self.user_turn = self.board1.user # => el primero en empezar es el user1. Tengo que ponerle ID? falta save?
+		self.user_turn.id = self.board1.user.id # => el primero en empezar es el user1. Tengo que ponerle ID? falta save?
 	end
 
 	def user_in_game?(id_user)
