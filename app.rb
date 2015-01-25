@@ -193,10 +193,10 @@ class Application < Sinatra::Base
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
 		if(@game.status.id == 1)
-			if(@game.ready_for_play?)
-				erb 'game/playing'.to_sym
+			if(@game.waiting_for_user?(actual_user_id))
+				erb 'game/waiting'.to_sym
 			else
-				if(@game.ready_for_play(actual_user_id))
+				if(@game.ready_for_play?)
 					erb 'game/playing'.to_sym
 				else
 					erb 'game/play'.to_sym

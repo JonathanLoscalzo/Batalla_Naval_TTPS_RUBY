@@ -1,0 +1,8 @@
+<% if authorized? %>
+<div class="col-xs-6" style="padding-top: 5%">
+<%= (show_all_board @game).to_s %>
+</div>
+<div class="col-xs-6" style="padding-top: 5%">
+<%= (show_opponent_board @game).to_s %>
+</div>
+<% end %>

@@ -129,6 +129,7 @@ module Sinatra
 				str
 			end
 
+
 		end
 		#end Helpers
 		#App

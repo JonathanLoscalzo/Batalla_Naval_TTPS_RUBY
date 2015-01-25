@@ -50,6 +50,11 @@ class Game < ActiveRecord::Base
 		self.get_board_from_user(user_id).setted
 	end
 
+	def waiting_for_user?(user_id)
+		# => si los dos tableros fueron asignados.
+		return !(self.ready_for_play? && self.user_turn.id == user_id)
+	end
+
 	def play
 		# para que empiecen a jugar. Coloco en el estado 2
 		self.status = Status.find(2)
