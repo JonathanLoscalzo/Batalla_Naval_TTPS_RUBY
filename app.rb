@@ -78,21 +78,29 @@ class Application < Sinatra::Base
 		players.to_json # => only: [:id, :username]
 	end
 
-	get '/games', :auth => nil do
+	get '/games' do
 		#devuelve todos los juegos (los datos necesarios para la tabla)
 		#content-type : json
 		# => cambiar la forma de devolver los datos. Ahora board tiene usuarios
-=begin
+
 		games = Game.all
 		content_type :json
 		games.to_a.map do |e| 
 			e.as_json include: [
-				{ board1: { only: [:id, :username]} }, 
-				{ board1: { only: [:id, :username]} }, 
+				{ board1: { 
+					include:[:user],
+					only: [:id, :user]
+					}
+				}, 
+				{ board2: { 
+					include: [:user],
+					only: [:id, :user]
+					} 
+				}, 
 				{ status: { only: :description }}],
-				only: [:id,:user1,:user2,:status]
+				only: [:id,:board1,:board2,:status]
 		end.to_json
-=end
+
 	end
 
 	get '/games/create/:id_user', :auth => nil do |id_user|
@@ -105,8 +113,8 @@ class Application < Sinatra::Base
 		user_id = params['user_id']
 		size = params['select_size']
 		breed = Breed.where(size:size).first
-		board1 = Board.create(breed:breed, user:User.find(user_id))
-		board2 = Board.create(breed:breed, user:User.find(session[:user_id]))
+		board2 = Board.create(breed:breed, user:User.find(user_id))
+		board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
 		game = Game.create(board1:board1, board2: board2)
 		game.save
 		redirect '/games/' + game.id.to_s
