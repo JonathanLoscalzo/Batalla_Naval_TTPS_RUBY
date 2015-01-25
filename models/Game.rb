@@ -46,13 +46,12 @@ class Game < ActiveRecord::Base
 	end
 
 	def ready_for_play(user_id)
-		# => si los dos tableros fueron asignados.
 		self.get_board_from_user(user_id).setted
 	end
 
-	def waiting_for_user?(user_id)
+	def user_can_play?(user_id)
 		# => si los dos tableros fueron asignados.
-		return !(self.ready_for_play? && self.user_turn.id == user_id)
+		return (self.ready_for_play? && self.user_turn.id == user_id)
 	end
 
 	def play
