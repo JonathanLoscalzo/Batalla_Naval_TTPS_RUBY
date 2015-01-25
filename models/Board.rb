@@ -31,6 +31,11 @@ class Board < ActiveRecord::Base
 		self.ships.detect(false) {|s| !s.sunken }
 	end
 
+	def ready_for_play
+		self.setted = true
+		self.save
+	end
+
 	def is_user? (user_id)
 		self.user.id == user_id
 	end
