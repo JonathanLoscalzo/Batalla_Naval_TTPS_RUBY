@@ -14,6 +14,7 @@
     var SizesViewModel = function(data){
       this.sizeText = data.size;
       this.countShips = data.count_ships;
+      this.id = data.id
     };
 
     var SizeModel = function(){

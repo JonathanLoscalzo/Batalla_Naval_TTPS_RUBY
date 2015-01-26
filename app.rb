@@ -122,8 +122,8 @@ class Application < Sinatra::Base
 	post '/game/create' do
 	#Crear una partida entre usuario de la sesion y jugador enviado.
 		user_id = params['user_id']
-		size = params['select_size']
-		breed = Breed.where(size:size).first
+		breed_id = params['select-size']
+		breed = Breed.find(breed_id).first
 		board2 = Board.create(breed:breed, user:User.find(user_id))
 		board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
 		game = Game.create(board1:board1, board2: board2)
@@ -164,8 +164,10 @@ class Application < Sinatra::Base
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
-		row = params["column"].to_i 
-		column = params["row"].to_i 
+		column = params["column"].to_i 
+		row = params["row"].to_i 
+		p column
+		p row
 		# => primero valido que sea su juego y su turno
 		game = Game.find(id_game)
 		if game.user_in_game? actual_user_id
