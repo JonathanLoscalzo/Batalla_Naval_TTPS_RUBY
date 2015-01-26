@@ -17,6 +17,18 @@ class Board < ActiveRecord::Base
 		self.ships.to_a.detect { |i| i.x == row && i.y == column }
 	end
 
+	def sunken_position?(row, column)
+		ship = self.ship_position?(row, column)
+		if(ship)
+			return ship.sunken
+		end
+		return false
+	end	
+
+	def water_position?(row, column)
+		self.waters.to_a.detect { |i| i.x == row && i.y == column }
+	end
+
 	def has_position?(row, column)
 		array = self.ships.to_a
 		array + self.waters.to_a
@@ -28,7 +40,7 @@ class Board < ActiveRecord::Base
 	end
 
 	def all_ships_sunken?
-		self.ships.detect(false) {|s| !s.sunken }
+		(self.ships.detect {|s| s.sunken == true } == nil)
 	end
 
 	def ready_for_play

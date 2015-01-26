@@ -66,7 +66,7 @@ class Game < ActiveRecord::Base
 		# => cambiar el estado a finish o lo que sea.
 		if self.ready_for_play? 
 			if (self.board1.all_ships_sunken? || self.board2.all_ships_sunken?)
-				self.status_id = 3 # => deberia guardar quien gano?
+				self.status = Status.find(3) # => deberia guardar quien gano?
 				self.save
 				return true
 			end

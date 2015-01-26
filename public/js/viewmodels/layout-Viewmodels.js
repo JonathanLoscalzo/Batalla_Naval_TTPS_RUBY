@@ -47,6 +47,7 @@
             }
           }, n); 
         });
+       self.games = ko.observableArray(self.games);
       });
     };
 

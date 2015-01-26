@@ -67,6 +67,12 @@ module Sinatra
 						str << "-"
 						str << y.to_s
 						str << "'"
+						if board.water_position?(x,y)
+							str << "class='show-water'"
+						end
+						if board.sunken_position?(x,y)
+							str << "class='show-sunken'"
+						end
 						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
 						str <<'></td>'
 					end
