@@ -31,8 +31,7 @@
       self.games = ko.observableArray([]);
       $.getJSON("/games", function(data){
         var mappedGames = $.map(data, function(item){ return new GameViewModel(item)});
-        self.games = mappedGames;
-        $.map(self.games, function(n){
+        $.map(mappedGames, function(n){
           n.statusLabel = ko.pureComputed(function(){
             switch(n.status) {
             case 'Iniciado.': 
@@ -47,7 +46,19 @@
             }
           }, n); 
         });
-       self.games = ko.observableArray(self.games);
+        self.games(mappedGames);
+        $("#table-games").DataTable({
+          "dom": '<"top"f>rt<"bottom"p><"clear">',
+          "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSortable": false },
+            ],
+          "language": {
+            "url": "http://cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Spanish.json"
+          }
+        });
       });
     };
 
@@ -64,13 +75,15 @@
     var usersModel = new UsersModel();
     var sizeModel = new SizeModel();
     var ViewModel = {};
-    ViewModel.gamesModel = gamesModel;
     ViewModel.usersModel = usersModel;
+    ViewModel.gamesModel = gamesModel;
     ViewModel.sizeModel = sizeModel;
     /*
       Para agregar atributos al AllModels 
       AllModels.attr = value; => supongo.
     */
-    ko.applyBindings(ViewModel);
-    
+
+    ko.applyBindings(ViewModel);   
+
+    $("[data-toggle=tooltip]").tooltip();
   });

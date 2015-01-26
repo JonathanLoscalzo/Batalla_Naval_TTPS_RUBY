@@ -96,7 +96,7 @@
                 <th>Username</th>
                 <th>Username</th>
                 <th>Status</th>
-                <th style="display:none">idgame</th>                                        
+                <th></th>                                        
             </tr>
           </thead>  
           <tbody data-bind="foreach: games">
@@ -104,7 +104,7 @@
               <td data-bind="text: username1"></td>
               <td data-bind="text: username2"></td>
               <td ><span class="label" data-bind="css: statusLabel"><span data-bind=" text:status"></span></span></td>
-              <td data-bind="text: id"  style="display:none" ></td>
+              <td><a class="glyphicon glyphicon-link"  data-toggle="tooltip" title="VER JUEGO" data-placement="left" data-bind="attr: { href: '/games/'+id }"></a></td>
             </tr>
           </tbody>
         </table>
@@ -112,7 +112,6 @@
     <% end %>
     </div>
     <!-- Sidebar Partidas Fin -->
-
   </div>
 <% if authorized? %>
   <script type="text/javascript" src="/js/viewmodels/layout-Viewmodels.js"></script>

@@ -6,16 +6,16 @@
         <div class="col-sm-10" data-bind ="with: sizeModel">
         <p>
           <input type="hidden" name="user_id" value="<%= arg(0) %>"/>
-            <select data-bind="options: Sizes,
-                   optionsValue: 'sizeText',
-                   value: selectedSize,
-                   optionsCaption: 'Choose...',
-                   selectedOptions: selectedSize" name="select_size"></select>
-              <div data-bind="foreach: selectedSize">
-                <span data-bind="text: countShips">
-                </span>
-                barcos.
-              </div>
+          <select data-bind="options: Sizes,
+                 optionsText: 'sizeText',
+                 value: selectedSize,
+                 optionsCaption: 'Choose...',
+                 selectedOptions: selectedSize" name="select-size"></select>
+            <div data-bind="foreach: selectedSize">
+              <span data-bind="text: countShips">
+              </span>
+              Cantidad de barcos.
+            </div>
         </p>
         </div>
       </div>
