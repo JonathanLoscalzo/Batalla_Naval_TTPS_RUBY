@@ -208,6 +208,7 @@ class Application < Sinatra::Base
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
 		@game = Game.find(id_game)
+		if(@game.user_is_playing?(actual_user_id))
 		if(@game.status.id == 1)
 			if(@game.user_can_play?(actual_user_id))
 				erb 'game/playing'.to_sym
@@ -225,8 +226,12 @@ class Application < Sinatra::Base
 			else
 				session[:message] =  { :value => "You lose", :type => "danger" }
 			end
-			erb 'game/waiting'.to_sym
+			erb 'game/showgame'.to_sym
 		end
+		else
+			erb 'game/showgame'.to_sym
+		end
+
 	end
 
 #   not_found do	
