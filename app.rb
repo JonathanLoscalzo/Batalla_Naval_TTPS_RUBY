@@ -123,7 +123,7 @@ class Application < Sinatra::Base
 	#Crear una partida entre usuario de la sesion y jugador enviado.
 		user_id = params['user_id']
 		breed_id = params['select-size']
-		breed = Breed.find(breed_id).first
+		breed = Breed.find(breed_id)
 		board2 = Board.create(breed:breed, user:User.find(user_id))
 		board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
 		game = Game.create(board1:board1, board2: board2)
