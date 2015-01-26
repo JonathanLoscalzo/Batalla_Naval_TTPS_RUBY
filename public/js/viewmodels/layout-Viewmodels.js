@@ -48,7 +48,16 @@
         });
         self.games(mappedGames);
         $("#table-games").DataTable({
-          "dom": '<"top"f>rt<"bottom"p><"clear">'
+          "dom": '<"top"f>rt<"bottom"p><"clear">',
+          "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSortable": false },
+            ],
+          "language": {
+            "url": "http://cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Spanish.json"
+          }
         });
       });
     };
