@@ -49,6 +49,10 @@ class Game < ActiveRecord::Base
 		self.get_board_from_user(user_id).setted
 	end
 
+	def user_is_playing?(user_id)
+		(self.board1.user.id == user_id || self.board2.user.id == user_id)
+	end
+
 	def user_can_play?(user_id)
 		# => si los dos tableros fueron asignados.
 		return (self.ready_for_play? && self.user_turn.id == user_id)
