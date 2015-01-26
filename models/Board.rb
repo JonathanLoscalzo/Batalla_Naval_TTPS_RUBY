@@ -40,7 +40,7 @@ class Board < ActiveRecord::Base
 	end
 
 	def all_ships_sunken?
-		(self.ships.detect {|s| s.sunken == true } == nil)
+		(self.ships.detect {|s| s.sunken == false } == nil)
 	end
 
 	def ready_for_play
