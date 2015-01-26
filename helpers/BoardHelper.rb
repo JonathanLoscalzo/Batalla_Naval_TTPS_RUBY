@@ -14,7 +14,11 @@ module Sinatra
 				block = ->(y,x,elem) do
 					"class=\""+elem.tag_class+"\"" unless elem.nil?
 				end
-				board = game.get_board_opponent_user(actual_user_id)
+				if(game.status.id == 3)
+					board = game.get_board_from_other_user(actual_user_id)
+				else
+					board = game.get_board_opponent_user(actual_user_id)
+				end
 				tag_opponent_board(board, &block)
 			end
 

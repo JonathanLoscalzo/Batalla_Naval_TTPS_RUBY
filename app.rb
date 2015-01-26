@@ -145,6 +145,9 @@ class Application < Sinatra::Base
 					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
 				end
 				board.ready_for_play
+				if game.game.ready_for_play?
+					game.play
+				end
 				redirect '/games/' + game.id.to_s
 			else
 				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
@@ -213,6 +216,14 @@ class Application < Sinatra::Base
 					erb 'game/play'.to_sym
 				end
 			end
+		end
+		if(@game.status.id == 3)
+			if(actual_user_id == @game.who_wins?.id)
+				session[:message] =  { :value => "You win!!", :type => "success" }
+			else
+				session[:message] =  { :value => "You lose", :type => "danger" }
+			end
+			erb 'game/waiting'.to_sym
 		end
 	end
 

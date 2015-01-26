@@ -64,6 +64,9 @@ class Game < ActiveRecord::Base
 		#para saber si el juego termino. 
 		# =>  si uno de los tableros tiene todos los barcos hundidos termino. 
 		# => cambiar el estado a finish o lo que sea.
+		if self.status.id == 3
+			return true
+		end
 		if self.ready_for_play? 
 			if (self.board1.all_ships_sunken? || self.board2.all_ships_sunken?)
 				self.status = Status.find(3) # => deberia guardar quien gano?
@@ -78,10 +81,10 @@ class Game < ActiveRecord::Base
 		# => este metodo se deberia llamar a "finish?"
 		if self.finish?
 			if self.board1.all_ships_sunken?
-				self.board1.user
+				self.board2.user
 			else
-				if self.board2_all_ships_shunken?
-					self.board2.user
+				if self.board2.all_ships_sunken?
+					self.board1.user
 				end
 			end
 		end
