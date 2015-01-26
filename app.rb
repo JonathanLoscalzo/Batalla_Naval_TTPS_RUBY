@@ -49,7 +49,7 @@ class Application < Sinatra::Base
 	# Listar jugadores (con los que se puede jugar iniciar partida)
 		sizes = Breed.all
 		content_type :json
-		sizes.to_json
+		sizes.as_json(only: [:id, :size, :count_ships]).to_json
 	end
 
 	post '/players' do
