@@ -2,7 +2,7 @@ class BoardShipGameFirstmodels < ActiveRecord::Migration
   def change
   	create_table :ships do | t |
   		 t.belongs_to :board, index: true
-  		 t.boolean :sunken, default: false
+  		 t.boolean :sunken
   		 t.timestamps null: true
   	end
 

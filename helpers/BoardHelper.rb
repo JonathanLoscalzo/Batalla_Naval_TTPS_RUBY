@@ -139,6 +139,12 @@ module Sinatra
 						str << "-"
 						str << y.to_s
 						str << "'"
+						if board.water_position?(x,y)
+							str << "class='show-water'"
+						end
+						if board.sunken_position?(x,y)
+							str << "class='show-sunken'"
+						end
 						if board.ship_position?(x,y)
 							str << "class='show-ship'"
 						end

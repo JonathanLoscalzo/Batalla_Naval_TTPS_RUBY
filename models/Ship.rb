@@ -1,5 +1,5 @@
 class Ship < ActiveRecord::Base
-	validates :sunken, presence: true
+	validates :sunken, presence: false
 	validates :x, presence:true #=> column
 	validates :y, presence:true #=> row
 	belongs_to :board
@@ -8,7 +8,7 @@ class Ship < ActiveRecord::Base
 		if self.sunken
 			"hit"
 		else
-			"ship"
+			""
 		end
 	end	
 

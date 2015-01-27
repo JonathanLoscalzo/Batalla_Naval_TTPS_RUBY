@@ -142,7 +142,8 @@ class Application < Sinatra::Base
 				count_ships = board.breed.count_ships
 				(1..count_ships).each.with_index do |column, x|
 					pos = params['ships-position'][x].split("-")
-					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
+					ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)
+					board.add_ship(ship) 
 				end
 				board.ready_for_play
 				if game.ready_for_play?
