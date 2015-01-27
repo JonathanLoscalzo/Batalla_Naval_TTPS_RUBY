@@ -52,6 +52,14 @@ class Application < Sinatra::Base
 		sizes.as_json(only: [:id, :size, :count_ships]).to_json
 	end
 
+	get '/turn/:id_game', :auth => nil do |id_game|
+	# Listar jugadores (con los que se puede jugar iniciar partida)
+		if(Game.find(id_game).user_can_play?(actual_user_id))
+			return 200	
+		end
+		return 400
+	end
+
 	post '/players' do
 	#Crear un Jugador. datos entrada username y password.
 		username = params['username']
@@ -224,6 +232,7 @@ class Application < Sinatra::Base
 				end
 			when 2
 				if(@game.user_can_play?(actual_user_id))
+					session[:message] =  { :value => "Your turn", :type => "success" }
 					uri = 'playing'
 				else
 					uri = 'waiting'

@@ -1,8 +1,25 @@
 <% if authorized? %>
 <div class="col-xs-6" style="padding-top: 5%">
+<p>USUARIO: <%= @game.board1.user.username %></p>
 <%= (show_all_board @game).to_s %>
 </div>
 <div class="col-xs-6" style="padding-top: 5%">
+<p>USUARIO: <%= @game.board2.user.username %></p>
 <%= (show_opponent_board @game).to_s %>
 </div>
+<script>
+function checkTurn(){
+	$.ajax({
+  		type: "GET",
+  		url: "http://localhost:9292/turn/1",
+  		dataType: "script",
+  		success: function() {
+    		location.reload();
+  		},
+	});
+}
+$(document).ready(function(){
+	setInterval(checkTurn, 3000);
+});
+</script>
 <% end %>

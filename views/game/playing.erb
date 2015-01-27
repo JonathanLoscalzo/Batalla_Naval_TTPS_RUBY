@@ -1,8 +1,10 @@
 <% if authorized? %>
 <div class="col-xs-6" style="padding-top: 5%">
+  <p>USUARIO: <%= @game.board1.user.username %></p>
 <%= (show_all_board @game).to_s %>
 </div>
 <div class="col-xs-6" style="padding-top: 5%">
+<p>USUARIO: <%= @game.board2.user.username %></p>
 <%= (show_opponent_board @game).to_s %>
 </div>
 <form id="form-play-ships" class="form-horizontal col-md-8 col-md-offset-2" action="/games/<%= @game.id.to_s %>/move" method="post">
