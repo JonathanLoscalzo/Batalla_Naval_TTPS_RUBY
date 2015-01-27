@@ -221,6 +221,12 @@ class Application < Sinatra::Base
 						uri = 'play'
 					end
 				end
+			when 2
+				if(@game.user_can_play?(actual_user_id))
+					uri = 'playing'
+				else
+					uri = 'waiting'
+				end
 			when 3
 				if(actual_user_id == @game.who_wins?.id)
 					session[:message] =  { :value => "You win!!", :type => "success" }
