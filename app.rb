@@ -194,7 +194,30 @@ class Application < Sinatra::Base
 	delete '/games/:id_game', :auth => nil do |id_game|
 		# Termina la partida. Gana automaticamente el otro
 		# Todos los barcos propios mueren ? 
-		#  
+
+#		game = Game.find(id_game)
+#		uri = ""
+#		hash_message = ""
+#		if game
+#			if game.user_in_game? actual_user_id
+#				case game.status
+#				when 2
+#					board = game.get_board_from_user(actual_user_id)
+#					#board.ships.update_all 
+#					board.ships.map { |s| s.update(sunken: true) }
+#					hash_message = { :value => "Abandonó el juego", :type => "info" }
+#				else
+#					game.destroy
+#					hash_message = { :value => "El juego con id #{id_game} a sino eliminado", :type => "info" }
+#				end
+#			else
+#				hash_message = { :value => "Ud no puede eliminar el juego.", :type => "danger" }
+#			end
+#		else
+#			session[:message] = { :value => "El juego con id #{id_game} no existe.", :type => "info" }
+#		end
+#		session[:message] = hash_message
+#		erb uri.to_sym
 	end
 
 	get '/games/:id_game', :auth => nil do |id_game|
@@ -242,7 +265,8 @@ class Application < Sinatra::Base
 		erb ('game/'+uri).to_sym
 	end
 
-#   not_found do	
-#		erb :'page_404', :layout => false
-#	end
+   not_found do	
+		erb :'page_404', :layout => false
+	end
+	
 end
