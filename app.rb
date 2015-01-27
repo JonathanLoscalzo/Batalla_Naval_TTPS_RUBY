@@ -154,11 +154,14 @@ class Application < Sinatra::Base
 			board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
 			game = Game.create(board1:board1, board2: board2)
 			game.save
+			response.status=201
+			dir='/games/' + game.id.to_s
 		else
-			status 400 # => que mensaje devolver?
 			session[:message] = { :value => "Problemas recibiendo datos, intente nuevamente! ", :type => "warning" }
+			response.status=409
+			dir = '/login'
 		end
-		redirect '/games/' + game.id.to_s
+		redirect dir, 303
 	end
 
 	post '/games/:id_game', :auth => nil do |id_game|
