@@ -144,73 +144,85 @@ class Application < Sinatra::Base
 		end		
 	end
 
-	post '/game/create' do
+	post '/game/create', :auth=> nil do
 	#Crear una partida entre usuario de la sesion y jugador enviado.
-		user_id = params['user_id']
-		breed_id = params['select-size']
-		breed = Breed.find(breed_id)
-		board2 = Board.create(breed:breed, user:User.find(user_id))
-		board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
-		game = Game.create(board1:board1, board2: board2)
-		game.save
+		unless has_params_keys? params, 'user_id', 'select-size'
+			user_id = params['user_id']
+			breed_id = params['select-size']
+			breed = Breed.find(breed_id)
+			board2 = Board.create(breed:breed, user:User.find(user_id))
+			board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
+			game = Game.create(board1:board1, board2: board2)
+			game.save
+		else
+			status 400 # => que mensaje devolver?
+			session[:message] = { :value => "Problemas recibiendo datos, intente nuevamente! ", :type => "warning" }
+		end
 		redirect '/games/' + game.id.to_s
 	end
 
 	post '/games/:id_game', :auth => nil do |id_game|
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
-		game = Game.find(id_game)
-		if game.user_in_game?(actual_user_id)
-			if game.status.id == 1
-				# => si el usuario està en el juego, y el juego està iniciado
-				board = game.get_board_from_user(actual_user_id)
-				count_ships = board.breed.count_ships
-				(1..count_ships).each.with_index do |column, x|
-					pos = params['ships-position'][x].split("-")
-					ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)
-					board.add_ship(ship) 
+		if has_params_keys? params, 'ships-position'
+			game = Game.find(id_game)
+			if game.user_in_game?(actual_user_id)
+				if game.status.id == 1
+					# => si el usuario està en el juego, y el juego està iniciado
+					board = game.get_board_from_user(actual_user_id)
+					count_ships = board.breed.count_ships
+					(1..count_ships).each.with_index do |column, x|
+						pos = params['ships-position'][x].split("-")
+						ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)
+						board.add_ship(ship) 
+					end
+					board.ready_for_play
+					if game.ready_for_play?
+						game.play
+					end
+					redirect '/games/' + game.id.to_s
+				else
+					# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
+					status 409 # => que mensaje devolver?
+					session[:message] = { :value => "No se puede reenviar el tablero mientras se está jugando", :type => "danger" }
 				end
-				board.ready_for_play
-				if game.ready_for_play?
-					game.play
-				end
-				redirect '/games/' + game.id.to_s
 			else
-				# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
 				status 409 # => que mensaje devolver?
-				session[:message] = { :value => "No se puede reenviar el tablero mientras se está jugando", :type => "danger" }
+				session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
 			end
 		else
-			status 409 # => que mensaje devolver?
-			session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+			status 400 # => que mensaje devolver?
+			session[:message] = { :value => "Problemas recibiendo coordenadas, intente nuevamente! ", :type => "warning" }
 		end
-
-
 	end
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
-		column = params["column"].to_i 
-		row = params["row"].to_i 
-		p column
-		p row
-		# => primero valido que sea su juego y su turno
-		game = Game.find(id_game)
-		if game.user_in_game? actual_user_id
-			if game.user_turn.id == actual_user_id
-				# => si es el turno del usuario. Hace el disparo. 
-				session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
-				game.finish?
-				redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.
+		unless has_params_keys? params, 'column', 'row'
+			column = params["column"].to_i 
+			row = params["row"].to_i 
+			# => primero valido que sea su juego y su turno
+			game = Game.find(id_game)
+			if game.user_in_game? actual_user_id
+				if game.user_turn.id == actual_user_id
+					# => si es el turno del usuario. Hace el disparo. 
+					session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
+					game.finish?
+					redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.
+				else
+					status 409 
+					session[:message] = { :value => "No es tu turno!", :type => "danger" }
+					redirect '/games/'+ id_game.to_s
+				end
 			else
-				status 409 # => que mensaje devolver?
-				session[:message] = { :value => "No es tu turno!", :type => "danger" }
-				redirect '/games/'+ id_game.to_s
+				status 409 
+				session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+				redirect '/login'
 			end
 		else
-			status 409 # => que mensaje devolver?
-			session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
-			redirect '/login'
+			status 400 
+			session[:message] = { :value => "Error recibiendo disparo, intente nuevamente!", :type => "warning" }
+			redirect '/games/'+ id_game.to_s
 		end
 
 
@@ -300,7 +312,7 @@ class Application < Sinatra::Base
    not_found do	
 		erb :'page_404', :layout => false
 	end
-
+private
 	def has_params_keys?(params, *args)
 		args.detect(nil) { |e| ! ((params.key? e) && !params[e].empty?) }
 	end
