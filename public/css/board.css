@@ -8,8 +8,9 @@
     height: 350px;
 }
 .initialize .board {
-width: 650px;
-height: 650px;
+width: 450px;
+height: 450px;
+margin: 0 auto;
 }
 .board tr{
 }
@@ -45,8 +46,12 @@ background-size: 300%;
     border: 1px solid white;
     color: #888;
 }
+.ship {
+   width: 30px;
+}
 .ships-container{
-
+margin: 0 auto;
+text-align: center;
 }
 .miss {
     background-color: #6CF;

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150123225441) do
 
   create_table "ships", force: :cascade do |t|
     t.integer  "board_id"
-    t.boolean  "sunken",     default: false
+    t.boolean  "sunken",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "x"

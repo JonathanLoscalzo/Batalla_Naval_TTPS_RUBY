@@ -145,7 +145,7 @@ class Application < Sinatra::Base
 					board.add_ship(Ship.create(x:pos[0],y:pos[1],board:board)) 
 				end
 				board.ready_for_play
-				if game.game.ready_for_play?
+				if game.ready_for_play?
 					game.play
 				end
 				redirect '/games/' + game.id.to_s
