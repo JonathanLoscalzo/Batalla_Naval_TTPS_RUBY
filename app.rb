@@ -256,39 +256,45 @@ class Application < Sinatra::Base
 		#	-> si està terminada dice quien ganò, sino solo se muestran las jugadas.
 		# SUPONGO debe ser el mismo template...
 		# para el tablero, usar un template: de knockout
-		@game = Game.find(id_game)
-		uri = ""
-		if(@game.user_is_playing?(actual_user_id))
-			case @game.status.id
-			when 1
-				if(@game.user_can_play?(actual_user_id))
-					uri = 'playing'
-				else
-					if(@game.ready_for_play(actual_user_id))
-						uri = 'waiting'
+		if Game.exists?id_game
+			@game = Game.find(id_game)
+			uri = ""
+			if(@game.user_is_playing?(actual_user_id))
+				case @game.status.id
+				when 1
+					if(@game.user_can_play?(actual_user_id))
+						uri = 'playing'
 					else
-						uri = 'play'
+						if(@game.ready_for_play(actual_user_id))
+							uri = 'waiting'
+						else
+							uri = 'play'
+						end
 					end
+				when 2
+					if(@game.user_can_play?(actual_user_id))
+						session[:message] =  { :value => "Your turn", :type => "success" }
+						uri = 'playing'
+					else
+						uri = 'waiting'
+					end
+				when 3
+					if(actual_user_id == @game.who_wins?.id)
+						session[:message] =  { :value => "You win!!", :type => "success" }
+					else
+						session[:message] =  { :value => "You lose", :type => "danger" }
+					end
+					uri = 'showgame'
 				end
-			when 2
-				if(@game.user_can_play?(actual_user_id))
-					session[:message] =  { :value => "Your turn", :type => "success" }
-					uri = 'playing'
-				else
-					uri = 'waiting'
-				end
-			when 3
-				if(actual_user_id == @game.who_wins?.id)
-					session[:message] =  { :value => "You win!!", :type => "success" }
-				else
-					session[:message] =  { :value => "You lose", :type => "danger" }
-				end
+			else
 				uri = 'showgame'
 			end
+			erb ('game/'+uri).to_sym
 		else
-			uri = 'showgame'
+			session[:message] =  { :value => "Ese game no existe", :type => "info" }
+			response.status=400
+			redirect '/login'
 		end
-		erb ('game/'+uri).to_sym
 	end
 
    not_found do	
@@ -296,7 +302,7 @@ class Application < Sinatra::Base
 	end
 
 	def has_params_keys?(params, *args)
-		args.detect(nil) { |e| ! ((params.key? e)&&  !params[e].empty?) }
+		args.detect(nil) { |e| ! ((params.key? e) && !params[e].empty?) }
 	end
 
 end
