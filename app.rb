@@ -41,7 +41,13 @@ class Application < Sinatra::Base
 	end
 
 	post '/login' do
-		login username:params['username'], password:params['password']
+	#Route para iniciar sesion. Si algun dato llega vacio o no llega se devuelve status 400
+		unless has_params_keys?(params, 'username', 'password')
+			login username:params['username'], password:params['password']
+		else 
+			response.status=400
+			session[:message] = { :value => "Hubo un error en los datos. Intente nuevamente", :type => "info" }
+		end
 		erb 'login/login'.to_sym
 	end
 
@@ -62,18 +68,23 @@ class Application < Sinatra::Base
 
 	post '/players' do
 	#Crear un Jugador. datos entrada username y password.
-		username = params['username']
-		password = params['password']
-		user = User.where(username: username)
-		if user.empty?
-			user = User.create do | u |
-				u.username = username
-				u.password = password
+		unless has_params_keys? params, 'username', 'password'
+			username = params['username']
+			password = params['password']
+			user = User.where(username: username)
+			if user.empty?
+				user = User.create do | u |
+					u.username = username
+					u.password = password
+				end
+				session[:message]= { :value => "Creado Correctamente", :type => "success" }
+			else
+				status 409
+				session[:message]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
 			end
-			session[:message]= { :value => "Creado Correctamente", :type => "success" }
 		else
-			status 409
-			session[:message]= { :value => "El Usuario "+ username +" ya existe.", :type => "danger" }
+			status 400
+			session[:message]= { :value => "Datos Erronéos", :type => "danger" }
 		end
 		erb 'login/login'.to_sym
 	end
@@ -86,7 +97,7 @@ class Application < Sinatra::Base
 		players.to_json # => only: [:id, :username]
 	end
 
-	get '/games' do
+	get '/games', :auth => nil do
 		#devuelve todos los juegos (los datos necesarios para la tabla)
 		#content-type : json
 		# => cambiar la forma de devolver los datos. Ahora board tiene usuarios
@@ -123,8 +134,14 @@ class Application < Sinatra::Base
 	end
 
 	get '/games/create/:id_user', :auth => nil do |id_user|
-		#Para crear partidas. id_user es el contrario. Verifica que no haya otras partidas entre ellos.
-		erb 'game/create'.to_sym
+		#Para crear partidas. id_user es el contrario.
+		if User.exists?(id_user)
+			erb 'game/create'.to_sym 
+		else
+			status 409
+			session[:message]= { :value => "No se puede crear un juego con un usuario que no existe", :type => "danger" }
+			erb 'login/login'.to_sym
+		end		
 	end
 
 	post '/game/create' do
@@ -277,5 +294,9 @@ class Application < Sinatra::Base
    not_found do	
 		erb :'page_404', :layout => false
 	end
-	
+
+	def has_params_keys?(params, *args)
+		args.detect(nil) { |e| ! ((params.key? e)&&  !params[e].empty?) }
+	end
+
 end
