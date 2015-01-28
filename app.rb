@@ -167,7 +167,7 @@ class Application < Sinatra::Base
 	post '/games/:id_game', :auth => nil do |id_game|
 		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces
 		# la partida tiene que ser propia
-		if has_params_keys? params, 'ships-position'
+		unless has_params_keys? params, 'ships-position'
 			game = Game.find(id_game)
 			if game.user_in_game?(actual_user_id)
 				if game.status.id == 1
@@ -183,7 +183,6 @@ class Application < Sinatra::Base
 					if game.ready_for_play?
 						game.play
 					end
-					redirect '/games/' + game.id.to_s
 				else
 					# => si el usuario està en el juego, pero ya enviaron los 2 tableros.
 					status 409 # => que mensaje devolver?
@@ -197,6 +196,7 @@ class Application < Sinatra::Base
 			status 400 # => que mensaje devolver?
 			session[:message] = { :value => "Problemas recibiendo coordenadas, intente nuevamente! ", :type => "warning" }
 		end
+		redirect '/games/' + game.id.to_s
 	end
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
