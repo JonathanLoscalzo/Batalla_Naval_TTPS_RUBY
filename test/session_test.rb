@@ -1,7 +1,7 @@
 require 'test_helper'
 # => https://github.com/brandonweiss/rack-minitest
 
-describe " session and registration" do
+describe " session, login and logout" do
 	it 'wont log in with a user on the db' do 
 		post '/login',params = {'username'=>'juan', 'password'=> '12345'}
 
@@ -31,4 +31,13 @@ describe " session and registration" do
 		last_response.body.must_include 'username'
 		last_response.body.must_include 'password'
 	end
+
+	it 'if im logged i could logout' do 
+		skip
+	end
+
+	it 'if im not logged in, i couldnt logout' do
+		skip
+	end
+
 end
