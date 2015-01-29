@@ -16,10 +16,16 @@ module Sinatra
 	      	end
 
 	      	def logout!
+	      		if session[:authorized]
+	        		session[:message] = { :value => "Adiós!", :type => "success" }
+	        		status 201
+	      		else
+	        		session[:message] = { :value => "No puede cerrar sesión, si no ha iniciado", :type => "info" }
+	        		status 401
+	      		end
 	        	session[:authorized] = false
 	        	session[:user_id] = nil
 				session[:username] = nil
-	        	session[:message] = { :value => "Adiós!", :type => "success" }
 	      	end
 
 	      	def login(username:, password:)

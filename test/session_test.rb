@@ -45,7 +45,9 @@ describe " session, login and logout" do
 	end
 
 	it 'if im not logged in, i couldnt logout' do
-		
+		get '/logout',params = {'username'=>'juan', 'password'=> '12345'} 
+		follow_redirect!
+		last_response.body.must_include 'No puede cerrar sesión, si no ha iniciado'
 	end
 
 end
