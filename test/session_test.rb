@@ -33,11 +33,19 @@ describe " session, login and logout" do
 	end
 
 	it 'if im logged i could logout' do 
-		skip
+		user = User.create(username:"juan", password:'12345')
+		post '/login',params = {'username'=>'juan', 'password'=> '12345'}
+		user.destroy
+		last_response.status.must_equal 200
+		get '/logout'
+		last_response.status.must_be_close_to 300,400 # => redireccion. 
+		last_response.location.must_include '/login'
+		follow_redirect!
+		last_response.body.must_include 'Adiós'
 	end
 
 	it 'if im not logged in, i couldnt logout' do
-		skip
+		
 	end
 
 end
