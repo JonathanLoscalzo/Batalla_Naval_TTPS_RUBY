@@ -3,39 +3,42 @@ module Sinatra
 		#Helpers
 		module Helpers
 			def show_all_board(game)
-				block = ->(y,x,elem) do
-					"class=\""+elem.tag_class+"\"" unless elem.nil?
+				block = ->(y,x,board) do
+					if board.water_position?(x,y)
+						"class='show-water'"
+					else
+						if board.sunken_position?(x,y)
+							"class='show-sunken'"
+						else
+							if board.ship_position?(x,y)
+								"class='show-ship'"
+							end
+						end
+					end
 				end
 				board = game.get_board_from_user(actual_user_id)
-				tag_board(board, &block)
+				tag_board(board,"board",&block)
 			end
 
 			def show_opponent_board(game)
-				block = ->(y,x,elem) do
-					"class=\""+elem.tag_class+"\"" unless elem.nil?
+				block = ->(y,x,board) do
+					if board.sunken_position?(x,y)
+						"class='show-sunken'"
+					else
+						if board.water_position?(x,y)
+							"class='show-water'"
+						end
+					end
 				end
 				board = game.get_board_opponent_user(actual_user_id)
-				tag_opponent_board(board, &block)
+				tag_board(board,"opponent-board",&block)
 			end
 
 			def show_game_board(board)
 				block = ->(y,x,elem) do
 					"class=\""+elem.tag_class+"\"" unless elem.nil?
 				end
-				tag_all_board(board, &block)
-			end
-
-			def show_only_hits(board)
-				block = ->(y,x,elem) do
-					if elem.kind_of? Ship && elem.sunken
-						"class=\""+elem.tag_class+"\""
-					else
-						if elem.kind_of?  Water
-							"class=\""+elem.tag_class+"\""
-						end
-					end
-				end
-				tag_board(board,&block)
+				tag_board(board,"board",&block)
 			end
 
 			private
@@ -60,13 +63,13 @@ module Sinatra
 			end
 
 
-			def tag_all_board(board, &block)
+			def tag_board(board, id, &block)
 				#block deberia ser un lambda
 				size = board.breed.size
 				mat = create_mat(size) # => devuelve una matriz 1 por lugar que representa x,y.
 				fill_mat(mat, board) # => con la anterior funcion consigo un mapa "matriz" de barcos
-				mat2 = mat.map.with_index { |row, y| row.map.with_index { |column, x| block.call y, x, column }}
-				str = "<table class=\"board\" id=\"opponent-board\" >"
+				mat2 = mat.map.with_index { |row, y| row.map.with_index { |column, x| block.call y, x, board }}
+				str = "<table class=\"board\" id=\""+id+"\">"
 				(1..size).each.with_index do |row, y|
 					str << '<tr>'
 					(1..size).each.with_index do |column, x| 
@@ -75,79 +78,6 @@ module Sinatra
 						str << "-"
 						str << y.to_s
 						str << "'"
-						if board.water_position?(x,y)
-							str << "class='show-water'"
-						end
-						if board.sunken_position?(x,y)
-							str << "class='show-sunken'"
-						end
-						if board.ship_position?(x,y)
-							str << "class='show-ship'"
-						end
-						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
-						str <<'></td>'
-					end
-					str << '</tr>'
-				end
-				str << '</table>'
-				str
-			end
-
-			def tag_opponent_board(board, &block)
-				#block deberia ser un lambda
-				size = board.breed.size
-				mat = create_mat(size) # => devuelve una matriz 1 por lugar que representa x,y.
-				fill_mat(mat, board) # => con la anterior funcion consigo un mapa "matriz" de barcos
-				mat2 = mat.map.with_index { |row, y| row.map.with_index { |column, x| block.call y, x, column }}
-				str = "<table class=\"board\" id=\"opponent-board\" >"
-				(1..size).each.with_index do |row, y|
-					str << '<tr>'
-					(1..size).each.with_index do |column, x| 
-						str << "<td id='"
-						str << x.to_s
-						str << "-"
-						str << y.to_s
-						str << "'"
-						if board.water_position?(x,y)
-							str << "class='show-water'"
-						end
-						if board.sunken_position?(x,y)
-							str << "class='show-sunken'"
-						end
-						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
-						str <<'></td>'
-					end
-					str << '</tr>'
-				end
-				str << '</table>'
-				str
-			end
-
-
-			def tag_board(board, &block)
-				#block deberia ser un lambda
-				size = board.breed.size
-				mat = create_mat(size) # => devuelve una matriz 1 por lugar que representa x,y.
-				fill_mat(mat, board) # => con la anterior funcion consigo un mapa "matriz" de barcos
-				mat2 = mat.map.with_index { |row, y| row.map.with_index { |column, x| block.call y, x, column }}
-				str = "<table class=\"board\">"
-				(1..size).each.with_index do |row, y|
-					str << '<tr>'
-					(1..size).each.with_index do |column, x| 
-						str << "<td id='"
-						str << x.to_s
-						str << "-"
-						str << y.to_s
-						str << "'"
-						if board.water_position?(x,y)
-							str << "class='show-water'"
-						end
-						if board.sunken_position?(x,y)
-							str << "class='show-sunken'"
-						end
-						if board.ship_position?(x,y)
-							str << "class='show-ship'"
-						end
 						(str << mat2[y][x].to_s)unless mat2[y][x].nil?
 						str <<'></td>'
 					end
