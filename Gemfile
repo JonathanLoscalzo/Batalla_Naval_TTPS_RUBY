@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'json'
 
-group :deploy do
+group :production do
 	gem 'pg'
 end
 
