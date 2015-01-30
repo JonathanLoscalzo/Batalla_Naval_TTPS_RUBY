@@ -216,7 +216,7 @@ class Application < Sinatra::Base
 			game = Game.find(id_game)
 			if game.user_in_game? actual_user_id
 				if game.user_turn.id == actual_user_id
-					# => si es el turno del usuario. Hace el disparo. 
+					# => si es el turno del usuario. Hace el disparo.
 					session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
 					game.finish?
 					redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.

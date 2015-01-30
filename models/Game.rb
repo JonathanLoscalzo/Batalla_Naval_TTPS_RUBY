@@ -102,7 +102,7 @@ class Game < ActiveRecord::Base
 
 	def shot_to(column:, row:, user_id:)
 		board = get_board_from_other_user(user_id) # => esto si saco el sessionHelper no anda...
-		message = board.receive_shot(column, row) # => es tarea del tablero modificar sus celdas.
+		message = board.receive_shot(column,row) # => es tarea del tablero modificar sus celdas.
 		self.change_last_user board.user.id
 		message 
 	end

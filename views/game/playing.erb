@@ -21,8 +21,8 @@ $(document).ready(function(){
     selected = $(this);
     $(this).addClass("selected");
     pos = $(this).attr("id").split("-");
-    $("form#form-play-ships input#column").val(pos[0]);
-    $("form#form-play-ships input#row").val(pos[1]);
+    $("form#form-play-ships input#row").val(pos[0]);
+    $("form#form-play-ships input#column").val(pos[1]);
   });
   $("#bSubmit").click(function(){
     $("form#form-play-ships").submit();
