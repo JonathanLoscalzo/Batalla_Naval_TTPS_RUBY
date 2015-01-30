@@ -35,8 +35,18 @@ module Sinatra
 			end
 
 			def show_game_board(board)
-				block = ->(y,x,elem) do
-					"class=\""+elem.tag_class+"\"" unless elem.nil?
+				block = ->(y,x,board) do
+					if board.water_position?(x,y)
+						"class='show-water'"
+					else
+						if board.sunken_position?(x,y)
+							"class='show-sunken'"
+						else
+							if board.ship_position?(x,y)
+								"class='show-ship'"
+							end
+						end
+					end
 				end
 				tag_board(board,"board",&block)
 			end
