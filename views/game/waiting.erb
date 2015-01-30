@@ -11,7 +11,7 @@
 function checkTurn(){
 	$.ajax({
   		type: "GET",
-  		url: "http://localhost:9292/turn/1",
+  		url: "http://localhost:9292/turn/<%= @game.id.to_s %>",
   		dataType: "script",
   		success: function() {
     		location.reload();
