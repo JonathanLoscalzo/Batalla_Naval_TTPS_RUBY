@@ -22,12 +22,12 @@ describe "Playing a game initialize" do
 		end
 		it 'create game' do 
 			post '/login',params = {'username'=>'juan', 'password'=> '12345'}
-			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size <> :size", { size: "5" }]).first.id}
+			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size == :size", { size: "5" }]).first.id}
 			last_response.status.must_equal 303
 		end
 		it 'loading ships in the new game' do
 			post '/login',params = {'username'=>@user1.username, 'password'=> '12345'}
-			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size <> :size", { size: "5" }]).first.id}
+			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size == :size", { size: "5" }]).first.id}
 			@game = Game.last
 			post '/games/'+ @game.id.to_s, params = {'ships-position'=>["0-1","1-2","2-2","3-2","1-3","4-4","1-2"]}
 			post '/logout'
@@ -35,7 +35,15 @@ describe "Playing a game initialize" do
 			post '/games/'+ @game.id.to_s, params = {'ships-position'=>["1-1","1-2","3-2","4-1","0-3","2-2","0-0"]}
 			@game.board1.ships.length.must_equal 7
 			@game.board2.ships.length.must_equal 7
+			@game.board2.at_position(1,1).x.must_equal 1
 			last_response.status.must_equal 302
+		end
+		it 'if I send less ships than the giving size' do
+			post '/login',params = {'username'=>@user1.username, 'password'=> '12345'}
+			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size == :size", { size: "7" }]).first.id}
+			@game = Game.last
+			post '/games/'+ @game.id.to_s, params = {'ships-position'=>["0-1","1-2","2-2","3-2","1-3","4-4","1-2"]}
+			@game.board2.ships.length.must_equal 0
 		end
 	end
 end
