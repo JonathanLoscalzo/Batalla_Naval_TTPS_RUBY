@@ -61,6 +61,20 @@ describe "Playing a game initialize" do
 			@game.board2.at_position(1,2).sunken.must_equal true
 		end
 
+		it 'If is water' do
+			post '/login',params = {'username'=>@user1.username, 'password'=> '12345'}
+			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size == :size", { size: "5" }]).first.id}
+			@game = Game.last
+			post '/games/'+ @game.id.to_s, params = {'ships-position'=>["0-1","1-2","2-2","3-2","1-3","4-4","1-2"]}
+			post '/logout'
+			post '/login',params = {'username'=>@user2.username, 'password'=> '12345'}
+			post '/games/'+ @game.id.to_s, params = {'ships-position'=>["1-1","1-2","3-2","4-1","0-3","2-2","0-0"]}
+			post '/logout'
+			post '/login',params = {'username'=>@user1.username, 'password'=> '12345'}
+			put '/games/'+@game.id.to_s+'/move',params = {'row'=> 3,'column'=> 1} 
+			@game.board2.water_position?(3,1).must_be_kind_of Water
+		end
+
 		it 'Is my turn?' do
 			post '/login',params = {'username'=>@user1.username, 'password'=> '12345'}
 			post '/game/create',params = {'user_id'=>@user2.id, "select-size" => Breed.where(["size == :size", { size: "5" }]).first.id}
