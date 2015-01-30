@@ -154,6 +154,7 @@ class Application < Sinatra::Base
 			board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # => user1 es el de la session.
 			game = Game.create(board1:board1, board2: board2)
 			game.save
+			
 			response.status=201
 			dir='/games/' + game.id.to_s
 		else
@@ -175,9 +176,11 @@ class Application < Sinatra::Base
 					board = game.get_board_from_user(actual_user_id)
 					count_ships = board.breed.count_ships
 					(1..count_ships).each.with_index do |column, x|
-						pos = params['ships-position'][x].split("-")
-						ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)
-						board.add_ship(ship) 
+						if(!params['ships-position'][x].nil?)
+							pos = params['ships-position'][x].split("-")
+							ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)
+							board.add_ship(ship) 
+						end
 					end
 					board.ready_for_play
 					if game.ready_for_play?
