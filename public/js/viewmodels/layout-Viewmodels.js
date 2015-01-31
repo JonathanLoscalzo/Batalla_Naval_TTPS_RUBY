@@ -57,7 +57,7 @@
             { "bSortable": false },
             ],
           "language": {
-            "url": "http://cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Spanish.json"
+            "url": "https://cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Spanish.json"
           }
         });
       });
