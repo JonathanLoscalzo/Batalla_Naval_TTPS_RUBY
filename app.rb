@@ -26,7 +26,7 @@ class Application < Sinatra::Base
  		#enable :logging
 	end
 
-	set :database, YAML.load_file('config/database.yml')[ENV['RACK_ENV']]
+	set :database, YAML.load(ERB.new(File.read(File.join("config","database.yml"))).result)
 	set :method_override, true
 
 	#__________________Comportamiento__________________
