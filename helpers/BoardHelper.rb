@@ -34,6 +34,29 @@ module Sinatra
 				tag_board(board,"opponent-board",&block)
 			end
 
+			def current_user_name(game)
+				game.get_board_from_user(actual_user_id).user.username
+			end
+
+			def opponent_user_name(game)
+				game.get_board_opponent_user(actual_user_id).user.username
+			end
+
+
+			def show_opponent_board(game)
+				block = ->(y,x,board) do
+					if board.sunken_position?(x,y)
+						"class='show-sunken'"
+					else
+						if board.water_position?(x,y)
+							"class='show-water'"
+						end
+					end
+				end
+				board = game.get_board_opponent_user(actual_user_id)
+				tag_board(board,"opponent-board",&block)
+			end
+
 			def show_game_board(board)
 				block = ->(y,x,board) do
 					if board.water_position?(x,y)

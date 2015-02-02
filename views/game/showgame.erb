@@ -1,10 +1,10 @@
 <% if authorized? %>
 <div class="col-xs-6" style="padding-top: 5%">
-<p>USUARIO: <%= @game.board1.user.username %></p>
+<p>USUARIO: <%= (current_user_name @game).to_s %></p>
 <%= (show_game_board @game.board1).to_s %>
 </div>
 <div class="col-xs-6" style="padding-top: 5%">
-<p>USUARIO: <%= @game.board2.user.username %></p>
+<p>USUARIO: <%= (opponent_user_name @game).to_s %></p>
 <%= (show_game_board @game.board2).to_s %>
 </div>
 <% end %>
