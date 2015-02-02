@@ -49,7 +49,7 @@ Quizás se puede devolver un Json (y no un HTML).
 
 ####Crear una partida
 Petición
-**POST /players/games HTTP/1.1**
+**POST /game/create HTTP/1.1**
 
 Respuesta
 *Status: 201 Created*
@@ -63,7 +63,7 @@ Quizás se pueda iniciar la partida luego de que el otro acepta.
 
 ####Ver una partida
 Petición
-**GET /players/*id*/games/id_game**
+**GET /games/id_game**
 
 Respuesta
 La misma que POST /players/*id*/games pero con status 200
@@ -73,7 +73,7 @@ Solo se pueden ver partidas en juego.
 
 ####Listar partidas
 Petición
-**GET /players/*id*/games**
+**GET /login
 
 Respuesta
 *Status: 200 Ok*
@@ -82,21 +82,22 @@ Partidas sin comenzar, comenzadas y terminadas ( máquina de estados ? )
 
 ####Establecer la posición inicial de los barcos
 Petición
-**PUT /players/*id*/games/*id_game***
+post '/games/:id_game'
 
 > Nota: Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
 
 Respuesta
 *Status: 200 Ok*
-*Body:* mismo que GET /players/*id*/games/*id_game*
+*Body:* mismo que GET '/games/:id_game'
+
 
 ####Hacer una jugada
 Petición
-**POST /players/*id*/games/*id_game*/move**
+**put '/games/:id_game/move'
 
 Respuesta
 *Status: 201 Created*
-*Body:* mismo que GET /players/*id*/games/*id_game*
+*Body:* mismo que GET '/games/:id_game'
 
 Si no es el turno de este jugador porque el rival aún no hizo su jugada: 
 *Status: 403 Forbidden*
