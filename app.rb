@@ -30,6 +30,10 @@ class Application < Sinatra::Base
 	set :method_override, true
 
 	#__________________Comportamiento__________________
+	get '/' do 
+		redirect '/login'
+	end
+
 	get '/login' do
 		erb 'login/login'.to_sym 
 	end
@@ -208,30 +212,35 @@ class Application < Sinatra::Base
 
 	put '/games/:id_game/move', :auth => nil do |id_game|
 		# se recibe posiciones x,y. 
-		unless has_params_keys? params, 'column', 'row'
-			column = params["column"].to_i 
-			row = params["row"].to_i 
-			# => primero valido que sea su juego y su turno
-			game = Game.find(id_game)
-			if game.user_in_game? actual_user_id
-				if game.user_turn.id == actual_user_id
-					# => si es el turno del usuario. Hace el disparo.
-					session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
-					game.finish?
-					redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.
+		game = Game.find(id_game)
+		if Game.exists?(id_game) && game.status.id == 2
+			unless has_params_keys? params, 'column', 'row'
+				column = params["column"].to_i 
+				row = params["row"].to_i 
+				# => primero valido que sea su juego y su turno
+				game = Game.find(id_game)
+				if game.user_in_game? actual_user_id
+					if game.user_turn.id == actual_user_id
+						# => si es el turno del usuario. Hace el disparo.
+						session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)
+						game.finish?
+						redirect '/games/'+id_game.to_s # => este sabe si se termino el juego o no.
+					else
+						status 409 
+						session[:message] = { :value => "No es tu turno!", :type => "danger" }
+						redirect '/games/'+ id_game.to_s
+					end
 				else
 					status 409 
-					session[:message] = { :value => "No es tu turno!", :type => "danger" }
-					redirect '/games/'+ id_game.to_s
+					session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
+					redirect '/login'
 				end
 			else
-				status 409 
-				session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
-				redirect '/login'
+				status 400 
+				session[:message] = { :value => "Error recibiendo disparo, intente nuevamente!", :type => "warning" }
+				redirect '/games/'+ id_game.to_s
 			end
 		else
-			status 400 
-			session[:message] = { :value => "Error recibiendo disparo, intente nuevamente!", :type => "warning" }
 			redirect '/games/'+ id_game.to_s
 		end
 

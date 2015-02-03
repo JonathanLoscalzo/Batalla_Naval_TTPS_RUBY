@@ -86,5 +86,17 @@ describe "Playing a game initialize" do
 			@game.user_turn.id.must_equal @user1.id
 		end
 
+		it 'wont send two shots in a row' do
+			skip
+		end
+
+		it 'wont send board when the game is playing' do
+			skip
+		end
+
+		it 'wont send anything if the user isnt playing' do
+			skip
+		end
+
 	end
 end
