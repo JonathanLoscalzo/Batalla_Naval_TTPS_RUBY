@@ -82,10 +82,6 @@ describe 'when a game finish' do
 		log_out_with_user @user2
 	end
 
-	it 'wont receive more ships, like initialization' do
-		skip
-	end
-
 	private
 	def login_with_user(user)
 		post '/login', params = { username: user.username, password:user.password }
