@@ -285,8 +285,6 @@ class Application < Sinatra::Base
 		#-> si no es propia (ambas opciones son iguales)
 		#	-> se ven ambos tableros. 
 		#	-> si està terminada dice quien ganò, sino solo se muestran las jugadas.
-		# SUPONGO debe ser el mismo template...
-		# para el tablero, usar un template: de knockout
 		if Game.exists?id_game
 			@game = Game.find(id_game)
 			uri = ""
@@ -318,7 +316,7 @@ class Application < Sinatra::Base
 					uri = 'showgame'
 				end
 			else
-				uri = 'showgame'
+				uri = 'showgame_complete'
 			end
 			erb ('game/'+uri).to_sym
 		else
