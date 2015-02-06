@@ -17,6 +17,8 @@ La cantidad de barcos de cada usuario dependerá del tamaño del tablero:
 - 10 * 10 -> 15
 - 15 * 15 -> 20
 
+##### Heroku: https://batalla-naval-ttps-ruby.herokuapp.com/login
+##### Integración Continua: https://travis-ci.org/JonathanLoscalzo/Batalla_Naval_TTPS_RUBY
 
 ###Acciones relacionadas con **jugadores**
 
