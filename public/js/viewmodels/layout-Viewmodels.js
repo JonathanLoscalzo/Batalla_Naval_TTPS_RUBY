@@ -30,7 +30,7 @@
     var GameModel = function(){
       var self = this;
       self.games = ko.observableArray([]);
-      $.getJSON("/games", function(data){
+      $.getJSON("/games/json", function(data){
         var mappedGames = $.map(data, function(item){ return new GameViewModel(item)});
         $.map(mappedGames, function(n){
           n.statusLabel = ko.pureComputed(function(){
@@ -66,7 +66,7 @@
     var UsersModel = function(){
       var self = this;
       self.UsersArray = ko.observableArray([]);
-      $.getJSON("/players", function(data){
+      $.getJSON("/players/json", function(data){
         var mappedPlayers = $.map(data, function(item){ return new PlayersViewModel(item)});
         self.UsersArray(mappedPlayers);
       });

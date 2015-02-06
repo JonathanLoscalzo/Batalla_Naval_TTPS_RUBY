@@ -92,7 +92,16 @@ class Application < Sinatra::Base
 		erb 'login/login'.to_sym
 	end
 
-	get '/players', :auth => nil do
+	get '/games' do
+		
+	end
+
+	get '/players' do
+		
+	end
+
+
+	get '/players/json', :auth => nil do
 	# Listar jugadores (con los que se puede jugar iniciar partida)
 		user_id = session[:user_id]
 		players = User.where(["id <> :id", { id: user_id }]).select(:id,:username)
@@ -100,12 +109,12 @@ class Application < Sinatra::Base
 		players.to_json # => only: [:id, :username]
 	end
 
-	get '/games', :auth => nil do
-		#devuelve todos los juegos (los datos necesarios para la tabla)
+	get '/games/json', :auth => nil do
+		#devuelve todos los juegos en los que se encuentra el usuario (los datos necesarios para la tabla)
 		#content-type : json
 		# => cambiar la forma de devolver los datos. Ahora board tiene usuarios
 
-		games = Game.all
+		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }
 		content_type :json
 		games.to_a.map do |e| 
 			e.as_json include: [
