@@ -74,17 +74,11 @@ Puede devolver los datos de la partida en json.
 Solo se pueden ver partidas en juego.
 
 ####Listar partidas
-Petición
-**GET /login
-
-Respuesta
-*Status: 200 Ok*
-
-Partidas sin comenzar, comenzadas y terminadas ( máquina de estados ? )
+Se lista en todas las pantallas. A la derecha una tabla cargada desde **get /games**
 
 ####Establecer la posición inicial de los barcos
 Petición
-post '/games/:id_game'
+**post '/games/:id_game'**
 
 > Nota: Cada jugador deberá realizar esta acción antes de empezar a jugar, realizar esta acción más de una vez, o en un juego ya comenzado no debe alterar el tablero del juego.
 
@@ -92,10 +86,9 @@ Respuesta
 *Status: 200 Ok*
 *Body:* mismo que GET '/games/:id_game'
 
-
 ####Hacer una jugada
 Petición
-**put '/games/:id_game/move'
+**put '/games/:id_game/move'**
 
 Respuesta
 *Status: 201 Created*
@@ -116,6 +109,7 @@ En los casos de error que no estén especificados en este documento usar el stat
 
 Los usuarios deben loguearse con contraseña.
 Un usuario dado no debe poder ver ni usar el tablero de otro usuario.
+La creación de usuarios se hace con el botón "registro" en la pantalla **/login**
 
 ###Pautas
 
@@ -123,6 +117,7 @@ El trabajo debe estar implementado con Sinatra, con vistas HTML y debe ser jugab
 El trabajo debe tener tests con una cobertura similar a la pedida en los parcialitos.
 Los tests deben dar ok.
 En los PUT y POST debería pasar la información necesaria para cada acción en el body de la petición.
+
 
 
 
