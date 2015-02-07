@@ -34,11 +34,11 @@ module Sinatra
 					session[:user_id] = user.id
 					session[:username] = user.username
 					session[:authorized] = true
-					response.status = 200
+					true
 				else
 					session[:authorized] = false
 					session[:message] = { :value => "El Usuario "+ username +" No existe.", :type => "danger" }
-					response.status = 409 # => no tengo idea que va acà.
+					false
 				end
 			end
 

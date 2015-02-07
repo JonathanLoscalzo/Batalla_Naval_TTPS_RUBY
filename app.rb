@@ -46,7 +46,9 @@ class Application < Sinatra::Base
 	post '/login' do
 	#Route para iniciar sesion. Si algun dato llega vacio o no llega se devuelve status 400
 		unless has_params_keys?(params, 'username', 'password')
-			login username:params['username'], password:params['password']
+			if(login username:params['username'], password:params['password'])
+				redirect '/games', 303
+			end
 		else 
 			response.status=400
 			session[:message] = { :value => "Hubo un error en los datos. Intente nuevamente", :type => "info" }
@@ -69,6 +71,16 @@ class Application < Sinatra::Base
 		return 400
 	end
 
+	get '/games' do
+	#Crear un Jugador. datos entrada username y password.
+		erb 'games'.to_sym
+	end
+
+	get '/players' do
+	#Crear un Jugador. datos entrada username y password.
+		erb 'players'.to_sym
+	end
+
 	post '/players' do
 	#Crear un Jugador. datos entrada username y password.
 		unless has_params_keys? params, 'username', 'password'
@@ -89,17 +101,16 @@ class Application < Sinatra::Base
 			status 400
 			session[:message]= { :value => "Datos Erronéos", :type => "danger" }
 		end
-		erb 'login/login'.to_sym
+		erb 'games'.to_sym
 	end
 
 	get '/games' do
-		
+		erb 'games'.to_sym		
 	end
 
 	get '/players' do
-		
+		erb 'players'.to_sym
 	end
-
 
 	get '/players/json', :auth => nil do
 	# Listar jugadores (con los que se puede jugar iniciar partida)
@@ -110,10 +121,6 @@ class Application < Sinatra::Base
 	end
 
 	get '/games/json', :auth => nil do
-		#devuelve todos los juegos en los que se encuentra el usuario (los datos necesarios para la tabla)
-		#content-type : json
-		# => cambiar la forma de devolver los datos. Ahora board tiene usuarios
-
 		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }
 		content_type :json
 		games.to_a.map do |e| 
@@ -152,7 +159,7 @@ class Application < Sinatra::Base
 		else
 			status 409
 			session[:message]= { :value => "No se puede crear un juego con un usuario que no existe", :type => "danger" }
-			erb 'login/login'.to_sym
+			erb 'games'.to_sym
 		end		
 	end
 
@@ -171,7 +178,7 @@ class Application < Sinatra::Base
 		else
 			session[:message] = { :value => "Problemas recibiendo datos, intente nuevamente! ", :type => "warning" }
 			response.status=409
-			dir = '/login'
+			dir = '/games'
 		end
 		redirect dir, 303
 	end
@@ -242,7 +249,7 @@ class Application < Sinatra::Base
 				else
 					status 409 
 					session[:message] = { :value => "El Usuario #{actual_user} no está jugando el juego con id:#{id_game}", :type => "danger" }
-					redirect '/login'
+					redirect '/games'
 				end
 			else
 				status 400 
@@ -331,7 +338,7 @@ class Application < Sinatra::Base
 		else
 			session[:message] =  { :value => "Ese game no existe", :type => "info" }
 			response.status=400
-			redirect '/login'
+			redirect '/games'
 		end
 	end
 
