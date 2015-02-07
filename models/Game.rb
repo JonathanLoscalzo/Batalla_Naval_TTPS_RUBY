@@ -55,13 +55,18 @@ class Game < ActiveRecord::Base
 
 	def user_can_play?(user_id)
 		# => si los dos tableros fueron asignados.
-		return (self.ready_for_play? && self.user_turn.id == user_id)
+		return (self.ready_for_play? && self.user_turn.id == user_id && self.status.id==2)
 	end
 
 	def play
-		# para que empiecen a jugar. Coloco en el estado 2
-		self.status = Status.find(2)
-		self.save
+		# para que empiecen a jugar. Coloco en el estado 2. validar
+		if (self.ready_for_play?)
+			self.status = Status.find(2)
+			self.save
+			return true
+		else
+			return false
+		end
 	end
 
 	def finish? 
@@ -101,9 +106,13 @@ class Game < ActiveRecord::Base
 	end
 
 	def shot_to(column:, row:, user_id:)
-		board = get_board_from_other_user(user_id) # => esto si saco el sessionHelper no anda...
-		message = board.receive_shot(column,row) # => es tarea del tablero modificar sus celdas.
-		self.change_last_user board.user.id
+		if self.user_can_play? user_id
+			board = get_board_from_other_user(user_id) # => esto si saco el sessionHelper no anda...
+			message = board.receive_shot(column,row) # => es tarea del tablero modificar sus celdas.
+			self.change_last_user board.user.id
+		else
+			message = { :value => "No es tu turno!", :type => "danger" }
+		end
 		message 
 	end
 

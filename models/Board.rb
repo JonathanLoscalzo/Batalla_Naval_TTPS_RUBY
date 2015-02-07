@@ -31,7 +31,7 @@ class Board < ActiveRecord::Base
 
 	def has_position?(row, column)
 		array = self.ships.to_a
-		array + self.waters.to_a
+		array = array + self.waters.to_a
 		array.detect(nil) { |i| i.x == row && i.y == column }
 	end
 
