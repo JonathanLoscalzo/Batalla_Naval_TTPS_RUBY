@@ -26,7 +26,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/login">Batalla Naval</a>
+        <a class="navbar-brand" href="/games">Batalla Naval</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
         <ul class="nav navbar-nav navbar-right">
@@ -53,29 +53,10 @@
   </nav>
   <!-- Fin Navbar -->
 
-  <!-- Listado usuarios sidebar -->
-  <div id='content' class='row-fluid' style="margin-top:5%" >
-    <div id="UsersModel" class='col-md-2 sidebar' data-bind="with: usersModel">
-    <% if authorized? %>
-      <h3>Listado de Usuarios</h3>
-      <div class="accordion" id="accordion2" data-bind="foreach: UsersArray">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"  data-bind="text: username, attr: { href: '#' + id}"></a>
-          </div>
-          <div class="accordion-body collapse" data-bind="attr: { id: id }">
-            datos de usuario: <span data-bind="text: id"></span>
-            <a data-bind="attr: {href: '/games/create/'+ id}"> <button class="btn btn-info"> Iniciar partida </button> </a>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    </div>
-    <!-- Listado usuarios sidebar Fin -->
 
-    <div class='col-md-7 main'>
+    <div class='col-md-10 main'>
       <% if session[:message] %>
-        <div class="alert alert-<%= session[:message][:type] %> alert-dismissible" role="alert">
+        <div class="alert alert-<%= session[:message][:type] %> alert-dismissible  col-md-5 col-md-offset-4" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <%= session[:message][:value] %>
         </div>
@@ -83,34 +64,11 @@
       <% end %>
       <%= yield %>
     </div>
-    
-
-    <!-- Sidebar Partidas -->
-    <div class='col-md-3 sidebar'>
-    <% if authorized? %>
-      <h3>Partidas</h3>
-      <div id="gamesModel" data-bind="with: gamesModel"> 
-        <table class="table table-striped table-condensed" id="table-games">
-          <thead>
-            <tr>
-                <th>Username</th>
-                <th>Username</th>
-                <th>Status</th>
-                <th></th>                                        
-            </tr>
-          </thead>  
-          <tbody data-bind="foreach: games">
-            <tr>
-              <td data-bind="text: username1"></td>
-              <td data-bind="text: username2"></td>
-              <td ><span class="label" data-bind="css: statusLabel"><span data-bind=" text:status"></span></span></td>
-              <td><a class="glyphicon glyphicon-link"  data-toggle="tooltip" title="VER JUEGO" data-placement="left" data-bind="attr: { href: '/games/'+id }"></a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+<% if authorized? %>    
+    <div class='sidebar'>
+      <a role="button" href="/players">Players</a>
     </div>
+<% end %>
     <!-- Sidebar Partidas Fin -->
   </div>
 <% if authorized? %>
