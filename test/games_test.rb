@@ -112,16 +112,6 @@ describe 'a Game' do
 			@game.ready_for_play(@user2.id).must_equal true
 		end
 
-		it ' a shot from user turn is valid' do
-			skip
-			#@game.shot_to(1,4,@user1.id).wont_equal ({ :value => "No es tu turno!", :type => "danger" })
-		end
-
-		it ' not shot from other user turn ' do
-			skip
-			#@game.shot_to(1,4,@user1.id).must_equal ({ :value => "No es tu turno!", :type => "danger" })
-		end
-
 		it ' when a shot is on a ship, this ship sunk ' do
 			Ship.find_by(x:1,y:4,board_id: @game.board2.id).sunken.must_equal false
 			@game.shot_to(column:4,row:1,user_id:@user1.id).must_equal({:value => 'Le dio a un barco!!!!', :type => "success"})
