@@ -1,5 +1,4 @@
 <% unless authorized? %>
-<div class="row" style="padding-top: 5%">
     <form id="form-login" class="form-horizontal col-md-8 col-md-offset-2" action="/login" method="post" style="background-color:pink; padding:3%">
       <div class="form-group">
         <label for="username" class="col-sm-2 control-label">Username</label>
@@ -20,7 +19,6 @@
         </div>
       </div>
     </form>
-</div>
 <script>
 $(document).ready(function(){
     $("#bSubmit").click(function(){
