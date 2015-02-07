@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-07T14:02:26-03:00">2015-02-07T14:02:26-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-07T14:21:54-03:00">2015-02-07T14:21:54-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">76.28%</span></span>
+    (<span class="covered_percent"><span class="red">75.75%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.33
+         3.15
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>18</b> files in total.
-    <b>759</b> relevant lines. 
-    <span class="green"><b>579</b> lines covered</span> and
-    <span class="red"><b>180</b> lines missed </span>
+    <b>763</b> relevant lines. 
+    <span class="green"><b>578</b> lines covered</span> and
+    <span class="red"><b>185</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,12 @@
       
       <tr>
         <td class="strong"><a href="#b8a4f73c7d394ef970e6cef12a7497b37d604046" class="src_link" title="app.rb">app.rb</a></td>
-        <td class="red strong">61.82 %</td>
-        <td>346</td>
-        <td>165</td>
-        <td>102</td>
-        <td>63</td>
-        <td>4.9</td>
+        <td class="red strong">61.05 %</td>
+        <td>353</td>
+        <td>172</td>
+        <td>105</td>
+        <td>67</td>
+        <td>4.7</td>
       </tr>
       
       <tr>
@@ -72,12 +72,12 @@
       
       <tr>
         <td class="strong"><a href="#62a09271d1c3293ed226877d00d5b2460a8a37ae" class="src_link" title="helpers/SessionHelper.rb">helpers/SessionHelper.rb</a></td>
-        <td class="yellow strong">87.18 %</td>
+        <td class="yellow strong">84.62 %</td>
         <td>69</td>
         <td>39</td>
-        <td>34</td>
-        <td>5</td>
-        <td>9.6</td>
+        <td>33</td>
+        <td>6</td>
+        <td>6.6</td>
       </tr>
       
       <tr>
@@ -194,8 +194,8 @@
         <td class="strong"><a href="#2c6782f8e1de7b49770f5ceed17f989d44d51fa8" class="src_link" title="test/session_test.rb">test/session_test.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>53</td>
-        <td>37</td>
-        <td>37</td>
+        <td>34</td>
+        <td>34</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -249,11 +249,11 @@
         <div class="source_table" id="b8a4f73c7d394ef970e6cef12a7497b37d604046">
   <div class="header">
     <h3>app.rb</h3>
-    <h4><span class="red">61.82 %</span> covered</h4>
+    <h4><span class="red">61.05 %</span> covered</h4>
     <div>
-      <b>165</b> relevant lines. 
-      <span class="green"><b>102</b> lines covered</span> and
-      <span class="red"><b>63</b> lines missed.</span>
+      <b>172</b> relevant lines. 
+      <span class="green"><b>105</b> lines covered</span> and
+      <span class="red"><b>67</b> lines missed.</span>
     </div>
   </div>
   
@@ -551,1279 +551,1279 @@
         <li class="covered" data-hits="19" data-linenumber="49">
           <span class="hits">19</span>
           
-          <code class="ruby">			login username:params[&#39;username&#39;], password:params[&#39;password&#39;]</code>
+          <code class="ruby">			if(login username:params[&#39;username&#39;], password:params[&#39;password&#39;])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="covered" data-hits="18" data-linenumber="50">
+          <span class="hits">18</span>
+          
+          <code class="ruby">				redirect &#39;/games&#39;, 303</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">			end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby">		else </code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="51">
+        <li class="covered" data-hits="2" data-linenumber="53">
           <span class="hits">2</span>
           
           <code class="ruby">			response.status=400</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="52">
+        <li class="covered" data-hits="2" data-linenumber="54">
           <span class="hits">2</span>
           
           <code class="ruby">			session[:message] = { :value =&gt; &quot;Hubo un error en los datos. Intente nuevamente&quot;, :type =&gt; &quot;info&quot; }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="54">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="3" data-linenumber="56">
+          <span class="hits">3</span>
           
           <code class="ruby">		erb &#39;login/login&#39;.to_sym</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="56">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="57">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	get &#39;/sizes&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	get &#39;/sizes&#39;, :auth =&gt; nil do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
           <code class="ruby">	# Listar jugadores (con los que se puede jugar iniciar partida)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="59">
-          
-          
-          <code class="ruby">		sizes = Breed.all</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="60">
-          
-          
-          <code class="ruby">		content_type :json</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="61">
           
           
+          <code class="ruby">		sizes = Breed.all</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="62">
+          
+          
+          <code class="ruby">		content_type :json</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="63">
+          
+          
           <code class="ruby">		sizes.as_json(only: [:id, :size, :count_ships]).to_json</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="63">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="64">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	get &#39;/turn/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	get &#39;/turn/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
           <code class="ruby">	# Listar jugadores (con los que se puede jugar iniciar partida)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
+        <li class="missed" data-hits="0" data-linenumber="68">
           
           
           <code class="ruby">		if(Game.find(id_game).user_can_play?(actual_user_id))</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="67">
+        <li class="missed" data-hits="0" data-linenumber="69">
           
           
           <code class="ruby">			return 200	</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="69">
+        <li class="missed" data-hits="0" data-linenumber="71">
           
           
           <code class="ruby">		return 400</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="71">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="72">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	post &#39;/players&#39; do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="73">
           
           
-          <code class="ruby">	#Crear un Jugador. datos entrada username y password.</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="74">
-          <span class="hits">4</span>
-          
-          <code class="ruby">		unless has_params_keys? params, &#39;username&#39;, &#39;password&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="75">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			username = params[&#39;username&#39;]</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="76">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			password = params[&#39;password&#39;]</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="77">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			user = User.where(username: username)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="78">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			if user.empty?</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
-          
-          <code class="ruby">				user = User.create do | u |</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="80">
-          <span class="hits">1</span>
-          
-          <code class="ruby">					u.username = username</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="81">
-          <span class="hits">1</span>
-          
-          <code class="ruby">					u.password = password</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="82">
-          
-          
-          <code class="ruby">				end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="83">
-          <span class="hits">1</span>
-          
-          <code class="ruby">				session[:message]= { :value =&gt; &quot;Creado Correctamente&quot;, :type =&gt; &quot;success&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby">			else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="85">
-          <span class="hits">1</span>
-          
-          <code class="ruby">				status 409</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="86">
-          <span class="hits">1</span>
-          
-          <code class="ruby">				session[:message]= { :value =&gt; &quot;El Usuario &quot;+ username +&quot; ya existe.&quot;, :type =&gt; &quot;danger&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="87">
-          
-          
-          <code class="ruby">			end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="88">
-          
-          
-          <code class="ruby">		else</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="89">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			status 400</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="90">
-          <span class="hits">2</span>
-          
-          <code class="ruby">			session[:message]= { :value =&gt; &quot;Datos Erronéos&quot;, :type =&gt; &quot;danger&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="91">
-          
-          
-          <code class="ruby">		end</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="92">
-          <span class="hits">4</span>
-          
-          <code class="ruby">		erb &#39;login/login&#39;.to_sym</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="93">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="94">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="95">
+        <li class="covered" data-hits="1" data-linenumber="74">
           <span class="hits">1</span>
           
           <code class="ruby">	get &#39;/games&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="96">
+        <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">		</code>
+          <code class="ruby">	#Crear un Jugador. datos entrada username y password.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="missed" data-hits="0" data-linenumber="76">
+          
+          
+          <code class="ruby">		erb &#39;games&#39;.to_sym</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="98">
+        <li class="never" data-hits="" data-linenumber="78">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="99">
+        <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
           <code class="ruby">	get &#39;/players&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">		</code>
+          <code class="ruby">	#Crear un Jugador. datos entrada username y password.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="missed" data-hits="0" data-linenumber="81">
+          
+          
+          <code class="ruby">		erb &#39;players&#39;.to_sym</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="102">
+        <li class="never" data-hits="" data-linenumber="83">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="84">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	post &#39;/players&#39; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">	#Crear un Jugador. datos entrada username y password.</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="86">
+          <span class="hits">4</span>
+          
+          <code class="ruby">		unless has_params_keys? params, &#39;username&#39;, &#39;password&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="87">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			username = params[&#39;username&#39;]</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="88">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			password = params[&#39;password&#39;]</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="89">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			user = User.where(username: username)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="90">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			if user.empty?</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="91">
+          <span class="hits">1</span>
+          
+          <code class="ruby">				user = User.create do | u |</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="92">
+          <span class="hits">1</span>
+          
+          <code class="ruby">					u.username = username</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="93">
+          <span class="hits">1</span>
+          
+          <code class="ruby">					u.password = password</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">				end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="95">
+          <span class="hits">1</span>
+          
+          <code class="ruby">				session[:message]= { :value =&gt; &quot;Creado Correctamente&quot;, :type =&gt; &quot;success&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
+          
+          
+          <code class="ruby">			else</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="97">
+          <span class="hits">1</span>
+          
+          <code class="ruby">				status 409</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="98">
+          <span class="hits">1</span>
+          
+          <code class="ruby">				session[:message]= { :value =&gt; &quot;El Usuario &quot;+ username +&quot; ya existe.&quot;, :type =&gt; &quot;danger&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby">			end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">		else</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="101">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			status 400</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="102">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			session[:message]= { :value =&gt; &quot;Datos Erronéos&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="103">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">		end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="104">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="4" data-linenumber="104">
+          <span class="hits">4</span>
           
-          <code class="ruby">	get &#39;/players/json&#39;, :auth =&gt; nil do</code>
+          <code class="ruby">		erb &#39;games&#39;.to_sym</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="105">
           
           
-          <code class="ruby">	# Listar jugadores (con los que se puede jugar iniciar partida)</code>
+          <code class="ruby">	end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="106">
+        <li class="never" data-hits="" data-linenumber="106">
           
           
-          <code class="ruby">		user_id = session[:user_id]</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="107">
+        <li class="covered" data-hits="1" data-linenumber="107">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		players = User.where([&quot;id &lt;&gt; :id&quot;, { id: user_id }]).select(:id,:username)</code>
+          <code class="ruby">	get &#39;/games&#39; do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="108">
           
           
-          <code class="ruby">		content_type :json</code>
+          <code class="ruby">		erb &#39;games&#39;.to_sym		</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="109">
+        <li class="never" data-hits="" data-linenumber="109">
           
           
-          <code class="ruby">		players.to_json # =&gt; only: [:id, :username]</code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="110">
           
           
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="112">
+        <li class="covered" data-hits="1" data-linenumber="111">
           <span class="hits">1</span>
           
-          <code class="ruby">	get &#39;/games/json&#39;, :auth =&gt; nil do</code>
+          <code class="ruby">	get &#39;/players&#39; do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="112">
+          
+          
+          <code class="ruby">		erb &#39;players&#39;.to_sym</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="113">
           
           
-          <code class="ruby">		#devuelve todos los juegos en los que se encuentra el usuario (los datos necesarios para la tabla)</code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="114">
           
           
-          <code class="ruby">		#content-type : json</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="115">
+        <li class="covered" data-hits="1" data-linenumber="115">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		# =&gt; cambiar la forma de devolver los datos. Ahora board tiene usuarios</code>
+          <code class="ruby">	get &#39;/players/json&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="116">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">	# Listar jugadores (con los que se puede jugar iniciar partida)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="117">
           
           
-          <code class="ruby">		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }</code>
+          <code class="ruby">		user_id = session[:user_id]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="118">
           
           
-          <code class="ruby">		content_type :json</code>
+          <code class="ruby">		players = User.where([&quot;id &lt;&gt; :id&quot;, { id: user_id }]).select(:id,:username)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="119">
+        <li class="missed" data-hits="0" data-linenumber="119">
           
           
-          <code class="ruby">		games.to_a.map do |e| </code>
+          <code class="ruby">		content_type :json</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="120">
           
           
-          <code class="ruby">			e.as_json include: [</code>
+          <code class="ruby">		players.to_json # =&gt; only: [:id, :username]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="121">
           
           
-          <code class="ruby">				{ board1: { </code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="122">
           
           
-          <code class="ruby">					include:[{</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="123">
+        <li class="covered" data-hits="1" data-linenumber="123">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">						user: {</code>
+          <code class="ruby">	get &#39;/games/json&#39;, :auth =&gt; nil do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="missed" data-hits="0" data-linenumber="124">
           
           
-          <code class="ruby">							only:[:id, :username]</code>
+          <code class="ruby">		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="125">
+        <li class="missed" data-hits="0" data-linenumber="125">
           
           
-          <code class="ruby">						}</code>
+          <code class="ruby">		content_type :json</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="126">
           
           
-          <code class="ruby">					}],</code>
+          <code class="ruby">		games.to_a.map do |e| </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="127">
+        <li class="missed" data-hits="0" data-linenumber="127">
           
           
-          <code class="ruby">					only: [:id, :user]</code>
+          <code class="ruby">			e.as_json include: [</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="128">
           
           
-          <code class="ruby">					}</code>
+          <code class="ruby">				{ board1: { </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="129">
           
           
-          <code class="ruby">				}, </code>
+          <code class="ruby">					include:[{</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="130">
           
           
-          <code class="ruby">				{ board2: { </code>
+          <code class="ruby">						user: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="131">
           
           
-          <code class="ruby">					include: [{</code>
+          <code class="ruby">							only:[:id, :username]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="132">
           
           
-          <code class="ruby">						user: {</code>
+          <code class="ruby">						}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="133">
           
           
-          <code class="ruby">							only:[:id, :username]</code>
+          <code class="ruby">					}],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="134">
           
           
-          <code class="ruby">						}</code>
+          <code class="ruby">					only: [:id, :user]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="135">
           
           
-          <code class="ruby">					}],</code>
+          <code class="ruby">					}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="136">
           
           
-          <code class="ruby">					only: [:id, :user]</code>
+          <code class="ruby">				}, </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="137">
           
           
-          <code class="ruby">					} </code>
+          <code class="ruby">				{ board2: { </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="138">
           
           
-          <code class="ruby">				}, </code>
+          <code class="ruby">					include: [{</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="139">
           
           
-          <code class="ruby">				{ status: { </code>
+          <code class="ruby">						user: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="140">
           
           
-          <code class="ruby">					only: :description </code>
+          <code class="ruby">							only:[:id, :username]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="141">
           
           
-          <code class="ruby">					}</code>
+          <code class="ruby">						}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="142">
           
           
-          <code class="ruby">				}],</code>
+          <code class="ruby">					}],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="143">
           
           
-          <code class="ruby">				only: [:id,:board1,:board2,:status]</code>
+          <code class="ruby">					only: [:id, :user]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="144">
+        <li class="never" data-hits="" data-linenumber="144">
           
           
-          <code class="ruby">		end.to_json</code>
+          <code class="ruby">					} </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="145">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">				}, </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="146">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">				{ status: { </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="147">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">					only: :description </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="148">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="148">
           
-          <code class="ruby">	get &#39;/games/create/:id_user&#39;, :auth =&gt; nil do |id_user|</code>
+          
+          <code class="ruby">					}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="149">
           
           
-          <code class="ruby">		#Para crear partidas. id_user es el contrario.</code>
+          <code class="ruby">				}],</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="150">
+        <li class="never" data-hits="" data-linenumber="150">
           
           
-          <code class="ruby">		if User.exists?(id_user)</code>
+          <code class="ruby">				only: [:id,:board1,:board2,:status]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="151">
           
           
-          <code class="ruby">			erb &#39;game/create&#39;.to_sym </code>
+          <code class="ruby">		end.to_json</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="152">
           
           
-          <code class="ruby">		else</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="153">
+        <li class="never" data-hits="" data-linenumber="153">
           
           
-          <code class="ruby">			status 409</code>
+          <code class="ruby">	end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="154">
+        <li class="never" data-hits="" data-linenumber="154">
           
           
-          <code class="ruby">			session[:message]= { :value =&gt; &quot;No se puede crear un juego con un usuario que no existe&quot;, :type =&gt; &quot;danger&quot; }</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="155">
+        <li class="covered" data-hits="1" data-linenumber="155">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">			erb &#39;login/login&#39;.to_sym</code>
+          <code class="ruby">	get &#39;/games/create/:id_user&#39;, :auth =&gt; nil do |id_user|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="156">
           
           
+          <code class="ruby">		#Para crear partidas. id_user es el contrario.</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="157">
+          
+          
+          <code class="ruby">		if User.exists?(id_user)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="158">
+          
+          
+          <code class="ruby">			erb &#39;game/create&#39;.to_sym </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="159">
+          
+          
+          <code class="ruby">		else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="160">
+          
+          
+          <code class="ruby">			status 409</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="161">
+          
+          
+          <code class="ruby">			session[:message]= { :value =&gt; &quot;No se puede crear un juego con un usuario que no existe&quot;, :type =&gt; &quot;danger&quot; }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="162">
+          
+          
+          <code class="ruby">			erb &#39;games&#39;.to_sym</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="163">
+          
+          
           <code class="ruby">		end		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="157">
+        <li class="never" data-hits="" data-linenumber="164">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="158">
+        <li class="never" data-hits="" data-linenumber="165">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="159">
+        <li class="covered" data-hits="1" data-linenumber="166">
           <span class="hits">1</span>
           
           <code class="ruby">	post &#39;/game/create&#39;, :auth=&gt; nil do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="160">
+        <li class="never" data-hits="" data-linenumber="167">
           
           
           <code class="ruby">	#Crear una partida entre usuario de la sesion y jugador enviado.</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="161">
+        <li class="covered" data-hits="7" data-linenumber="168">
           <span class="hits">7</span>
           
           <code class="ruby">		unless has_params_keys? params, &#39;user_id&#39;, &#39;select-size&#39;</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="162">
+        <li class="covered" data-hits="7" data-linenumber="169">
           <span class="hits">7</span>
           
           <code class="ruby">			user_id = params[&#39;user_id&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="163">
+        <li class="covered" data-hits="7" data-linenumber="170">
           <span class="hits">7</span>
           
           <code class="ruby">			breed_id = params[&#39;select-size&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="164">
+        <li class="covered" data-hits="7" data-linenumber="171">
           <span class="hits">7</span>
           
           <code class="ruby">			breed = Breed.find(breed_id)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="165">
+        <li class="covered" data-hits="7" data-linenumber="172">
           <span class="hits">7</span>
           
           <code class="ruby">			board2 = Board.create(breed:breed, user:User.find(user_id))</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="166">
+        <li class="covered" data-hits="7" data-linenumber="173">
           <span class="hits">7</span>
           
           <code class="ruby">			board1 = Board.create(breed:breed, user:User.find(session[:user_id])) # =&gt; user1 es el de la session.</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="167">
+        <li class="covered" data-hits="7" data-linenumber="174">
           <span class="hits">7</span>
           
           <code class="ruby">			game = Game.create(board1:board1, board2: board2)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="168">
+        <li class="covered" data-hits="7" data-linenumber="175">
           <span class="hits">7</span>
           
           <code class="ruby">			game.save</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="169">
+        <li class="covered" data-hits="7" data-linenumber="176">
           <span class="hits">7</span>
           
           <code class="ruby">			response.status=201</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="170">
+        <li class="covered" data-hits="7" data-linenumber="177">
           <span class="hits">7</span>
           
           <code class="ruby">			dir=&#39;/games/&#39; + game.id.to_s</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="171">
+        <li class="never" data-hits="" data-linenumber="178">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="172">
+        <li class="missed" data-hits="0" data-linenumber="179">
           
           
           <code class="ruby">			session[:message] = { :value =&gt; &quot;Problemas recibiendo datos, intente nuevamente! &quot;, :type =&gt; &quot;warning&quot; }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="173">
+        <li class="missed" data-hits="0" data-linenumber="180">
           
           
           <code class="ruby">			response.status=409</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="174">
+        <li class="missed" data-hits="0" data-linenumber="181">
           
           
-          <code class="ruby">			dir = &#39;/login&#39;</code>
+          <code class="ruby">			dir = &#39;/games&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="175">
+        <li class="never" data-hits="" data-linenumber="182">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="176">
+        <li class="covered" data-hits="7" data-linenumber="183">
           <span class="hits">7</span>
           
           <code class="ruby">		redirect dir, 303</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="177">
+        <li class="never" data-hits="" data-linenumber="184">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="178">
+        <li class="never" data-hits="" data-linenumber="185">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="179">
+        <li class="covered" data-hits="1" data-linenumber="186">
           <span class="hits">1</span>
           
           <code class="ruby">	post &#39;/games/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="180">
+        <li class="never" data-hits="" data-linenumber="187">
           
           
           <code class="ruby">		# El usuario actual envia su tablero con barcos. No puede enviar 2 veces</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="181">
+        <li class="never" data-hits="" data-linenumber="188">
           
           
           <code class="ruby">		# la partida tiene que ser propia</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="182">
+        <li class="covered" data-hits="12" data-linenumber="189">
           <span class="hits">12</span>
           
           <code class="ruby">		unless has_params_keys? params, &#39;ships-position&#39;</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="183">
+        <li class="covered" data-hits="12" data-linenumber="190">
           <span class="hits">12</span>
           
           <code class="ruby">			game = Game.find(id_game)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="184">
+        <li class="covered" data-hits="12" data-linenumber="191">
           <span class="hits">12</span>
           
           <code class="ruby">			if game.user_in_game?(actual_user_id)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="185">
+        <li class="covered" data-hits="12" data-linenumber="192">
           <span class="hits">12</span>
           
           <code class="ruby">				if game.status.id == 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="186">
+        <li class="never" data-hits="" data-linenumber="193">
           
           
           <code class="ruby">					# =&gt; si el usuario està en el juego, y el juego està iniciado</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="187">
+        <li class="covered" data-hits="11" data-linenumber="194">
           <span class="hits">11</span>
           
           <code class="ruby">					board = game.get_board_from_user(actual_user_id)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="188">
+        <li class="covered" data-hits="11" data-linenumber="195">
           <span class="hits">11</span>
           
           <code class="ruby">					count_ships = board.breed.count_ships</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="189">
+        <li class="covered" data-hits="11" data-linenumber="196">
           <span class="hits">11</span>
           
           <code class="ruby">					if(params[&#39;ships-position&#39;].length == board.breed.count_ships)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="190">
+        <li class="covered" data-hits="10" data-linenumber="197">
           <span class="hits">10</span>
           
           <code class="ruby">						(1..count_ships).each.with_index do |column, x|</code>
         </li>
       
-        <li class="covered" data-hits="70" data-linenumber="191">
+        <li class="covered" data-hits="70" data-linenumber="198">
           <span class="hits">70</span>
           
           <code class="ruby">							if(!params[&#39;ships-position&#39;][x].nil?)</code>
         </li>
       
-        <li class="covered" data-hits="70" data-linenumber="192">
+        <li class="covered" data-hits="70" data-linenumber="199">
           <span class="hits">70</span>
           
           <code class="ruby">								pos = params[&#39;ships-position&#39;][x].split(&quot;-&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="70" data-linenumber="193">
+        <li class="covered" data-hits="70" data-linenumber="200">
           <span class="hits">70</span>
           
           <code class="ruby">								ship = Ship.create(x:pos[0],y:pos[1],board:board,sunken:false)</code>
         </li>
       
-        <li class="covered" data-hits="70" data-linenumber="194">
+        <li class="covered" data-hits="70" data-linenumber="201">
           <span class="hits">70</span>
           
           <code class="ruby">								board.add_ship(ship) </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="195">
+        <li class="never" data-hits="" data-linenumber="202">
           
           
           <code class="ruby">							end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="196">
+        <li class="never" data-hits="" data-linenumber="203">
           
           
           <code class="ruby">						end</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="197">
+        <li class="covered" data-hits="10" data-linenumber="204">
           <span class="hits">10</span>
           
           <code class="ruby">						board.ready_for_play</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="198">
+        <li class="covered" data-hits="10" data-linenumber="205">
           <span class="hits">10</span>
           
           <code class="ruby">						if game.ready_for_play?</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="199">
+        <li class="covered" data-hits="5" data-linenumber="206">
           <span class="hits">5</span>
           
           <code class="ruby">							game.play</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="200">
+        <li class="never" data-hits="" data-linenumber="207">
           
           
           <code class="ruby">						end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="201">
+        <li class="never" data-hits="" data-linenumber="208">
           
           
           <code class="ruby">					else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="202">
+        <li class="never" data-hits="" data-linenumber="209">
           
           
           <code class="ruby">						# =&gt; si el usuario està en el juego, pero ya enviaron los 2 tableros.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="203">
+        <li class="covered" data-hits="1" data-linenumber="210">
           <span class="hits">1</span>
           
           <code class="ruby">						status 409</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="204">
+        <li class="covered" data-hits="1" data-linenumber="211">
           <span class="hits">1</span>
           
           <code class="ruby">						session[:message] = { :value =&gt; &quot;Enviaste menos ships de los necesarios&quot;, :type =&gt; &quot;danger&quot; }		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="205">
+        <li class="never" data-hits="" data-linenumber="212">
           
           
           <code class="ruby">					end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="206">
+        <li class="never" data-hits="" data-linenumber="213">
           
           
           <code class="ruby">				else</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="207">
-          
-          
-          <code class="ruby">					# =&gt; si el usuario està en el juego, pero ya enviaron los 2 tableros.</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="208">
-          <span class="hits">1</span>
-          
-          <code class="ruby">					status 409 # =&gt; que mensaje devolver?</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="209">
-          <span class="hits">1</span>
-          
-          <code class="ruby">					session[:message] = { :value =&gt; &quot;No se puede reenviar el tablero mientras se está jugando&quot;, :type =&gt; &quot;danger&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="210">
-          
-          
-          <code class="ruby">				end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="211">
-          
-          
-          <code class="ruby">			else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="212">
-          
-          
-          <code class="ruby">				status 409 # =&gt; que mensaje devolver?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="213">
-          
-          
-          <code class="ruby">				session[:message] = { :value =&gt; &quot;El Usuario #{actual_user} no está jugando el juego con id:#{id_game}&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="214">
           
           
-          <code class="ruby">			end</code>
+          <code class="ruby">					# =&gt; si el usuario està en el juego, pero ya enviaron los 2 tableros.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="215">
-          
-          
-          <code class="ruby">		else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="216">
-          
-          
-          <code class="ruby">			status 400 # =&gt; que mensaje devolver?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="217">
-          
-          
-          <code class="ruby">			session[:message] = { :value =&gt; &quot;Problemas recibiendo coordenadas, intente nuevamente! &quot;, :type =&gt; &quot;warning&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="218">
-          
-          
-          <code class="ruby">		end</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="219">
-          <span class="hits">12</span>
-          
-          <code class="ruby">		redirect &#39;/games/&#39; + game.id.to_s</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="220">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="221">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="222">
+        <li class="covered" data-hits="1" data-linenumber="215">
           <span class="hits">1</span>
           
-          <code class="ruby">	put &#39;/games/:id_game/move&#39;, :auth =&gt; nil do |id_game|</code>
+          <code class="ruby">					status 409 # =&gt; que mensaje devolver?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="223">
+        <li class="covered" data-hits="1" data-linenumber="216">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		# se recibe posiciones x,y. </code>
+          <code class="ruby">					session[:message] = { :value =&gt; &quot;No se puede reenviar el tablero mientras se está jugando&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="224">
-          <span class="hits">3</span>
-          
-          <code class="ruby">		game = Game.find(id_game)</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="225">
-          <span class="hits">3</span>
-          
-          <code class="ruby">		if Game.exists?(id_game) &amp;&amp; game.status.id == 2</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="226">
-          <span class="hits">3</span>
-          
-          <code class="ruby">			unless has_params_keys? params, &#39;column&#39;, &#39;row&#39;</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="227">
-          <span class="hits">3</span>
-          
-          <code class="ruby">				column = params[&quot;column&quot;].to_i </code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="228">
-          <span class="hits">3</span>
-          
-          <code class="ruby">				row = params[&quot;row&quot;].to_i </code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="229">
-          
-          
-          <code class="ruby">				# =&gt; primero valido que sea su juego y su turno</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="230">
-          <span class="hits">3</span>
-          
-          <code class="ruby">				game = Game.find(id_game)</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="231">
-          <span class="hits">3</span>
-          
-          <code class="ruby">				if game.user_in_game? actual_user_id</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="232">
-          <span class="hits">3</span>
-          
-          <code class="ruby">					if game.user_turn.id == actual_user_id</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="233">
-          
-          
-          <code class="ruby">						# =&gt; si es el turno del usuario. Hace el disparo.</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="234">
-          <span class="hits">3</span>
-          
-          <code class="ruby">						session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="235">
-          <span class="hits">3</span>
-          
-          <code class="ruby">						game.finish?</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="236">
-          <span class="hits">3</span>
-          
-          <code class="ruby">						redirect &#39;/games/&#39;+id_game.to_s # =&gt; este sabe si se termino el juego o no.</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="237">
-          
-          
-          <code class="ruby">					else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="238">
-          
-          
-          <code class="ruby">						status 409 </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="239">
-          
-          
-          <code class="ruby">						session[:message] = { :value =&gt; &quot;No es tu turno!&quot;, :type =&gt; &quot;danger&quot; }</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="240">
-          
-          
-          <code class="ruby">						redirect &#39;/games/&#39;+ id_game.to_s</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="241">
-          
-          
-          <code class="ruby">					end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="242">
-          
-          
-          <code class="ruby">				else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="243">
-          
-          
-          <code class="ruby">					status 409 </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="244">
-          
-          
-          <code class="ruby">					session[:message] = { :value =&gt; &quot;El Usuario #{actual_user} no está jugando el juego con id:#{id_game}&quot;, :type =&gt; &quot;danger&quot; }</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="245">
-          
-          
-          <code class="ruby">					redirect &#39;/login&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="246">
+        <li class="never" data-hits="" data-linenumber="217">
           
           
           <code class="ruby">				end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="247">
+        <li class="never" data-hits="" data-linenumber="218">
           
           
           <code class="ruby">			else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="248">
+        <li class="missed" data-hits="0" data-linenumber="219">
           
           
-          <code class="ruby">				status 400 </code>
+          <code class="ruby">				status 409 # =&gt; que mensaje devolver?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="249">
+        <li class="missed" data-hits="0" data-linenumber="220">
           
           
-          <code class="ruby">				session[:message] = { :value =&gt; &quot;Error recibiendo disparo, intente nuevamente!&quot;, :type =&gt; &quot;warning&quot; }</code>
+          <code class="ruby">				session[:message] = { :value =&gt; &quot;El Usuario #{actual_user} no está jugando el juego con id:#{id_game}&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="250">
-          
-          
-          <code class="ruby">				redirect &#39;/games/&#39;+ id_game.to_s</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="251">
+        <li class="never" data-hits="" data-linenumber="221">
           
           
           <code class="ruby">			end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="252">
+        <li class="never" data-hits="" data-linenumber="222">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="253">
+        <li class="missed" data-hits="0" data-linenumber="223">
           
           
-          <code class="ruby">			redirect &#39;/games/&#39;+ id_game.to_s</code>
+          <code class="ruby">			status 400 # =&gt; que mensaje devolver?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="254">
+        <li class="missed" data-hits="0" data-linenumber="224">
+          
+          
+          <code class="ruby">			session[:message] = { :value =&gt; &quot;Problemas recibiendo coordenadas, intente nuevamente! &quot;, :type =&gt; &quot;warning&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="225">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="255">
+        <li class="covered" data-hits="12" data-linenumber="226">
+          <span class="hits">12</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">		redirect &#39;/games/&#39; + game.id.to_s</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="256">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="257">
+        <li class="never" data-hits="" data-linenumber="227">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="258">
+        <li class="never" data-hits="" data-linenumber="228">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="259">
+        <li class="covered" data-hits="1" data-linenumber="229">
           <span class="hits">1</span>
           
-          <code class="ruby">	delete &#39;/games/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
+          <code class="ruby">	put &#39;/games/:id_game/move&#39;, :auth =&gt; nil do |id_game|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="260">
+        <li class="never" data-hits="" data-linenumber="230">
           
           
-          <code class="ruby">		# Termina la partida. Gana automaticamente el otro</code>
+          <code class="ruby">		# se recibe posiciones x,y. </code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="231">
+          <span class="hits">3</span>
+          
+          <code class="ruby">		game = Game.find(id_game)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="232">
+          <span class="hits">3</span>
+          
+          <code class="ruby">		if Game.exists?(id_game) &amp;&amp; game.status.id == 2</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="233">
+          <span class="hits">3</span>
+          
+          <code class="ruby">			unless has_params_keys? params, &#39;column&#39;, &#39;row&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="234">
+          <span class="hits">3</span>
+          
+          <code class="ruby">				column = params[&quot;column&quot;].to_i </code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="235">
+          <span class="hits">3</span>
+          
+          <code class="ruby">				row = params[&quot;row&quot;].to_i </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="236">
+          
+          
+          <code class="ruby">				# =&gt; primero valido que sea su juego y su turno</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="237">
+          <span class="hits">3</span>
+          
+          <code class="ruby">				game = Game.find(id_game)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="238">
+          <span class="hits">3</span>
+          
+          <code class="ruby">				if game.user_in_game? actual_user_id</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="239">
+          <span class="hits">3</span>
+          
+          <code class="ruby">					if game.user_turn.id == actual_user_id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="240">
+          
+          
+          <code class="ruby">						# =&gt; si es el turno del usuario. Hace el disparo.</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="241">
+          <span class="hits">3</span>
+          
+          <code class="ruby">						session[:message] = game.shot_to(column: column, row: row, user_id:actual_user_id)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="242">
+          <span class="hits">3</span>
+          
+          <code class="ruby">						game.finish?</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="243">
+          <span class="hits">3</span>
+          
+          <code class="ruby">						redirect &#39;/games/&#39;+id_game.to_s # =&gt; este sabe si se termino el juego o no.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="244">
+          
+          
+          <code class="ruby">					else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="245">
+          
+          
+          <code class="ruby">						status 409 </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="246">
+          
+          
+          <code class="ruby">						session[:message] = { :value =&gt; &quot;No es tu turno!&quot;, :type =&gt; &quot;danger&quot; }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="247">
+          
+          
+          <code class="ruby">						redirect &#39;/games/&#39;+ id_game.to_s</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="248">
+          
+          
+          <code class="ruby">					end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="249">
+          
+          
+          <code class="ruby">				else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="250">
+          
+          
+          <code class="ruby">					status 409 </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="251">
+          
+          
+          <code class="ruby">					session[:message] = { :value =&gt; &quot;El Usuario #{actual_user} no está jugando el juego con id:#{id_game}&quot;, :type =&gt; &quot;danger&quot; }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="252">
+          
+          
+          <code class="ruby">					redirect &#39;/games&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="253">
+          
+          
+          <code class="ruby">				end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="254">
+          
+          
+          <code class="ruby">			else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="255">
+          
+          
+          <code class="ruby">				status 400 </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="256">
+          
+          
+          <code class="ruby">				session[:message] = { :value =&gt; &quot;Error recibiendo disparo, intente nuevamente!&quot;, :type =&gt; &quot;warning&quot; }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="257">
+          
+          
+          <code class="ruby">				redirect &#39;/games/&#39;+ id_game.to_s</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="258">
+          
+          
+          <code class="ruby">			end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="259">
+          
+          
+          <code class="ruby">		else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="260">
+          
+          
+          <code class="ruby">			redirect &#39;/games/&#39;+ id_game.to_s</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="261">
           
           
-          <code class="ruby">		# Todos los barcos propios mueren ? </code>
+          <code class="ruby">		end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="262">
@@ -1835,331 +1835,331 @@
         <li class="never" data-hits="" data-linenumber="263">
           
           
-          <code class="ruby">#		game = Game.find(id_game)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="264">
           
           
-          <code class="ruby">#		uri = &quot;&quot;</code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="265">
           
           
-          <code class="ruby">#		hash_message = &quot;&quot;</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="266">
+        <li class="covered" data-hits="1" data-linenumber="266">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">#		if game</code>
+          <code class="ruby">	delete &#39;/games/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="267">
           
           
-          <code class="ruby">#			if game.user_in_game? actual_user_id</code>
+          <code class="ruby">		# Termina la partida. Gana automaticamente el otro</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="268">
           
           
-          <code class="ruby">#				case game.status</code>
+          <code class="ruby">		# Todos los barcos propios mueren ? </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="269">
           
           
-          <code class="ruby">#				when 2</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="270">
           
           
-          <code class="ruby">#					board = game.get_board_from_user(actual_user_id)</code>
+          <code class="ruby">#		game = Game.find(id_game)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="271">
           
           
-          <code class="ruby">#					#board.ships.update_all </code>
+          <code class="ruby">#		uri = &quot;&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="272">
           
           
-          <code class="ruby">#					board.ships.map { |s| s.update(sunken: true) }</code>
+          <code class="ruby">#		hash_message = &quot;&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="273">
           
           
-          <code class="ruby">#					hash_message = { :value =&gt; &quot;Abandonó el juego&quot;, :type =&gt; &quot;info&quot; }</code>
+          <code class="ruby">#		if game</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="274">
           
           
-          <code class="ruby">#				else</code>
+          <code class="ruby">#			if game.user_in_game? actual_user_id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="275">
           
           
-          <code class="ruby">#					game.destroy</code>
+          <code class="ruby">#				case game.status</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="276">
           
           
-          <code class="ruby">#					hash_message = { :value =&gt; &quot;El juego con id #{id_game} a sino eliminado&quot;, :type =&gt; &quot;info&quot; }</code>
+          <code class="ruby">#				when 2</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="277">
           
           
-          <code class="ruby">#				end</code>
+          <code class="ruby">#					board = game.get_board_from_user(actual_user_id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="278">
           
           
-          <code class="ruby">#			else</code>
+          <code class="ruby">#					#board.ships.update_all </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="279">
           
           
-          <code class="ruby">#				hash_message = { :value =&gt; &quot;Ud no puede eliminar el juego.&quot;, :type =&gt; &quot;danger&quot; }</code>
+          <code class="ruby">#					board.ships.map { |s| s.update(sunken: true) }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="280">
           
           
-          <code class="ruby">#			end</code>
+          <code class="ruby">#					hash_message = { :value =&gt; &quot;Abandonó el juego&quot;, :type =&gt; &quot;info&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="281">
           
           
-          <code class="ruby">#		else</code>
+          <code class="ruby">#				else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="282">
           
           
-          <code class="ruby">#			session[:message] = { :value =&gt; &quot;El juego con id #{id_game} no existe.&quot;, :type =&gt; &quot;info&quot; }</code>
+          <code class="ruby">#					game.destroy</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="283">
           
           
-          <code class="ruby">#		end</code>
+          <code class="ruby">#					hash_message = { :value =&gt; &quot;El juego con id #{id_game} a sino eliminado&quot;, :type =&gt; &quot;info&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="284">
           
           
-          <code class="ruby">#		session[:message] = hash_message</code>
+          <code class="ruby">#				end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="285">
           
           
-          <code class="ruby">#		erb uri.to_sym</code>
+          <code class="ruby">#			else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="286">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">#				hash_message = { :value =&gt; &quot;Ud no puede eliminar el juego.&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="287">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">#			end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="288">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="288">
           
-          <code class="ruby">	get &#39;/games/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
+          
+          <code class="ruby">#		else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="289">
           
           
-          <code class="ruby">		#-&gt; si es propia</code>
+          <code class="ruby">#			session[:message] = { :value =&gt; &quot;El juego con id #{id_game} no existe.&quot;, :type =&gt; &quot;info&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="290">
           
           
-          <code class="ruby">		#	-&gt; estado iniciado : tablero para completar y enviar (cambia el tablero)</code>
+          <code class="ruby">#		end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="291">
           
           
-          <code class="ruby">		#	-&gt; jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y</code>
+          <code class="ruby">#		session[:message] = hash_message</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="292">
           
           
-          <code class="ruby">		# 		posibilidad de elegir donde disparar.</code>
+          <code class="ruby">#		erb uri.to_sym</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="293">
           
           
-          <code class="ruby">		#	-&gt; cancelada o terminada : se puede ver ambos tableros y quien gano.</code>
+          <code class="ruby">	end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="294">
           
           
-          <code class="ruby">		#-&gt; si no es propia (ambas opciones son iguales)</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="295">
+        <li class="covered" data-hits="1" data-linenumber="295">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		#	-&gt; se ven ambos tableros. </code>
+          <code class="ruby">	get &#39;/games/:id_game&#39;, :auth =&gt; nil do |id_game|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="296">
           
           
-          <code class="ruby">		#	-&gt; si està terminada dice quien ganò, sino solo se muestran las jugadas.</code>
+          <code class="ruby">		#-&gt; si es propia</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="297">
+        <li class="never" data-hits="" data-linenumber="297">
           
           
-          <code class="ruby">		if Game.exists?id_game</code>
+          <code class="ruby">		#	-&gt; estado iniciado : tablero para completar y enviar (cambia el tablero)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="298">
+        <li class="never" data-hits="" data-linenumber="298">
           
           
-          <code class="ruby">			@game = Game.find(id_game)</code>
+          <code class="ruby">		#	-&gt; jugando : tablero propio y disparos sobre mi tablero. Tablero contrario y</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="299">
+        <li class="never" data-hits="" data-linenumber="299">
           
           
-          <code class="ruby">			uri = &quot;&quot;</code>
+          <code class="ruby">		# 		posibilidad de elegir donde disparar.</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="300">
+        <li class="never" data-hits="" data-linenumber="300">
           
           
-          <code class="ruby">			if(@game.user_is_playing?(actual_user_id))</code>
+          <code class="ruby">		#	-&gt; cancelada o terminada : se puede ver ambos tableros y quien gano.</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="301">
+        <li class="never" data-hits="" data-linenumber="301">
           
           
-          <code class="ruby">				case @game.status.id</code>
+          <code class="ruby">		#-&gt; si no es propia (ambas opciones son iguales)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="302">
           
           
-          <code class="ruby">				when 1</code>
+          <code class="ruby">		#	-&gt; se ven ambos tableros. </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="303">
+        <li class="never" data-hits="" data-linenumber="303">
           
           
-          <code class="ruby">					if(@game.user_can_play?(actual_user_id))</code>
+          <code class="ruby">		#	-&gt; si està terminada dice quien ganò, sino solo se muestran las jugadas.</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="304">
           
           
-          <code class="ruby">						uri = &#39;playing&#39;</code>
+          <code class="ruby">		if Game.exists?id_game</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="305">
+        <li class="missed" data-hits="0" data-linenumber="305">
           
           
-          <code class="ruby">					else</code>
+          <code class="ruby">			@game = Game.find(id_game)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="306">
           
           
-          <code class="ruby">						if(@game.ready_for_play(actual_user_id))</code>
+          <code class="ruby">			uri = &quot;&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="307">
           
           
-          <code class="ruby">							uri = &#39;waiting&#39;</code>
+          <code class="ruby">			if(@game.user_is_playing?(actual_user_id))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="308">
+        <li class="missed" data-hits="0" data-linenumber="308">
           
           
-          <code class="ruby">						else</code>
+          <code class="ruby">				case @game.status.id</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="309">
+        <li class="never" data-hits="" data-linenumber="309">
           
           
-          <code class="ruby">							uri = &#39;play&#39;</code>
+          <code class="ruby">				when 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="310">
-          
-          
-          <code class="ruby">						end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="311">
-          
-          
-          <code class="ruby">					end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="312">
-          
-          
-          <code class="ruby">				when 2</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="313">
+        <li class="missed" data-hits="0" data-linenumber="310">
           
           
           <code class="ruby">					if(@game.user_can_play?(actual_user_id))</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="314">
-          
-          
-          <code class="ruby">						session[:message] =  { :value =&gt; &quot;Your turn&quot;, :type =&gt; &quot;success&quot; }</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="315">
+        <li class="missed" data-hits="0" data-linenumber="311">
           
           
           <code class="ruby">						uri = &#39;playing&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="316">
+        <li class="never" data-hits="" data-linenumber="312">
           
           
           <code class="ruby">					else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="317">
+        <li class="missed" data-hits="0" data-linenumber="313">
           
           
-          <code class="ruby">						uri = &#39;waiting&#39;</code>
+          <code class="ruby">						if(@game.ready_for_play(actual_user_id))</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="314">
+          
+          
+          <code class="ruby">							uri = &#39;waiting&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="315">
+          
+          
+          <code class="ruby">						else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="316">
+          
+          
+          <code class="ruby">							uri = &#39;play&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="317">
+          
+          
+          <code class="ruby">						end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="318">
@@ -2171,166 +2171,208 @@
         <li class="never" data-hits="" data-linenumber="319">
           
           
-          <code class="ruby">				when 3</code>
+          <code class="ruby">				when 2</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="320">
           
           
-          <code class="ruby">					if(actual_user_id == @game.who_wins?.id)</code>
+          <code class="ruby">					if(@game.user_can_play?(actual_user_id))</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="321">
           
           
-          <code class="ruby">						session[:message] =  { :value =&gt; &quot;You win!!&quot;, :type =&gt; &quot;success&quot; }</code>
+          <code class="ruby">						session[:message] =  { :value =&gt; &quot;Your turn&quot;, :type =&gt; &quot;success&quot; }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="322">
+        <li class="missed" data-hits="0" data-linenumber="322">
+          
+          
+          <code class="ruby">						uri = &#39;playing&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="323">
           
           
           <code class="ruby">					else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="323">
+        <li class="missed" data-hits="0" data-linenumber="324">
           
           
-          <code class="ruby">						session[:message] =  { :value =&gt; &quot;You lose&quot;, :type =&gt; &quot;danger&quot; }</code>
+          <code class="ruby">						uri = &#39;waiting&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="324">
+        <li class="never" data-hits="" data-linenumber="325">
           
           
           <code class="ruby">					end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="325">
-          
-          
-          <code class="ruby">					uri = &#39;showgame&#39;</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="326">
           
           
-          <code class="ruby">				end</code>
+          <code class="ruby">				when 3</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="327">
+        <li class="missed" data-hits="0" data-linenumber="327">
           
           
-          <code class="ruby">			else</code>
+          <code class="ruby">					if(actual_user_id == @game.who_wins?.id)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="328">
           
           
-          <code class="ruby">				uri = &#39;showgame_complete&#39;</code>
+          <code class="ruby">						session[:message] =  { :value =&gt; &quot;You win!!&quot;, :type =&gt; &quot;success&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="329">
           
           
-          <code class="ruby">			end</code>
+          <code class="ruby">					else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="330">
           
           
-          <code class="ruby">			erb (&#39;game/&#39;+uri).to_sym</code>
+          <code class="ruby">						session[:message] =  { :value =&gt; &quot;You lose&quot;, :type =&gt; &quot;danger&quot; }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="331">
           
           
-          <code class="ruby">		else</code>
+          <code class="ruby">					end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="332">
           
           
-          <code class="ruby">			session[:message] =  { :value =&gt; &quot;Ese game no existe&quot;, :type =&gt; &quot;info&quot; }</code>
+          <code class="ruby">					uri = &#39;showgame&#39;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="333">
+        <li class="never" data-hits="" data-linenumber="333">
           
           
-          <code class="ruby">			response.status=400</code>
+          <code class="ruby">				end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="334">
+        <li class="never" data-hits="" data-linenumber="334">
           
           
-          <code class="ruby">			redirect &#39;/login&#39;</code>
+          <code class="ruby">			else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="335">
+        <li class="missed" data-hits="0" data-linenumber="335">
           
           
-          <code class="ruby">		end</code>
+          <code class="ruby">				uri = &#39;showgame_complete&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="336">
           
           
+          <code class="ruby">			end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="337">
+          
+          
+          <code class="ruby">			erb (&#39;game/&#39;+uri).to_sym</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="338">
+          
+          
+          <code class="ruby">		else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="339">
+          
+          
+          <code class="ruby">			session[:message] =  { :value =&gt; &quot;Ese game no existe&quot;, :type =&gt; &quot;info&quot; }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="340">
+          
+          
+          <code class="ruby">			response.status=400</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="341">
+          
+          
+          <code class="ruby">			redirect &#39;/games&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="342">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="343">
+          
+          
           <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="337">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="338">
-          <span class="hits">1</span>
-          
-          <code class="ruby">   not_found do	</code>
-        </li>
-      
-        <li class="covered" data-hits="9" data-linenumber="339">
-          <span class="hits">9</span>
-          
-          <code class="ruby">		erb :&#39;page_404&#39;, :layout =&gt; false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="340">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="341">
-          <span class="hits">1</span>
-          
-          <code class="ruby">private</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="342">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	def has_params_keys?(params, *args)</code>
-        </li>
-      
-        <li class="covered" data-hits="127" data-linenumber="343">
-          <span class="hits">127</span>
-          
-          <code class="ruby">		args.detect(nil) { |e| ! ((params.key? e) &amp;&amp; !params[e].empty?) }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="344">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="345">
+          <span class="hits">1</span>
+          
+          <code class="ruby">   not_found do	</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="346">
+          <span class="hits">9</span>
+          
+          <code class="ruby">		erb :&#39;page_404&#39;, :layout =&gt; false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="347">
+          
+          
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="345">
+        <li class="covered" data-hits="1" data-linenumber="348">
+          <span class="hits">1</span>
+          
+          <code class="ruby">private</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="349">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	def has_params_keys?(params, *args)</code>
+        </li>
+      
+        <li class="covered" data-hits="127" data-linenumber="350">
+          <span class="hits">127</span>
+          
+          <code class="ruby">		args.detect(nil) { |e| ! ((params.key? e) &amp;&amp; !params[e].empty?) }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="351">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="352">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="346">
+        <li class="never" data-hits="" data-linenumber="353">
           
           
           <code class="ruby">end</code>
@@ -3225,11 +3267,11 @@
         <div class="source_table" id="62a09271d1c3293ed226877d00d5b2460a8a37ae">
   <div class="header">
     <h3>helpers/SessionHelper.rb</h3>
-    <h4><span class="yellow">87.18 %</span> covered</h4>
+    <h4><span class="yellow">84.62 %</span> covered</h4>
     <div>
       <b>39</b> relevant lines. 
-      <span class="green"><b>34</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>33</b> lines covered</span> and
+      <span class="red"><b>6</b> lines missed.</span>
     </div>
   </div>
   
@@ -3266,8 +3308,8 @@
           <code class="ruby">			def authorized?</code>
         </li>
       
-        <li class="covered" data-hits="162" data-linenumber="6">
-          <span class="hits">162</span>
+        <li class="covered" data-hits="62" data-linenumber="6">
+          <span class="hits">62</span>
           
           <code class="ruby">	        	session[:authorized]</code>
         </li>
@@ -3455,7 +3497,7 @@
         <li class="covered" data-hits="18" data-linenumber="37">
           <span class="hits">18</span>
           
-          <code class="ruby">					response.status = 200</code>
+          <code class="ruby">					true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
@@ -3479,7 +3521,7 @@
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">					response.status = 409 # =&gt; no tengo idea que va acà.</code>
+          <code class="ruby">					false</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -3506,8 +3548,8 @@
           <code class="ruby">			def actual_user</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="46">
-          <span class="hits">18</span>
+        <li class="missed" data-hits="0" data-linenumber="46">
+          
           
           <code class="ruby">				session[:username]</code>
         </li>
@@ -7481,8 +7523,8 @@
     <h3>test/session_test.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>37</b> relevant lines. 
-      <span class="green"><b>37</b> lines covered</span> and
+      <b>34</b> relevant lines. 
+      <span class="green"><b>34</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -7532,10 +7574,10 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="8">
           
-          <code class="ruby">		last_response.status.must_equal 409</code>
+          
+          <code class="ruby">	#	last_response.status.must_equal 409</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="9">
@@ -7580,10 +7622,10 @@
           <code class="ruby">		User.find(user.id).destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="16">
           
-          <code class="ruby">		last_response.status.must_equal 200</code>
+          
+          <code class="ruby">	#	last_response.status.must_equal 200</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
@@ -7718,10 +7760,10 @@
           <code class="ruby">		user.destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="39">
           
-          <code class="ruby">		last_response.status.must_equal 200</code>
+          
+          <code class="ruby">		#last_response.status.must_equal 200</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="40">
