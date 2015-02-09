@@ -71,12 +71,12 @@ class Application < Sinatra::Base
 		return 400
 	end
 
-	get '/games' do
+	get '/games', :auth => nil do
 	#Crear un Jugador. datos entrada username y password.
 		erb 'games'.to_sym
 	end
 
-	get '/players' do
+	get '/players', :auth => nil do
 	#Crear un Jugador. datos entrada username y password.
 		erb 'players'.to_sym
 	end
@@ -104,11 +104,11 @@ class Application < Sinatra::Base
 		erb 'games'.to_sym
 	end
 
-	get '/games' do
+	get '/games', :auth => nil do
 		erb 'games'.to_sym		
 	end
 
-	get '/players' do
+	get '/players', :auth => nil do
 		erb 'players'.to_sym
 	end
 
