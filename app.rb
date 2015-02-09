@@ -121,7 +121,7 @@ class Application < Sinatra::Base
 	end
 
 	get '/games/json', :auth => nil do
-		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }
+		games = Game.all#.lazy.select { |g| g.user_in_game?(actual_user_id) }
 		content_type :json
 		games.to_a.map do |e| 
 			e.as_json include: [
