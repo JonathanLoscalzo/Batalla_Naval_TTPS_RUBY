@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-07T14:21:54-03:00">2015-02-07T14:21:54-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-09T20:33:43-03:00">2015-02-09T20:33:43-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.15
+         3.16
        </span>
     </span> hits/line)
   </h2>
@@ -87,7 +87,7 @@
         <td>11</td>
         <td>10</td>
         <td>1</td>
-        <td>4.4</td>
+        <td>5.1</td>
       </tr>
       
       <tr>
@@ -701,7 +701,7 @@
         <li class="covered" data-hits="1" data-linenumber="74">
           <span class="hits">1</span>
           
-          <code class="ruby">	get &#39;/games&#39; do</code>
+          <code class="ruby">	get &#39;/games&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
@@ -731,7 +731,7 @@
         <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
-          <code class="ruby">	get &#39;/players&#39; do</code>
+          <code class="ruby">	get &#39;/players&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="80">
@@ -899,7 +899,7 @@
         <li class="covered" data-hits="1" data-linenumber="107">
           <span class="hits">1</span>
           
-          <code class="ruby">	get &#39;/games&#39; do</code>
+          <code class="ruby">	get &#39;/games&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="108">
@@ -923,7 +923,7 @@
         <li class="covered" data-hits="1" data-linenumber="111">
           <span class="hits">1</span>
           
-          <code class="ruby">	get &#39;/players&#39; do</code>
+          <code class="ruby">	get &#39;/players&#39;, :auth =&gt; nil do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="112">
@@ -1001,7 +1001,7 @@
         <li class="missed" data-hits="0" data-linenumber="124">
           
           
-          <code class="ruby">		games = Game.all.lazy.select { |g| g.user_in_game?(actual_user_id) }</code>
+          <code class="ruby">		games = Game.all#.lazy.select { |g| g.user_in_game?(actual_user_id) }</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="125">
@@ -3800,8 +3800,8 @@
           <code class="ruby">				#se agrega a los metodos que quiero que sea necesario autenticarse</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="16">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="24" data-linenumber="16">
+          <span class="hits">24</span>
           
           <code class="ruby">				condition do </code>
         </li>
